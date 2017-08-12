@@ -1,6 +1,5 @@
 import Main from "../components/Main";
 import { connect } from "react-redux";
-import { increment } from "../actions";
 
 const mapStateToProps = state => {
   return {

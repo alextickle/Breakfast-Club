@@ -1,97 +1,91 @@
-import React, { Component } from 'react';
-import messageStore from '../stores/MessageStore';
-import userStore from '../stores/UserStore';
-import {addMessage} from '../actions/MessageActions';
-import {fetchMessages} from '../actions/MessageActions';
-import Moment from 'react-moment'
-import {helpers} from '../helpers/moment.js'
+import React, { Component } from "react";
+import messageStore from "../stores/MessageStore";
+import userStore from "../stores/UserStore";
+import { addMessage } from "../actions/MessageActions";
+import { fetchMessages } from "../actions/MessageActions";
+import Moment from "react-moment";
+import { helpers } from "../helpers/moment.js";
 
 class MessageBoard extends Component {
-  constructor(props){
-    super(props)
-    this.state={
-      messages: [],
-      currentMessage: ''
-    }
-    fetchMessages()
-    this.onUpdate = this.updateMessages.bind(this)
+  constructor(props) {
+    super(props);
+    this.state = {
+      currentMessage: ""
+    };
   }
 
-  componentWillMount(){
-    messageStore.on('messages fetched', this.onUpdate);
-    messageStore.on('message added', this.onUpdate);
-  }
-
-  componentWillUnmount(){
-    messageStore.removeListener('messages fetched', this.onUpdate);
-    messageStore.removeListener('message added', this.onUpdate);
-  }
-
-  updateMessages(){
+  updateMessages() {
     this.setState({
       messages: messageStore.getMessages()
-    })
+    });
   }
 
-  handleChange(e){
-    let currentMessage = e.target.value
+  handleChange(e) {
+    let currentMessage = e.target.value;
     this.setState({
       currentMessage: currentMessage
-    })
+    });
   }
 
-  handleSubmit(e){
+  handleSubmit(e) {
     e.preventDefault();
-    if(this.state.currentMessage != ''){
-    addMessage({
-      content: this.state.currentMessage,
-      author: `${userStore.getUser().firstName} ${userStore.getUser().lastName.slice(0, 1)}.`
-    });
+    if (this.state.currentMessage != "") {
+      addMessage({
+        content: this.state.currentMessage,
+        author: `${userStore.getUser()
+          .firstName} ${userStore.getUser().lastName.slice(0, 1)}.`
+      });
     }
     this.setState({
-      currentMessage: ''
-    })
+      currentMessage: ""
+    });
   }
 
   render() {
-    let mapped = this.state.messages.map(function(message, i){
-      let timeStamp = (message.createdAt)
+    let mapped = this.props.data.messages.map(function(message, i) {
+      let timeStamp = message.createdAt;
       return (
-        <div className='individual-message' key={i}>
-          <div className='sender'>{message.author}</div>
-          <div className='time-stamp'>
+        <div className="individual-message" key={i}>
+          <div className="sender">
+            {message.author}
+          </div>
+          <div className="time-stamp">
             <Moment fromNow>
               {helpers.syncToServerTime(timeStamp)}
             </Moment>
           </div>
-          <div className='message-content'>{message.content}</div>
+          <div className="message-content">
+            {message.content}
+          </div>
         </div>
-      )
-    })
+      );
+    });
 
     return (
-      <div className='message-board'>
-        <div className='message-box'>
+      <div className="message-board">
+        <div className="message-box">
           {mapped.reverse()}
         </div>
         <div>
           <form onSubmit={this.handleSubmit.bind(this)}>
             <div>
-              <input className='submit-field'
-                size='20'
-                type='text'
-                placeholder='type a message'
-                name='message'
-                autoComplete='off'
+              <input
+                className="submit-field"
+                size="20"
+                type="text"
+                placeholder="type a message"
+                name="message"
+                autoComplete="off"
                 value={this.state.currentMessage}
-                onChange={this.handleChange.bind(this)}>
-              </input>
+                onChange={this.handleChange.bind(this)}
+              />
             </div>
             <div>
-              <input className='submit-chat-button'
-                type='submit'
-                value='Send'>
-              </input>
+              <input
+                className="submit-chat-button"
+                type="submit"
+                value="Send"
+              />
             </div>
           </form>
         </div>
@@ -100,4 +94,4 @@ class MessageBoard extends Component {
   }
 }
 
-export default MessageBoard
+export default MessageBoard;

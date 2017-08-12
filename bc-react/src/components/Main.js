@@ -3,13 +3,12 @@ import React, { Component } from "react";
 import "./style/App.css";
 
 // logged in routes
-import HomeContainer from "./containers/HomeContainer";
-import UserProfileContainer from "./containers/UserProfileContainer";
-import AdminPageContainer from "./routes/AdminPage";
-import MessageBoardToggle from "./components/MessageBoardToggle";
-import PlacesContainer from "./containers/PlacesContainer";
-import CurrentEventContainer from "./containers/CurrentEventContainer";
-import PastEventContainer from "./containers/PastEventContainer";
+import AdminPageContainer from "../routes/AdminPage";
+import CurrentEventContainer from "../containers/CurrentEventContainer";
+import HomeContainer from "../containers/HomeContainer";
+import PastEventContainer from "../containers/PastEventContainer";
+import PlacesContainer from "../containers/PlacesContainer";
+import UserProfileContainer from "../containers/UserProfileContainer";
 
 // unprotected routes
 import UserSignUp from "./routes/UserSignUp";
@@ -19,8 +18,11 @@ import UserLogin from "./routes/UserLogin";
 import Photos from "./routes/Photos";
 import PageNotFound from "./routes/PageNotFound";
 
+import MessageBoardToggleContainer from "../containers/MessageBoardToggleContainer";
+
 const Main = props =>
   <div>
+    {props.user && <MessageBoardToggleContainer />}
     <Switch>
       <Route
         exact
