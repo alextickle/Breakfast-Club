@@ -1,13 +1,15 @@
 const express = require("express");
-const bodyParser = require("body-parser");
 const app = express();
+
+const bodyParser = require("body-parser");
+const moment = require("moment");
+
+// models
 const Place = require("../models").Place;
 const Bevent = require("../models").Bevent;
 const GuestList = require("../models").GuestList;
-const payload = require("../api").payload;
 const User = require("../models").User;
 const Message = require("../models").Message;
-const moment = require("moment");
 
 const authorization = function(request, response, next) {
   const token = request.query.authToken || request.body.authToken;
