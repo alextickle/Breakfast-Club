@@ -10,3 +10,9 @@ export const clearCurrentMessage = () => {
     type: "CLEAR-CURRENT-MESSAGE"
   };
 };
+
+export const handleLoginSubmit = () => {
+  return {
+    type: "HANDLE-LOGIN-SUBMIT"
+  };
+};

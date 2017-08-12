@@ -1,45 +1,54 @@
-import React, { Component } from 'react';
-import {fetchPastEvent} from '../actions/EventActions';
-import eventStore from '../stores/EventStore';
-import PastEventDetail from '../components/PastEventDetail';
+import React from "react";
+import Moment from "react-moment";
+import "moment-timezone";
+import getFullName from "../helpers/getFullName";
 
-class PastEvent extends Component {
-  constructor(props){
-    super(props)
-    this.state = {
-      pastEvent: null,
-    }
-    this.updatePastEvent = this.updatePastEvent.bind(this)
-    fetchPastEvent(this.props.eventId);
+const PastEvent = () => {
+  let event = this.props.event.event;
+  let place =
+    this.props.event.winner === 1
+      ? this.props.event.places[0]
+      : this.props.event.places[1];
+  let users = this.props.event.guestLists;
+  let guestList;
+  if (users.length === 0) {
+    guestList = <div>Canceled</div>;
+  } else {
+    guestList = this.props.event.guestLists.map(guestList, () => {
+      return getFullName(guestList.user.firstName, guestList.user.lastName);
+    });
   }
 
-  componentWillMount(){
-    eventStore.on('change', this.updatePastEvent)
-  }
-
-  componentWillUnmount(){
-    eventStore.removeListener('change', this.updatePastEvent)
-  }
-
-  updatePastEvent(){
-    this.setState({
-      pastEvent: eventStore.getPastEvent()
-    })
-  }
-
-  render() {
-    return (
-      <div>
-
-      {this.state.pastEvent &&
-        <PastEventDetail event={this.state.pastEvent}/>}
-
-      {!this.state.pastEvent &&
-        <div></div>}
-
+  return (
+    <div className="polaroid-details">
+      <div className="polaroid-date">
+        <Moment format="dddd, MMMM DD">
+          {event.date}
+        </Moment>
       </div>
-    );
-  }
-}
+      <div className="past-place-name">
+        <a href={place.url} title="open in yelp" target="_blank">
+          {place.name}
+        </a>
+      </div>
+      <div>
+        <img className="place-img" src={place.image_url} alt="restaurant" />
+      </div>
+      <span>
+        <img
+          className="yelp-rating"
+          src={`../Images/small_${place.yelp_rating}.png`}
+          alt="rating"
+        />
+      </span>&nbsp;|&nbsp;
+      <span>{place.address_street}</span>
+      <div className="past-guests">
+        <span className="bold">Guest Speaker:</span> {event.speaker}
+        <br />
+        <span className="bold">Guestlist:</span> {guestList}
+      </div>
+    </div>
+  );
+};
 
 export default PastEvent;
