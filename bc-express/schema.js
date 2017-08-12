@@ -3,13 +3,13 @@ const resolvers = require("./resolvers").resolvers;
 
 const typeDefs = `
 type Query {
-  user(id: String): User
+  user(id: Int): User
   users: [User]
   messages: [Message]
   places: [Place]
   currentEvent: Bevent
-  guestList: [User]
   event(id: Int): Bevent
+  admin: [User]
 }
 
 type User {
@@ -35,6 +35,7 @@ type Place {
   address_street: String
   address_city: String
   address_state: String
+  address_zip: String
   phone: String
   yelp_rating: Int
   image_url: String

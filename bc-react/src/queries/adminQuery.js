@@ -2,7 +2,7 @@ import { gql } from "react-apollo";
 
 const adminQuery = gql`
   query adminQuery {
-    users {
+    admin {
       id
       firstName
       lastName

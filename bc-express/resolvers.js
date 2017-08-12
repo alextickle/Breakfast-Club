@@ -33,11 +33,22 @@ const resolvers = {
         ]
       });
     },
-
-    guestList() {
-      return User.findAll({
-        where: { rsvp: true }
+    event(root, args) {
+      return Bevent.find({
+        where: args,
+        include: [
+          {
+            model: GuestList,
+            as: "guestLists",
+            include: [{ model: User, as: "user" }]
+          },
+          { model: Place, as: "place_1" },
+          { model: Place, as: "place_2" }
+        ]
       });
+    },
+    admin(root, args) {
+      return User.findAll();
     }
   }
 };
