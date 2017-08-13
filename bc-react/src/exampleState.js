@@ -17,6 +17,10 @@
         email: "alex@testing.com",
         password: "Test123"
       }
+      errors: {
+        email: "",
+        password: ""
+      }
     }
   }
 }

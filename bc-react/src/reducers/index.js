@@ -1,9 +1,10 @@
-import { combineReducers } from "redux";
-import updateCurrentMessage from "./updateCurrentMessage";
+import { combineReducers } from 'redux';
+import updateCurrentMessage from './updateCurrentMessage';
+import clearCurrentMessage from './clearCurrentMessage';
 
 const reducers = combineReducers({
-  updateCurrentMessage,
-  clearCurrentMessage
+	updateCurrentMessage,
+	clearCurrentMessage
 });
 
 export default reducers;

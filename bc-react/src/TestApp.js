@@ -1,4 +1,5 @@
 import React from 'react';
+import { createStore } from 'redux';
 import {
 	ApolloClient,
 	ApolloProvider,
@@ -6,7 +7,7 @@ import {
 } from 'react-apollo';
 import { BrowserRouter } from 'react-router-dom';
 import reducers from './reducers';
-import MainContainer from './containers/Main';
+import TestMainContainer from './containers/TestMainContainer';
 
 let store = createStore(reducers);
 
@@ -18,14 +19,14 @@ const client = new ApolloClient({
 	networkInterface: networkInterface
 });
 
-const App = () => {
+const TestApp = () => {
 	return (
 		<BrowserRouter>
 			<ApolloProvider store={store} client={client}>
-				<MainContainer />
+				<TestMainContainer />
 			</ApolloProvider>
 		</BrowserRouter>
 	);
 };
 
-export default App;
+export default TestApp;

@@ -1,5 +1,5 @@
-const makeExecutableSchema = require("graphql-tools").makeExecutableSchema;
-const resolvers = require("./resolvers").resolvers;
+const makeExecutableSchema = require('graphql-tools').makeExecutableSchema;
+const resolvers = require('./resolvers').resolvers;
 
 const typeDefs = `
 type Query {
@@ -63,6 +63,10 @@ type Bevent {
   winner: Int
   active: Boolean
   speaker: String
+}
+
+type Mutation {
+  addMessage(content: String, author: String, user_id: Int): Message
 }
 `;
 

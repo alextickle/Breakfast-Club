@@ -1,15 +1,15 @@
-import { graphql } from "react-apollo";
-import { connect } from "react-redux";
-import currentEventQuery from "../queries/currentEventQuery";
-import CurrentEvent from "../routes/CurrentEvent";
+import { graphql } from 'react-apollo';
+import { connect } from 'react-redux';
+import currentEventQuery from '../queries/currentEventQuery';
+import CurrentEvent from '../routes/CurrentEvent';
 
 const mapStateToProps = state => {
-  return {
-    user: state.user
-  };
+	return {
+		user: state.user
+	};
 };
 
-const CurrentEventContainer = graphql(currentEventQuery)(CurrentEvent);
-CurrentEventContainer = connect(mapStateToProps)(CurrentEventContainer);
+let CurrentEventWithData = graphql(currentEventQuery)(CurrentEvent);
+const CurrentEventContainer = connect(mapStateToProps)(CurrentEventWithData);
 
 export default CurrentEventContainer;
