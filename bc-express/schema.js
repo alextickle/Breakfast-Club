@@ -64,7 +64,6 @@ type Bevent {
   active: Boolean
   speaker: String
 }
-
 `;
 
 const schema = makeExecutableSchema({ typeDefs, resolvers });
