@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import handleLoginSubmit from "../actions/handleLoginSubmit";
+import handleLoginChange from "../actions";
 import Header from "../components/Header";
 import Input from "../components/Input";
 
@@ -15,17 +15,17 @@ const UserLogin = () =>
         <Input
           placeholder="email address"
           name="email"
-          value={this.state.login.email}
-          onChange={this.handleChange.bind(this)}
-          errors={this.state.errors.email}
+          value={props.loginFields.email}
+          onChange={handleLoginChange.bind(this)}
+          errors={props.errors.email}
         />
         <Input
           placeholder="password"
           type="password"
           name="password"
-          value={this.state.login.password}
-          onChange={this.handleChange.bind(this)}
-          errors={this.state.errors.password}
+          value={props.loginFields.password}
+          onChange={handleLoginChange.bind(this)}
+          errors={props.errors.password}
         />
         <div className="let-me-in">
           <input

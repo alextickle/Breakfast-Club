@@ -1,9 +1,11 @@
-const clearCurrentMessage = (currentMessage = "", action) => {
+const clearCurrentMessage = (state, action) => {
   switch (action.type) {
     case "CLEAR-CURRENT-MESSAGE":
-      return "";
+      return Object.assign({}, state, {
+        currentMessage: ""
+      });
     default:
-      return currentMessage;
+      return state;
   }
 };
 

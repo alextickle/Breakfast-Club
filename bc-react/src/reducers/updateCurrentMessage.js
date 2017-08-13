@@ -1,9 +1,11 @@
-const updateCurrentMessage = (currentMessage = "", action) => {
+const updateCurrentMessage = (state, action) => {
   switch (action.type) {
     case "UPDATE-CURRENT-MESSAGE":
-      return action.text;
+      return Object.assign({}, state, {
+        currentMessage: action.text
+      });
     default:
-      return currentMessage;
+      return state;
   }
 };
 
