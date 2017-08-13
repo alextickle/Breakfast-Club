@@ -94,4 +94,5 @@ module.exports = {
         'ALTER SEQUENCE "Places_id_seq" RESTART 1'
       );
     });
+  }
 };

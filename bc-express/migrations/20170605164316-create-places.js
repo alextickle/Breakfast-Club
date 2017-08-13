@@ -1,36 +1,54 @@
-'use strict';
+"use strict";
 module.exports = {
   up: function(queryInterface, Sequelize) {
-    return queryInterface.createTable('Users', {
+    return queryInterface.createTable("Places", {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      firstName: {
+      name: {
         type: Sequelize.STRING
       },
-      lastName: {
+      address_street: {
         type: Sequelize.STRING
       },
-      email: {
+      address_city: {
         type: Sequelize.STRING
       },
-      neighborhood: {
+      address_state: {
         type: Sequelize.STRING
       },
-      encryptedPassword: {
+      address_zip: {
         type: Sequelize.STRING
       },
-      authToken: {
+      phone: {
         type: Sequelize.STRING
       },
-      authTokenExpiration: {
-        type: Sequelize.DATE
+      yelp_rating: {
+        type: Sequelize.INTEGER
       },
-      salt: {
+      image_url: {
         type: Sequelize.STRING
+      },
+      categories: {
+        type: Sequelize.STRING
+      },
+      review_count: {
+        type: Sequelize.INTEGER
+      },
+      price: {
+        type: Sequelize.STRING
+      },
+      url: {
+        type: Sequelize.STRING,
+        allowNull: true
+      },
+      active: {
+        type: Sequelize.BOOLEAN,
+        allowNull: false,
+        defaultValue: true
       },
       createdAt: {
         allowNull: false,
@@ -43,6 +61,6 @@ module.exports = {
     });
   },
   down: function(queryInterface, Sequelize) {
-    return queryInterface.dropTable('Users');
+    return queryInterface.dropTable("Places");
   }
 };
