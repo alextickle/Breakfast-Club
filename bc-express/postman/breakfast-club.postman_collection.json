@@ -99,7 +99,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"email\" : \"bob@jones.com\",\n\t\"password\" : \"test123\"\n}"
+							"raw": "{\n\t\"email\" : \"gabe@testing.com\",\n\t\"password\" : \"test123\"\n}"
 						},
 						"description": "login an existing user"
 					},
@@ -532,37 +532,6 @@
 					"response": []
 				},
 				{
-					"name": "/test-event",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"tests[\"Status code is 200\"] = responseCode.code === 200;"
-								]
-							}
-						}
-					],
-					"request": {
-						"url": "{{url}}/test-event",
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n\t\"formId\" : \"1\"\n}"
-						},
-						"description": "get an event by id"
-					},
-					"response": []
-				},
-				{
 					"name": "/register-vote",
 					"event": [
 						{
@@ -635,14 +604,14 @@
 									"tests[\"Status code is 200\"] = responseCode.code === 200;",
 									"",
 									"var jsonData = JSON.parse(responseBody);",
-									"tests[\"Both restaurant options are in San Diego\"] = jsonData.places[0].address_city === \"San Diego\" && jsonData.places[1].address_city === \"San Diego\";"
+									"tests[\"Both restaurant options are in San Diego\"] = jsonData.event.place_1.address_city === \"San Diego\" && jsonData.event.place_2.address_city === \"San Diego\";"
 								]
 							}
 						}
 					],
 					"request": {
 						"url": "{{url}}/current-event",
-						"method": "POST",
+						"method": "GET",
 						"header": [
 							{
 								"key": "Content-Type",

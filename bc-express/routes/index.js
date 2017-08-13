@@ -1,7 +1,8 @@
 const express = require('express');
 const app = express();
-
 const bodyParser = require('body-parser');
+app.use(bodyParser.json());
+
 const moment = require('moment');
 
 // models
@@ -213,11 +214,7 @@ app.put('/rsvp', function(request, response) {
 			.then(bevent => {
 				response.status(200);
 				response.json({
-					event: _event,
-					guestLists: _guestLists,
-					places: _places,
-					users: _users,
-					user: _user
+					event: bevent
 				});
 			})
 			.catch(error => {
@@ -267,10 +264,15 @@ app.get('/events', function(request, response) {
 app.get('/places', function(request, response) {
 	Place.findAll({
 		where: { active: true }
-	}).then(function(places) {
-		response.status(200);
-		response.json({ message: 'success', places: places });
-	});
+	})
+		.then(function(places) {
+			response.status(200);
+			response.json({ message: 'success', places: places });
+		})
+		.catch(error => {
+			response.status(400);
+			response.json({ message: 'error', errors: error.errors });
+		});
 });
 
 app.post('/places', function(request, response) {
@@ -366,15 +368,12 @@ app.post('/create-event', function(request, response) {
 		});
 });
 
-app.post('/current-event', function(request, response) {
+app.get('/current-event', function(request, response) {
 	return getCurrentEvent()
-		.then(event => {
+		.then(bevent => {
 			response.status(200);
 			response.json({
-				event: _event,
-				guestLists: _guestLists,
-				places: _places,
-				users: _users
+				event: bevent
 			});
 		})
 		.catch(() => {
@@ -401,10 +400,7 @@ app.post('/past-event', function(request, response) {
 		.then(bevent => {
 			response.status(200);
 			response.json({
-				event: _event,
-				guestLists: _guestLists,
-				places: _places,
-				users: _users
+				event: bevent
 			});
 		})
 		.catch(error => {
@@ -432,10 +428,15 @@ app.put('/login', function(request, response) {
 
 //start Admin endpoints
 app.get('/admin/get/places', function(request, response) {
-	Place.findAll().then(function(places) {
-		response.status(200);
-		response.json({ message: 'success', places: places });
-	});
+	Place.findAll()
+		.then(places => {
+			response.status(200);
+			response.json({ message: 'success', places: places });
+		})
+		.catch(error => {
+			response.status(400);
+			response.json({ error: error });
+		});
 });
 app.get('/admin/get/users', function(request, response) {
 	User.findAll().then(function(users) {
