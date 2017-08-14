@@ -5,10 +5,10 @@ import {
 	createNetworkInterface
 } from 'react-apollo';
 import { BrowserRouter } from 'react-router-dom';
-import reducers from './reducers';
+import initStore from './state/store';
 import MainContainer from './containers/Main';
 
-let store = createStore(reducers);
+let store = initStore();
 
 const networkInterface = createNetworkInterface({
 	uri: 'http://localhost:3000/graphql'

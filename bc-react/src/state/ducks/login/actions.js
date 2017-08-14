@@ -1,3 +1,5 @@
+import types from './types';
+
 let apiUrl;
 if (process.env.NODE_ENV === 'production') {
 	apiUrl = '/';
@@ -5,28 +7,9 @@ if (process.env.NODE_ENV === 'production') {
 	apiUrl = 'http://localhost:4000';
 }
 
-export const updateCurrentMessage = text => {
-	return {
-		type: 'UPDATE-CURRENT-MESSAGE',
-		text: text
-	};
-};
-
-export const toggleMessageBoard = () => {
-	return {
-		type: 'TOGGLE-MESSAGE-BOARD'
-	};
-};
-
-export const clearCurrentMessage = () => {
-	return {
-		type: 'CLEAR-CURRENT-MESSAGE'
-	};
-};
-
 export const requestLogin = credentials => {
 	return {
-		type: 'REQUEST-LOGIN',
+		type: types.REQUEST_LOGIN,
 		fields: {
 			email: credentials.email,
 			password: credentials.password
@@ -36,7 +19,7 @@ export const requestLogin = credentials => {
 
 export const receiveLogin = json => {
 	return {
-		type: 'RECEIVE-LOGIN',
+		type: types.RECEIVE_LOGIN,
 		user: json
 	};
 };
@@ -110,8 +93,14 @@ export const fetchLogin = data => {
 
 export const handleLoginChange = e => {
 	return {
-		type: 'HANDLE-LOGIN-CHANGE',
+		type: types.HANDLE_LOGIN_CHANGE,
 		field: e.target,
 		value: e.value
 	};
+};
+
+export default {
+	requestLogin,
+	receiveLogin,
+	handleLoginChange
 };
