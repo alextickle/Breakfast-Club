@@ -12,6 +12,12 @@ export const updateCurrentMessage = text => {
 	};
 };
 
+export const toggleMessageBoard = () => {
+	return {
+		type: 'TOGGLE-MESSAGE-BOARD'
+	};
+};
+
 export const clearCurrentMessage = () => {
 	return {
 		type: 'CLEAR-CURRENT-MESSAGE'

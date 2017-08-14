@@ -11,7 +11,7 @@ class MessageBoard extends Component {
 	}
 
 	render() {
-		let mapped = this.props.data.messages.map(function(message, i) {
+		let mapped = this.props.messages.map(function(message, i) {
 			let timeStamp = message.createdAt;
 			return (
 				<div className="individual-message" key={i}>

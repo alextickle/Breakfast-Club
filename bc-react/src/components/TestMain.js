@@ -18,14 +18,18 @@ import SplashPage from '../routes/SplashPage';
 // import Photos from '../routes/Photos';
 import PageNotFound from '../routes/PageNotFound';
 
-// import MessageBoardToggleContainer from '../containers/MessageBoardToggleContainer';
+import MessageBoardToggleContainer from '../containers/MessageBoardToggleContainer';
 
-const TestMain = props =>
-	<div>
-		<Switch>
-			<Route exact path="/" render={() => <SplashPage />} />
-			<Route exact path="/404" component={PageNotFound} />
-		</Switch>
-	</div>;
+const TestMain = props => {
+	console.log(props);
+	return (
+		<div>
+			<Switch>
+				<Route exact path="/" render={() => <SplashPage />} />
+				<Route exact path="/404" component={PageNotFound} />
+			</Switch>
+		</div>
+	);
+};
 
 export default TestMain;

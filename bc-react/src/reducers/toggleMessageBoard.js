@@ -1,14 +1,14 @@
 import initialState from '../state/initialState';
 
-const clearCurrentMessage = (state, action) => {
+const toggleMessageBoard = (state, action) => {
 	switch (action.type) {
-		case 'CLEAR-CURRENT-MESSAGE':
+		case 'TOGGLE-MESSAGE-BOARD':
 			return Object.assign({}, state, {
-				currentMessage: ''
+				showMessageBoard: !state.showMessageBoard
 			});
 		default:
 			return state || initialState;
 	}
 };
 
-export default clearCurrentMessage;
+export default toggleMessageBoard;

@@ -1,26 +1,20 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import MessageBoard from './MessageBoard';
+import { toggleMessageBoard } from '../actions';
 import ToggleDisplay from 'react-toggle-display';
 
-class MessageBoardToggle extends Component {
-  constructor(props){
-    super(props)
-    this.state = {show: false}
-  }
-
-  handleToggle() {this.setState({show: !this.state.show});}
-
-  render(){
-    return (
-        <div>
-          <div className="sticky" onClick={ () => this.handleToggle() }>message board
-          </div>
-          <ToggleDisplay show={this.state.show}>
-            <MessageBoard />
-          </ToggleDisplay>
-        </div>
-    );
-  }
-}
+const MessageBoardToggle = props => {
+	console.log(props);
+	return (
+		<div>
+			<div className="sticky" onClick={() => toggleMessageBoard()}>
+				message board
+			</div>
+			<ToggleDisplay show={props.showMessageBoard}>
+				<MessageBoard messages={props.data.messages} />
+			</ToggleDisplay>
+		</div>
+	);
+};
 
 export default MessageBoardToggle;

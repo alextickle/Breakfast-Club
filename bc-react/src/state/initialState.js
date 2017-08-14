@@ -1,6 +1,10 @@
 const initialState = {
 	currentMessage: '',
-	user: null,
+	showMessageBoard: false,
+	user: {
+		firstName: 'alex',
+		lastName: 'tickle'
+	},
 	login: {
 		isFetching: false,
 		fields: null,

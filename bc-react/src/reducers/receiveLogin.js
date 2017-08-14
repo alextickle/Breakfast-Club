@@ -1,3 +1,5 @@
+import initialState from '../state/initialState';
+
 const receiveLogin = (state, action) => {
   switch (action.type) {
     case "RECEIVE-LOGIN":
@@ -6,7 +8,7 @@ const receiveLogin = (state, action) => {
         }
       });
     default:
-      return state;
+      return state || initialState;
   }
 };
 

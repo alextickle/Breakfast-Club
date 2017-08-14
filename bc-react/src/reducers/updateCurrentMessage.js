@@ -1,4 +1,4 @@
-import initialState from './initialState';
+import initialState from '../state/initialState';
 
 const updateCurrentMessage = (state, action) => {
 	switch (action.type) {
