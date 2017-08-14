@@ -23,7 +23,6 @@ import PageNotFound from '../routes/PageNotFound';
 const TestMain = props =>
 	<div>
 		<Switch>
-			<p>hi</p>
 			<Route exact path="/" render={() => <SplashPage />} />
 			<Route exact path="/404" component={PageNotFound} />
 		</Switch>
