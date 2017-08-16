@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Moment from 'react-moment';
 import { helpers } from '../helpers/moment.js';
-// import MessageSubmitContainer from '../containers/MessageSubmitContainer';
 
 const MessageBoard = props => {
 	let mapped;

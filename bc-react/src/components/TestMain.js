@@ -20,16 +20,21 @@ import PageNotFound from '../routes/PageNotFound';
 
 import MessageBoardToggleContainer from '../containers/MessageBoardToggleContainer';
 
-const TestMain = props => {
-	return (
-		<div>
-			<Switch>
-				<Route exact path="/" render={() => <SplashPage />} />
-				<Route exact path="/404" component={PageNotFound} />
-				<Route exact path="/test" component={MessageBoardToggleContainer} />
-			</Switch>
-		</div>
-	);
-};
+class TestMain extends Component {
+	componentDidMount() {
+		this.props.setInitialUser();
+	}
+	render() {
+		return (
+			<div>
+				<Switch>
+					<Route exact path="/" render={() => <SplashPage />} />
+					<Route exact path="/404" component={PageNotFound} />
+					<Route exact path="/test" component={MessageBoardToggleContainer} />
+				</Switch>
+			</div>
+		);
+	}
+}
 
 export default TestMain;

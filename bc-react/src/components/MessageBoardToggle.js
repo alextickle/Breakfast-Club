@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import MessageBoard from './MessageBoard';
+import MessageSubmitContainer from '../containers/MessageSubmitContainer';
 import ToggleDisplay from 'react-toggle-display';
 
 const MessageBoardToggle = props => {
@@ -14,6 +15,7 @@ const MessageBoardToggle = props => {
 					messages={props.data.messages}
 					loading={props.data.loading}
 				/>
+				<MessageSubmitContainer user={props.user} />
 			</ToggleDisplay>
 		</div>
 	);

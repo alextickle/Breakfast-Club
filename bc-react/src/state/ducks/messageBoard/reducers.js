@@ -6,12 +6,10 @@ const initialState = {
 };
 
 const messageBoard = (state = initialState, action) => {
+	console.log('messageAction', action);
 	switch (action.type) {
-		case types.CLEAR_CURRENT_MESSAGE:
-			return Object.assign({}, state, {
-				currentMessage: ''
-			});
 		case types.TOGGLE_MESSAGE_BOARD:
+			console.log('toggleMessageBoard calleddfgfs');
 			return Object.assign({}, state, {
 				showMessageBoard: !state.showMessageBoard
 			});

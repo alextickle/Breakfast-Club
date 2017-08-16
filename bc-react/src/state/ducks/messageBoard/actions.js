@@ -13,14 +13,7 @@ export const toggleMessageBoard = () => {
 	};
 };
 
-export const clearCurrentMessage = () => {
-	return {
-		type: types.CLEAR_CURRENT_MESSAGE
-	};
-};
-
 export default {
 	updateCurrentMessage,
-	toggleMessageBoard,
-	clearCurrentMessage
+	toggleMessageBoard
 };
