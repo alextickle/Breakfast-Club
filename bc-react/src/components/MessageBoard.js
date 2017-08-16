@@ -1,17 +1,14 @@
 import React, { Component } from 'react';
 import Moment from 'react-moment';
 import { helpers } from '../helpers/moment.js';
-import { updateCurrentMessage } from '../actions';
 // import MessageSubmitContainer from '../containers/MessageSubmitContainer';
 
-class MessageBoard extends Component {
-	handleChange(e) {
-		let currentMessage = e.target.value;
-		updateCurrentMessage(currentMessage);
-	}
-
-	render() {
-		let mapped = this.props.messages.map(function(message, i) {
+const MessageBoard = props => {
+	let mapped;
+	if (props.loading) {
+		return <p>Loading ...</p>;
+	} else {
+		mapped = props.messages.map(function(message, i) {
 			let timeStamp = message.createdAt;
 			return (
 				<div className="individual-message" key={i}>
@@ -29,15 +26,15 @@ class MessageBoard extends Component {
 				</div>
 			);
 		});
-
-		return (
-			<div className="message-board">
-				<div className="message-box">{mapped.reverse()}</div>
-				MessageSubmitContainer
-				<div />
-			</div>
-		);
 	}
-}
+
+	return (
+		<div className="message-board">
+			<div className="message-box">
+				{mapped}
+			</div>
+		</div>
+	);
+};
 
 export default MessageBoard;

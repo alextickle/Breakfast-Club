@@ -1,26 +1,33 @@
-import { graphql } from 'react-apollo';
 import { connect } from 'react-redux';
-import { updateCurrentMessage } from '../actions';
-import messagesQuery from '../queries/messagesQuery';
+import { graphql } from 'react-apollo';
+import messageBoardOperations from '../state/ducks/messageBoard/operations';
 import MessageBoardToggle from '../components/MessageBoardToggle';
+import messagesQuery from '../queries/messagesQuery';
 
 const mapStateToProps = state => {
 	return {
+		showMessageBoard: state.showMessageBoard,
 		currentMessage: state.currentMessage
 	};
 };
 
 const mapDispatchToProps = dispatch => {
 	return {
-		onUpdateCurrentMessage: text => {
-			dispatch(updateCurrentMessage(text));
+		toggleMessageBoard: () => {
+			dispatch(messageBoardOperations.toggleMessageBoard());
+		},
+		updateCurrentMessage: text => {
+			dispatch(messageBoardOperations.updateCurrentMessage(text));
 		}
 	};
 };
 
-let MessageBoardToggleWithData = graphql(messagesQuery)(MessageBoardToggle);
-const MessageBoardToggleContainer = connect(mapStateToProps)(
-	MessageBoardToggleWithData
+const MessageBoardToggleContainerWithData = connect(mapDispatchToProps)(
+	MessageBoardToggle
+);
+
+const MessageBoardToggleContainer = graphql(messagesQuery)(
+	MessageBoardToggleContainerWithData
 );
 
 export default MessageBoardToggleContainer;

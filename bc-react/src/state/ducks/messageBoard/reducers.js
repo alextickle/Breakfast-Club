@@ -1,5 +1,9 @@
 import types from './types';
-import initialState from '../../initialState';
+
+const initialState = {
+	showMessageBoard: false,
+	currentMessage: ''
+};
 
 const messageBoard = (state = initialState, action) => {
 	switch (action.type) {

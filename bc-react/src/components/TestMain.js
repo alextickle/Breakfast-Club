@@ -21,12 +21,12 @@ import PageNotFound from '../routes/PageNotFound';
 import MessageBoardToggleContainer from '../containers/MessageBoardToggleContainer';
 
 const TestMain = props => {
-	console.log(props);
 	return (
 		<div>
 			<Switch>
 				<Route exact path="/" render={() => <SplashPage />} />
 				<Route exact path="/404" component={PageNotFound} />
+				<Route exact path="/test" component={MessageBoardToggleContainer} />
 			</Switch>
 		</div>
 	);
