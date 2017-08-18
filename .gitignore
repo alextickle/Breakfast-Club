@@ -3,8 +3,8 @@
 *.css
 
 # dependencies
-/bc-react/node_modules
-/bc-express/node_modules
+/client/node_modules
+/server/node_modules
 
 # testing
 /coverage
@@ -24,9 +24,9 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-/bc-express/config/config.json
+/server/config/config.json
 node_modules
-bc-react/build/
+client/build/
 
 # Personal Ignore List
 package-lock.json
