@@ -30,6 +30,8 @@ app.use(
 	})
 );
 
-app.listen(PORT, function() {
-	console.log(`listening on port ${PORT}!`);
-});
+if (process.env.NODE_ENV !== 'test') {
+	app.listen(PORT, function() {
+		console.log(`listening on port ${PORT}!`);
+	});
+}
