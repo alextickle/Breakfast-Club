@@ -11,13 +11,14 @@
 		"test-api-dev": "newman run server/postman/breakfast-club.postman_collection.json -e server/postman/Dev.postman_environment.json",
 		"test-api-prod": "newman run server/postman/breakfast-club.postman_collection.json -e server/postman/Prod.postman_environment.json",
 		"start": "nodemon server/app.js",
-		"heroku-postbuild": "cd server/ && npm install && cp config/config.json.prod config/config.json && sequelize db:migrate && sequelize db:seed:all && cd .. && cd client/ && npm install && npm start"
+		"heroku-postbuild": "cd server/ && npm install && cp config/config.json.prod config/config.json && sequelize db:migrate && sequelize db:seed:all && cd .. && cd client/ && yarn install && yarn build"
 	},
 	"author": "Empty String",
 	"homepage": "https://github.com/kearobi/Breakfast-Club",
 	"license": "ISC",
 	"dependencies": {
-		"sequelize-cli": "^2.8.0"
+		"sequelize-cli": "^2.8.0",
+		"yarn": "^0.27.5"
 	},
 	"devDependencies": {
 		"enzyme": "^2.9.1",
