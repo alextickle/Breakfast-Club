@@ -9,7 +9,7 @@
 		"test:coverage": "jest --coverage",
 		"test-api-dev": "newman run postman/breakfast-club.postman_collection.json -e postman/Dev.postman_environment.json",
 		"test-api-prod": "newman run postman/breakfast-club.postman_collection.json -e postman/Prod.postman_environment.json",
-		"start": "nodemon app.js"
+		"start": "node app.js"
 	},
 	"author": "",
 	"license": "ISC",
