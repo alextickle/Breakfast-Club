@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "name": "breakfast_club_backend",
   "version": "1.0.0",
   "description": "",
@@ -55,4 +56,36 @@
     "supertest": "^3.0.0",
     "supertest-as-promised": "^4.0.2"
   }
+=======
+	"name": "breakfast_club",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"test": "jest",
+		"test:watch": "jest --watch",
+		"test-components": "jest client/src/tests/components.test.js",
+		"test:coverage": "jest --coverage",
+		"test-api-dev": "newman run server/postman/breakfast-club.postman_collection.json -e server/postman/Dev.postman_environment.json",
+		"test-api-prod": "newman run server/postman/breakfast-club.postman_collection.json -e server/postman/Prod.postman_environment.json",
+		"start": "nodemon server/app.js",
+		"heroku-postbuild": "cd server/ && cp config/config.json.prod config/config.json && sequelize db:migrate && sequelize db:seed:all && cd .. && cd client/ && yarn install && yarn build"
+	},
+	"author": "Empty String",
+	"homepage": "https://github.com/kearobi/Breakfast-Club",
+	"license": "ISC",
+	"dependencies": {},
+	"devDependencies": {
+		"enzyme": "^2.9.1",
+		"enzyme-to-json": "^1.5.1",
+		"jest": "^20.0.4",
+		"newman": "^3.8.0",
+		"react": "^15.6.1",
+		"react-addons-test-utils": "^15.6.0",
+		"react-dom": "^15.6.1",
+		"react-test-renderer": "^15.6.1",
+		"supertest": "^3.0.0",
+		"supertest-as-promised": "^4.0.2"
+	}
+>>>>>>> graphql-test
 }

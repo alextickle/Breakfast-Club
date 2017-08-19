@@ -13,13 +13,13 @@ cd Breakfast-Club
 Once you've downloaded the project, install dependencies:
 
 ```
-cd bc-express
+cd server
 npm install
-cd ../bc-react
+cd ../client
 yarn install
 ```
 
-You will then need to create a config.json file in the bc-express/config directory, copy the contents of config.example.json into it,
+You will then need to create a config.json file in the server/config directory, copy the contents of config.example.json into it,
 and edit the username and password to match your local postgres account
 
 ### Create, Format, and Seed Database
@@ -31,7 +31,7 @@ Once signed into postgres with the postgres cli (psql -U username), enter the fo
 CREATE DATABASE "bc_development";
 ```
 
-Then navigate to the root of the bc-express directory and run the following sequelize commands:
+Then navigate to the root of the server directory and run the following sequelize commands:
 
 ```
 sequelize db:migrate
@@ -45,7 +45,7 @@ sequelize db:seed:all
 To start the application you will need two terminal sessions. Navigate each to the root directory of the project. Use the first to start the express app:
 
 ```
-cd bc-express
+cd server
 nodemon app.js
 ```
 
@@ -53,7 +53,7 @@ nodemon app.js
 Use the second terminal session to start the React app:
 
 ```
-cd bc-react
+cd client
 yarn start
 ```
 
@@ -69,7 +69,7 @@ DROP TABLE "Messages" CASCADE; DROP TABLE "Users" CASCADE; DROP TABLE "Bevents" 
 DROP TABLE "Places" CASCADE; DROP TABLE "GuestLists" CASCADE; DELETE FROM "SequelizeMeta";
 ```
 
-Then quit postgres (\q) and run the two sequelize commands in the bc-express directory:
+Then quit postgres (\q) and run the two sequelize commands in the server directory:
 
 ```
 sequelize db:migrate
@@ -100,7 +100,7 @@ To visualize the commit history in this project:
 3. In the terminal, enter:
 
 ```
-gource --user-image-dir ./bc-react/public/Team --start-date "2017-06-02"
+gource --user-image-dir ./client/public/Team --start-date "2017-06-02"
 ```
 
 ### Postman
