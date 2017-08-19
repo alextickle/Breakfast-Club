@@ -30,6 +30,10 @@ app.use(
 	})
 );
 
+app.get('*', function(request, response) {
+	response.sendFile(path.resolve(__dirname, '../client/build', 'index.html'));
+});
+
 if (process.env.NODE_ENV !== 'test') {
 	app.listen(PORT, function() {
 		console.log(`listening on port ${PORT}!`);
