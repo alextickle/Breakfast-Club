@@ -48,15 +48,6 @@ const getCurrentEvent = () => {
 	});
 };
 
-app.get('/', function(request, response) {
-	return getCurrentEvent().then(bevent => {
-		response.json({
-			message: 'API Example App',
-			bevent: bevent
-		});
-	});
-});
-
 // fetches all messages from database
 app.get('/messages', function(request, response) {
 	Message.findAll()
