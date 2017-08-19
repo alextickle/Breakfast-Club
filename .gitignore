@@ -27,10 +27,3 @@ yarn-error.log*
 /server/config/config.json
 node_modules
 client/build/
-
-# Personal Ignore List
-package-lock.json
-yarn.lock
-*.sublime-workspace
-*.sublime-project
-*.dump

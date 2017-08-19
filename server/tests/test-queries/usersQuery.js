@@ -14,4 +14,4 @@ const usersQuery = `
   }
 `;
 
-export default usersQuery;
+module.exports = usersQuery;

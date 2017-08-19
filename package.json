@@ -13,7 +13,8 @@
 		"start": "nodemon server/app.js",
 		"heroku-postbuild": "cd server/ && cp config/config.json.prod config/config.json && sequelize db:migrate && sequelize db:seed:all && cd .. && cd client/ && yarn install && yarn build"
 	},
-	"author": "",
+	"author": "Empty String",
+	"homepage": "https://github.com/kearobi/Breakfast-Club",
 	"license": "ISC",
 	"dependencies": {},
 	"devDependencies": {
