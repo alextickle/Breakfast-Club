@@ -16,7 +16,9 @@
 	"author": "Empty String",
 	"homepage": "https://github.com/kearobi/Breakfast-Club",
 	"license": "ISC",
-	"dependencies": {},
+	"dependencies": {
+		"sequelize-cli": "^2.8.0"
+	},
 	"devDependencies": {
 		"enzyme": "^2.9.1",
 		"enzyme-to-json": "^1.5.1",
