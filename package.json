@@ -12,7 +12,7 @@
 		"test-api-prod": "newman run server/postman/breakfast-club.postman_collection.json -e server/postman/Prod.postman_environment.json",
 		"start": "nodemon server/app.js",
 		"//": "on initial deploy use 'sequelize db:migrate && sequelize db:seed:all'",
-		"heroku-postbuild": "cd server && cp config/config.json.prod config/config.json && cd .. && cd client/ && yarn install && yarn build"
+		"heroku-postbuild": "cd server && cp config/config.json.prod config/config.json && sequelize db:migrate && sequelize db:seed:all && cd .. && cd client/ && yarn install && yarn build"
 	},
 	"author": "Empty String",
 	"homepage": "https://github.com/kearobi/Breakfast-Club",
