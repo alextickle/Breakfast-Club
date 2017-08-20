@@ -3,7 +3,7 @@ const schema = require('../schema').schema;
 const app = require('../app');
 const usersQuery = require('./test-queries/usersQuery');
 const apiUrl =
-	process.env.NODE_ENV === 'production' ? '/' : 'http://localhost:4000/graphql';
+	process.env.NODE_ENV === 'test' ? 'http://localhost:4000/graphql' : '/';
 const fetch = require('graphql-fetch')(apiUrl);
 
 describe('Test graphql schema', () => {
