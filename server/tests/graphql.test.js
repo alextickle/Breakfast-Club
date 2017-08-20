@@ -2,7 +2,7 @@
 const schema = require('../schema').schema;
 const app = require('../app');
 const usersQuery = require('./test-queries/usersQuery');
-const apiUrl = 'http://localhost:4000/graphql';
+const apiUrl = 'http://localhost:3002/graphql';
 const fetch = require('graphql-fetch')(apiUrl);
 
 describe('Test graphql schema', () => {
@@ -15,10 +15,11 @@ describe('Test graphql schema', () => {
 
 describe('Test several graphql queries', () => {
 	it('Should properly execute Graphql queries', done => {
-		let server = app.listen(4000);
-		console.log('server listening on port 4000');
+		let server = app.listen(3002);
+		console.log('server listening on port 3002');
 		fetch(usersQuery)
 			.then(resp => {
+				console.log('resp: ', resp);
 				expect(resp).toBeDefined();
 				let users = resp['data']['users'];
 				expect(users.length).toBeGreaterThan(0);
