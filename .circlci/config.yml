@@ -8,11 +8,6 @@ jobs:
     docker:
       # specify the version you desire here
       - image: circleci/node:8.2.0
-        environment:
-            PGHOST: 127.0.0.1
-        - image: circleci/postgres:9.5-alpine
-          environment:
-            POSTGRES_DB: bc_development
       - image: circleci/postgres:9.6.3
 
       # Specify service dependencies here if necessary
@@ -28,8 +23,6 @@ jobs:
           command: |
             node --version
             npm --version
-      - run: echo 'begin build'
-      - run: pwd
 
       - checkout
 
@@ -47,15 +40,9 @@ jobs:
           # fallback to using the latest cache if no exact match is found
           - v1-client-dependencies-
 
-      - run: yarn install
-
-      - restore_cache:
-          keys:
-          - v1-client-dependencies-{{ checksum "./client/package.json" }}
-          # fallback to using the latest cache if no exact match is found
-          - v1-client-dependencies-
-
-      - run: cd client && yarn install && cd ..
+      - run:
+          name: NPM bootstrap
+          command: npm run bootstrap
 
       - save_cache:
           paths:
@@ -67,18 +54,9 @@ jobs:
             - client/node_modules
           key: v1-client-dependencies-{{ checksum "./client/package.json" }}
 
-      # update database
-      - run:
-          command: |
-            echo "start"
-            pwd
-            cd ./server
-            cp ./config/config.example.json ./config/config.example.json
-            sequelize db:migrate
-            sequelize db:seed:all
-            echo "end"
-
       # run tests!
-      - run: yarn test
+      - run: 
+          name: NPM Test
+          command: npm test
 
       # Deploy production

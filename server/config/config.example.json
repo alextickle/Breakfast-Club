@@ -1,20 +1,20 @@
 {
 	"development": {
-		"username": null,
+		"username": "postgres",
 		"password": null,
 		"database": "bc_development",
 		"host": "127.0.0.1",
 		"dialect": "postgres"
 	},
 	"test": {
-		"username": null,
+		"username": "postgres",
 		"password": null,
 		"database": "bc_development",
 		"host": "127.0.0.1",
 		"dialect": "postgres"
 	},
 	"production": {
-		"username": null,
+		"username": "postgres",
 		"password": null,
 		"database": "bc_production",
 		"host": "127.0.0.1",

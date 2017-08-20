@@ -4,6 +4,7 @@
 	"description": "",
 	"main": "index.js",
 	"scripts": {
+		"bootstrap": "node scripts/bootstrap.js",
 		"test": "jest",
 		"test:watch": "jest --watch",
 		"test-components": "jest client/src/tests/components.test.js",
@@ -19,6 +20,7 @@
 	"license": "ISC",
 	"dependencies": {
 		"body-parser": "^1.17.2",
+		"child_process": "^1.0.2",
 		"cors": "^2.8.3",
 		"crypto": "0.0.3",
 		"express": "^4.15.3",
