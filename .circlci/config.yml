@@ -28,6 +28,8 @@ jobs:
           command: |
             node --version
             npm --version
+      - run: echo 'begin build'
+      - run: pwd
 
       - checkout
 
