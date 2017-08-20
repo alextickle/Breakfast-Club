@@ -10,7 +10,7 @@
 	},
 
 	"production": {
-		"clientDomain": "http://breakfast-club-graphql-redux.herokuapp.com",
-		"serverDomain": "http://breakfast-club-graphql-redux.herokuapp.com"
+		"clientDomain": "https://breakfast-club-graphql-redux.herokuapp.com",
+		"serverDomain": "https://breakfast-club-graphql-redux.herokuapp.com"
 	}
 }
