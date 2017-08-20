@@ -1,3 +1,4 @@
+'use strict';
 const schema = require('../schema').schema;
 const app = require('../app');
 const usersQuery = require('./test-queries/usersQuery');
