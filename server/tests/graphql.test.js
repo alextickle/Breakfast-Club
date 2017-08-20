@@ -1,10 +1,10 @@
 'use strict';
-const schema = require('../schema').schema;
-const app = require('../app');
-const usersQuery = require('./test-queries/usersQuery');
-const apiUrl =
+var schema = require('../schema').schema;
+var app = require('../app');
+var usersQuery = require('./test-queries/usersQuery');
+var apiUrl =
 	process.env.NODE_ENV === 'production' ? '/' : 'http://localhost:4000/graphql';
-const fetch = require('graphql-fetch')(apiUrl);
+var fetch = require('graphql-fetch')(apiUrl);
 
 describe('Test graphql schema', () => {
 	it('Should have query and mutation fields', done => {
@@ -16,12 +16,12 @@ describe('Test graphql schema', () => {
 
 describe('Test several graphql queries', () => {
 	it('Should properly execute Graphql queries', done => {
-		let server = app.listen(4000);
+		var server = app.listen(4000);
 		console.log('server listening on port 4000');
 		fetch(usersQuery)
 			.then(resp => {
 				expect(resp).toBeDefined();
-				let users = resp['data']['users'];
+				var users = resp['data']['users'];
 				expect(users.length).toBeGreaterThan(0);
 				expect(users[0].firstName).toBeDefined();
 				server.close();
