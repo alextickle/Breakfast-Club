@@ -68,7 +68,7 @@ jobs:
       # update database
       - run: cd server/config && cp config.example.json config.json && cd ..
       - run: cd server && sequelize db:migrate && cd ..
-      - run: cd server && sequelize db:seed:all && cd ..
+      - run: cd server && sequelize db:seed:all && cd .. fdjgkfggfh
 
       # run tests!
       - run: yarn test
