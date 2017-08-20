@@ -18,22 +18,20 @@ describe('Test several graphql queries', () => {
 	it('Should properly execute Graphql queries', done => {
 		let server = app.listen(4000);
 		console.log('server listening on port 4000');
-
-		(async () => {
-			try {
-				let resp = await fetch(usersQuery);
+		fetch(usersQuery)
+			.then(resp => {
 				expect(resp).toBeDefined();
-
 				let users = resp['data']['users'];
 				expect(users.length).toBeGreaterThan(0);
 				expect(users[0].firstName).toBeDefined();
+				server.close();
+				console.log('server closed');
 				done();
-			} catch (err) {
-				console.error(err);
-				fail(err);
-			}
-			server.close();
-			console.log('server closed');
-		})();
+			})
+			.catch(error => {
+				server.close();
+				console.log('server closed');
+				fail(error);
+			});
 	});
 });
