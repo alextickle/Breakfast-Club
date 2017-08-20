@@ -27,6 +27,7 @@ class TestMain extends Component {
 	render() {
 		return (
 			<div>
+				{this.props.user && <MessageBoardToggleContainer />}
 				<Switch>
 					<Route exact path="/" render={() => <SplashPage />} />
 					<Route exact path="/404" component={PageNotFound} />
