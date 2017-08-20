@@ -19,7 +19,6 @@ describe('Test several graphql queries', () => {
 		console.log('server listening on port 3002');
 		fetch(usersQuery)
 			.then(resp => {
-				console.log('resp: ', resp);
 				expect(resp).toBeDefined();
 				let users = resp['data']['users'];
 				expect(users.length).toBeGreaterThan(0);
