@@ -73,7 +73,7 @@ jobs:
       - run:
           name: "Set up Sequelize config"
           command: |
-            cd server/config && cp config.example.json config.json && cd ..
+            fhjsadfhjkfa
       - run:
           name: "Run migrations"
           command: |
