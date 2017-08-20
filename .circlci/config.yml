@@ -68,11 +68,14 @@ jobs:
       # update database
       - run:
           command: |
+            echo "start"
+            pwd
             cd ./server
             cp ./config/config.example.json ./config/config.example.json
             sequelize db:migrate
             sequelize db:seed:all
-            
+            echo "end"
+
       # run tests!
       - run: yarn test
 
