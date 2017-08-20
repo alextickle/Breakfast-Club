@@ -4,7 +4,7 @@ import {
 	ApolloProvider,
 	createNetworkInterface
 } from 'react-apollo';
-import PathConfig from './globals/routes';
+import PathConfig from './config/PathConfig';
 import { BrowserRouter } from 'react-router-dom';
 import initStore from './state/store';
 import MainContainer from './containers/Main';

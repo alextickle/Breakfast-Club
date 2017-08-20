@@ -1,10 +1,8 @@
-import React, { Component } from 'react';
+import React from 'react';
 import MessageBoard from './MessageBoard';
-import MessageSubmitContainer from '../containers/MessageSubmitContainer';
 import ToggleDisplay from 'react-toggle-display';
 
 const MessageBoardToggle = props => {
-	console.log(props);
 	return (
 		<div>
 			<div className="sticky" onClick={() => props.toggleMessageBoard()}>
@@ -14,8 +12,9 @@ const MessageBoardToggle = props => {
 				<MessageBoard
 					messages={props.data.messages}
 					loading={props.data.loading}
+					mutate={props.mutate}
+					user={props.user}
 				/>
-				<MessageSubmitContainer user={props.user} />
 			</ToggleDisplay>
 		</div>
 	);

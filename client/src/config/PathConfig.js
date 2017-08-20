@@ -1,4 +1,4 @@
-import pathConfig from '../config/config.json';
+import pathConfig from './config.json';
 const PathConfig = {
 	clientDomain: () => {
 		const env = process.env.NODE_ENV || 'development';

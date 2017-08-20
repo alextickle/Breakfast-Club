@@ -5,7 +5,10 @@ const addMessageMutation = gql`
 		addMessage(content: $content, author: $author, user_id: $user_id) {
 			content
 			author
-			user_id
+			user {
+				firstName
+				lastName
+			}
 		}
 	}
 `;
