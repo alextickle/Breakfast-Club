@@ -1,6 +1,6 @@
 import types from './types';
 
-let apiUrl;
+let apiUrl =
 if (process.env.NODE_ENV === 'production') {
 	apiUrl = '/';
 } else {

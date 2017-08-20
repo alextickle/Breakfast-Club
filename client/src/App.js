@@ -4,6 +4,7 @@ import {
 	ApolloProvider,
 	createNetworkInterface
 } from 'react-apollo';
+import PathConfig from './globals/routes';
 import { BrowserRouter } from 'react-router-dom';
 import initStore from './state/store';
 import MainContainer from './containers/Main';
@@ -11,7 +12,7 @@ import MainContainer from './containers/Main';
 let store = initStore();
 
 const networkInterface = createNetworkInterface({
-	uri: 'http://localhost:3000/graphql'
+	uri: `${PathConfig.serverDomain()}/graphql`
 });
 
 const client = new ApolloClient({

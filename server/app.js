@@ -12,6 +12,7 @@ const corsOptions = {
 };
 
 app.use(cors());
+
 app.use(express.static(path.resolve(__dirname, '../client/build')));
 app.use(bodyParser.json());
 
