@@ -26,7 +26,6 @@ jobs:
 
       - checkout
 
-
       # Download and cache dependencies
       - restore_cache:
           keys:
@@ -58,5 +57,3 @@ jobs:
       - run:
           name: NPM Test
           command: npm test
-
-      # Deploy production
