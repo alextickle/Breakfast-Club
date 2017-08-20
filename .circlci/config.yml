@@ -66,10 +66,13 @@ jobs:
           key: v1-client-dependencies-{{ checksum "./client/package.json" }}
 
       # update database
-      - run: cp ./server/config/config.example.json ./server/config/config.example.json
-      - run: cd ./server && sequelize db:migrate
-      - run: cd ./server && sequelize db:seed:all
-
+      - run:
+          command: |
+            cd ./server
+            cp ./config/config.example.json ./config/config.example.json
+            sequelize db:migrate
+            sequelize db:seed:all
+            
       # run tests!
       - run: yarn test
 
