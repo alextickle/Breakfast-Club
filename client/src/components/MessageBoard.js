@@ -4,12 +4,11 @@ import { helpers } from '../helpers/moment.js';
 import messagesQuery from '../queries/messagesQuery';
 
 const MessageBoard = props => {
-	let reversed;
 	let mapped;
 	if (props.loading) {
 		return <p>Loading ...</p>;
 	} else {
-		reversed = props.messages.map(function(message, i) {
+		mapped = props.messages.map(function(message, i) {
 			let timeStamp = message.createdAt;
 			return (
 				<div className="individual-message" key={i}>
@@ -27,7 +26,6 @@ const MessageBoard = props => {
 				</div>
 			);
 		});
-		mapped = reversed.reverse();
 	}
 
 	const handleSubmit = e => {
@@ -41,7 +39,7 @@ const MessageBoard = props => {
 			update: (store, { data: { addMessage } }) => {
 				// Read data from cache for this query.
 				const data = store.readQuery({ query: messagesQuery });
-				// Add project mutation to end.
+				// Add message mutation data to end.
 				data.messages.push(addMessage);
 				// Write data back to cache.
 				store.writeQuery({ query: messagesQuery, data });
@@ -53,7 +51,7 @@ const MessageBoard = props => {
 	return (
 		<div className="message-board">
 			<div className="message-box">
-				{mapped}
+				{mapped.reverse()}
 			</div>
 			<form name="submitMessage" onSubmit={handleSubmit}>
 				<div>

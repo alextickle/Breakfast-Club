@@ -14,17 +14,8 @@ const mapDispatchToProps = {
 	toggleMessageBoard: messageBoardOperations.toggleMessageBoard
 };
 
-const MessageBoardToggleContainerWithData = connect(
-	mapStateToProps,
-	mapDispatchToProps
-)(MessageBoardToggle);
-
-const MessageBoardWithMessages = graphql(messagesQuery)(
-	MessageBoardToggleContainerWithData
+export default compose(
+	graphql(messagesQuery),
+	graphql(addMessageMutation),
+	connect(mapStateToProps, mapDispatchToProps)(MessageBoardToggle)
 );
-
-const MessageBoardToggleContainer = graphql(addMessageMutation)(
-	MessageBoardWithMessages
-);
-
-export default MessageBoardToggleContainer;
