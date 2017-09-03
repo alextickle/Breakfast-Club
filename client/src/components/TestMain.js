@@ -38,7 +38,7 @@ const TestMain = props =>
 				<Route
 					exact
 					path="/login"
-					render={props =>
+					render={() =>
 						props.userEmail ? <Redirect to="/home" /> : <UserLoginContainer />}
 				/>
 				<Route exact path="/404" component={PageNotFound} />

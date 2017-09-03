@@ -13,9 +13,6 @@ const SplashPage = () =>
 					<Link className="link" to="/login">
 						Log In
 					</Link>
-					<Link className="link" to="/404">
-						404
-					</Link>
 				</div>
 				<div className="signup">
 					<Link className="link" to="/signup">
