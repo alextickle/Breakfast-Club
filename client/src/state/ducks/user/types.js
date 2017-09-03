@@ -1,7 +1,7 @@
-const UPDATE_USER = 'user/UPDATE_USER';
-const SET_INITIAL_USER = 'user/SET_INITIAL_USER';
+const CLEAR_USER = 'user/CLEAR_USER';
+const SET_USER = 'user/SET_USER';
 
 export default {
-	UPDATE_USER,
-	SET_INITIAL_USER
+	CLEAR_USER,
+	SET_USER
 };

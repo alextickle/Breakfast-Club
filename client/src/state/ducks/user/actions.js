@@ -1,19 +1,19 @@
 import types from './types';
 
-export const updateUser = user => {
+export const clearUser = () => {
 	return {
-		type: types.UPDATE_USER,
+		type: types.CLEAR_USER
+	};
+};
+
+export const setUser = user => {
+	return {
+		type: types.SET_USER,
 		user: user
 	};
 };
 
-export const setInitialUser = () => {
-	return {
-		type: types.SET_INITIAL_USER
-	};
-};
-
 export default {
-	updateUser,
-	setInitialUser
+	clearUser,
+	setUser
 };

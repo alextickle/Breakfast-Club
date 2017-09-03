@@ -1,9 +1,10 @@
 import actions from './actions';
 
-export const updateUser = actions.updateUser;
-export const setInitialUser = actions.setInitialUser;
+export const clearUser = actions.clearUser;
+
+export const setUser = actions.setUser;
 
 export default {
-	updateUser,
-	setInitialUser
+	clearUser,
+	setUser
 };

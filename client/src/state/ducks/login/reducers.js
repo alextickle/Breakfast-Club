@@ -1,36 +1,36 @@
 import types from './types';
-import initialState from '../../initialState';
+
+const initialState = {
+	isFetching: false,
+	email: '',
+	password: '',
+	errors: {}
+};
 
 const login = (state = initialState, action) => {
-  switch (action.type) {
-    case types.REQUEST_LOGIN:
+	let temp = {};
+	switch (action.type) {
+		case types.REQUEST_LOGIN:
 			return Object.assign({}, state, {
-				login: {
-					isFetching: true,
-					fields: {
-						email: action.fields.email,
-						password: action.fields.password
-					}
-				}
+				isFetching: true
 			});
-    case types.RECEIVE_LOGIN:
-      return Object.assign({}, state, {
-          user: action.data
-        }
-      });
-      case types.HANDLE_LOGIN_CHANGE:
-  			return Object.assign({}, state, {
-  				login: {
-  					isFetching: false,
-  					fields: {
-  						email: action.fields.email,
-  						password: action.fields.password
-  					}
-  				}
-  			});
-    default:
-      return state;
-  }
+		case types.LOGIN_SUCCESS:
+			return Object.assign({}, state, {
+				isFetching: false
+			});
+		case types.LOGIN_FAILURE:
+			return Object.assign({}, state, {
+				isFetching: false,
+				errors: action.errors
+			});
+		case types.HANDLE_LOGIN_CHANGE:
+			temp[action.field] = action.value;
+			return Object.assign({}, state, temp);
+		case types.SET_USER:
+			return state;
+		default:
+			return state;
+	}
 };
 
 export default login;

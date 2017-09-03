@@ -15,7 +15,7 @@ import UserProfileContainer from '../containers/UserProfileContainer';
 import UserSignUp from './routes/UserSignUp';
 import TestEvent from './routes/TestEvent';
 import SplashPage from './routes/SplashPage';
-import UserLogin from './routes/UserLogin';
+import UserLoginContainer from './containers/UserLoginContainer';
 import Photos from './routes/Photos';
 import PageNotFound from './routes/PageNotFound';
 
@@ -38,7 +38,8 @@ const Main = props =>
 			<Route
 				exact
 				path="/login"
-				render={() => (props.user ? <Redirect to="/home" /> : <UserLogin />)}
+				render={() =>
+					props.user ? <Redirect to="/home" /> : <UserLoginContainer />}
 			/>
 			<Route
 				exact

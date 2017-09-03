@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { graphql } from 'react-apollo';
+import { graphql, compose } from 'react-apollo';
 import messageBoardOperations from '../state/ducks/messageBoard/operations';
 import MessageBoardToggle from '../components/MessageBoardToggle';
 import messagesQuery from '../queries/messagesQuery';
@@ -17,5 +17,5 @@ const mapDispatchToProps = {
 export default compose(
 	graphql(messagesQuery),
 	graphql(addMessageMutation),
-	connect(mapStateToProps, mapDispatchToProps)(MessageBoardToggle)
-);
+	connect(mapStateToProps, mapDispatchToProps)
+)(MessageBoardToggle);

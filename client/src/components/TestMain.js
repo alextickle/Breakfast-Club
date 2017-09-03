@@ -1,4 +1,4 @@
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import React, { Component } from 'react';
 import '../style/App.css';
 
@@ -14,28 +14,27 @@ import '../style/App.css';
 // import UserSignUp from '../routes/UserSignUp';
 // import TestEvent from '../routes/TestEvent';
 import SplashPage from '../routes/SplashPage';
-// import UserLogin from '../routes/UserLogin';
+import UserLoginContainer from '../containers/UserLoginContainer';
 // import Photos from '../routes/Photos';
 import PageNotFound from '../routes/PageNotFound';
 
 import MessageBoardToggleContainer from '../containers/MessageBoardToggleContainer';
 
-class TestMain extends Component {
-	componentDidMount() {
-		this.props.setInitialUser();
-	}
-	render() {
-		return (
-			<div>
-				{this.props.user && <MessageBoardToggleContainer />}
-				<Switch>
-					<Route exact path="/" render={() => <SplashPage />} />
-					<Route exact path="/404" component={PageNotFound} />
-					<Route exact path="/test" component={MessageBoardToggleContainer} />
-				</Switch>
-			</div>
-		);
-	}
-}
+const TestMain = props =>
+	<div>
+		{props.user && <MessageBoardToggleContainer />}
+		<Switch>
+			<Route exact path="/" render={() => <SplashPage />} />
+			<Route exact path="/home" render={() => <h1>Home</h1>} />
+			<Route
+				exact
+				path="/login"
+				render={() =>
+					props.user ? <Redirect to="/home" /> : <UserLoginContainer />}
+			/>
+			<Route exact path="/404" component={PageNotFound} />
+			<Route exact path="/test" component={MessageBoardToggleContainer} />
+		</Switch>
+	</div>;
 
 export default TestMain;
