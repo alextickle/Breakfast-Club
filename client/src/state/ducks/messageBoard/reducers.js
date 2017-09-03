@@ -1,6 +1,6 @@
 import types from './types';
 
-const showMessageBoard = (state = false, action) => {
+const messageBoard = (state = false, action) => {
 	switch (action.type) {
 		case types.TOGGLE_MESSAGE_BOARD:
 			return !state;
@@ -9,4 +9,4 @@ const showMessageBoard = (state = false, action) => {
 	}
 };
 
-export default showMessageBoard;
+export default messageBoard;

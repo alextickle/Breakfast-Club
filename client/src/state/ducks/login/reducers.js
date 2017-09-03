@@ -26,7 +26,7 @@ const login = (state = initialState, action) => {
 		case types.HANDLE_LOGIN_CHANGE:
 			temp[action.field] = action.value;
 			return Object.assign({}, state, temp);
-		case types.SET_USER:
+		case types.SET_USER_EMAIL:
 			return state;
 		default:
 			return state;

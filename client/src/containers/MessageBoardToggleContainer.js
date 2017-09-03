@@ -6,7 +6,7 @@ import messagesQuery from '../queries/messagesQuery';
 import addMessageMutation from '../queries/addMessageMutation';
 
 const mapStateToProps = state => ({
-	showMessageBoard: state.showMessageBoard,
+	showMessageBoard: state.messageBoard,
 	user: state.user
 });
 
