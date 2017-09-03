@@ -1,17 +1,15 @@
 import TestMain from '../components/TestMain';
 import { connect } from 'react-redux';
-import userOperations from '../state/ducks/user/operations';
+import { withRouter } from 'react-router-dom';
 
 const mapStateToProps = state => ({
-	user: state.user
+	userEmail: state.userEmail
 });
 
-const mapDispatchToProps = {
-	setInitialUser: userOperations.setInitialUser
-};
+const mapDispatchToProps = {};
 
-const TestMainContainer = connect(mapStateToProps, mapDispatchToProps)(
-	TestMain
+const TestMainContainer = withRouter(
+	connect(mapStateToProps, mapDispatchToProps)(TestMain)
 );
 
 export default TestMainContainer;

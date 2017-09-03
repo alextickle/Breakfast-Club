@@ -2,5 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 // import App from "./App";
 import TestApp from './TestApp';
+import { BrowserRouter } from 'react-router-dom';
 
-ReactDOM.render(<TestApp />, document.getElementById('root'));
+ReactDOM.render(
+	<BrowserRouter>
+		<TestApp />
+	</BrowserRouter>,
+	document.getElementById('root')
+);

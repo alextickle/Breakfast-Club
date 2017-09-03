@@ -1,5 +1,5 @@
 import types from './types';
-import { setUser } from '../user/actions';
+import { setUserEmail } from '../userEmail/actions';
 
 let apiUrl;
 if (process.env.NODE_ENV === 'production') {
@@ -42,7 +42,7 @@ export const fetchLogin = credentials => {
 			)
 			.then(res => {
 				if (res.message === 'Success!') {
-					dispatch(setUser(res.user));
+					dispatch(setUserEmail(res.user.email));
 					dispatch(loginSuccess());
 				} else {
 					dispatch(loginFailure(res.error));

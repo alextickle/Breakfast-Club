@@ -1,7 +1,14 @@
-import { graphql } from "react-apollo";
-import currentEventQuery from "../queries/currentEventQuery";
-import Home from "../routes/Home";
+import { graphql, compose } from 'react-apollo';
+import React from 'react';
+import currentEventQuery from '../queries/currentEventQuery';
+import userQuery from '../queries/userQuery';
+import Home from '../routes/Home';
 
-const HomeContainer = graphql(currentEventQuery)(Home);
-
-export default HomeContainer;
+export default compose(
+	graphql(userQuery, {
+		options: props => ({
+			variables: { email: props.userEmail }
+		})
+	}),
+	graphql(currentEventQuery)
+)(Home);

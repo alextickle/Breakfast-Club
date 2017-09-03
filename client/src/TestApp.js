@@ -4,7 +4,6 @@ import {
 	ApolloProvider,
 	createNetworkInterface
 } from 'react-apollo';
-import { BrowserRouter } from 'react-router-dom';
 import TestMainContainer from './containers/TestMainContainer';
 import initStore from './state/store';
 import PathConfig from './config/PathConfig';
@@ -21,11 +20,9 @@ const client = new ApolloClient({
 
 const TestApp = () => {
 	return (
-		<BrowserRouter>
-			<ApolloProvider store={store} client={client}>
-				<TestMainContainer />
-			</ApolloProvider>
-		</BrowserRouter>
+		<ApolloProvider store={store} client={client}>
+			<TestMainContainer />
+		</ApolloProvider>
 	);
 };
 

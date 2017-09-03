@@ -15,6 +15,7 @@ import '../style/App.css';
 // import TestEvent from '../routes/TestEvent';
 import SplashPage from '../routes/SplashPage';
 import UserLoginContainer from '../containers/UserLoginContainer';
+import HomeContainer from '../containers/HomeContainer';
 // import Photos from '../routes/Photos';
 import PageNotFound from '../routes/PageNotFound';
 
@@ -22,19 +23,28 @@ import MessageBoardToggleContainer from '../containers/MessageBoardToggleContain
 
 const TestMain = props =>
 	<div>
-		{props.user && <MessageBoardToggleContainer />}
-		<Switch>
-			<Route exact path="/" render={() => <SplashPage />} />
-			<Route exact path="/home" render={() => <h1>Home</h1>} />
-			<Route
-				exact
-				path="/login"
-				render={() =>
-					props.user ? <Redirect to="/home" /> : <UserLoginContainer />}
-			/>
-			<Route exact path="/404" component={PageNotFound} />
-			<Route exact path="/test" component={MessageBoardToggleContainer} />
-		</Switch>
+		{props.userEmail && <MessageBoardToggleContainer />}
+		<main>
+			<Switch>
+				<Route exact path="/" component={SplashPage} />
+				<Route
+					exact
+					path="/home"
+					render={() =>
+						props.userEmail
+							? <HomeContainer userEmail={props.userEmail} />
+							: <Redirect to="/" />}
+				/>
+				<Route
+					exact
+					path="/login"
+					render={props =>
+						props.userEmail ? <Redirect to="/home" /> : <UserLoginContainer />}
+				/>
+				<Route exact path="/404" component={PageNotFound} />
+				<Route exact path="/test" render={() => <h1>Test</h1>} />
+			</Switch>
+		</main>
 	</div>;
 
 export default TestMain;

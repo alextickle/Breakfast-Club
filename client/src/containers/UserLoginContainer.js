@@ -5,8 +5,7 @@ import loginOperations from '../state/ducks/login/operations';
 const mapStateToProps = state => ({
 	isFetching: state.login.isFetching,
 	email: state.login.email,
-	password: state.login.password,
-	user: state.user
+	password: state.login.password
 });
 
 const mapDispatchToProps = {
