@@ -13,9 +13,12 @@ const mapDispatchToProps = {};
 export default compose(
 	connect(mapStateToProps, mapDispatchToProps),
 	graphql(userQuery, {
+		name: 'userQuery',
 		options: props => ({
 			variables: { email: props.userEmail }
 		})
 	}),
-	graphql(currentEventQuery)
+	graphql(currentEventQuery, {
+		name: 'currentEventQuery'
+	})
 )(Reminder);

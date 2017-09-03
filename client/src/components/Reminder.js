@@ -6,16 +6,16 @@ import Moment from 'react-moment';
 
 const Reminder = props => {
 	console.log(props);
-	if (props.data.loading) {
+	if (props.userQuery.loading || props.currentEventQuery.loading) {
 		return <h1>Loading</h1>;
 	}
 	let greeting;
 	let message1;
 	let message2;
 	let link;
-	let currentEvent = props.data.currentEvent;
+	let currentEvent = props.currentEventQuery.currentEvent;
 	let date = currentEvent.date;
-	let user = props.user;
+	let user = props.userQuery.user;
 
 	let dayBefore = function() {
 		return (
@@ -48,7 +48,7 @@ const Reminder = props => {
 		);
 	};
 
-	if (!currentEvent.event.vote_status) {
+	if (!currentEvent.vote_status) {
 		if (user.rsvp) {
 			greeting = () => {
 				return (
