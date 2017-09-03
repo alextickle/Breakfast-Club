@@ -45,6 +45,7 @@ const typeDefs = `
   }
 
   type Bevent {
+    id: Int
     date: String
     vote_status: Boolean
     place_1: Place
@@ -60,6 +61,7 @@ const typeDefs = `
     users: [User]
     messages: [Message]
     places: [Place]
+    events: [Bevent]
     currentEvent: Bevent
     event(id: Int): Bevent
     admin: [User]

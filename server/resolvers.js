@@ -18,6 +18,14 @@ const resolvers = {
 		places() {
 			return Place.findAll();
 		},
+		events() {
+			return Bevent.findAll({
+				include: [
+					{ model: Place, as: 'place_1' },
+					{ model: Place, as: 'place_2' }
+				]
+			});
+		},
 		currentEvent() {
 			return Bevent.findOne({
 				limit: 1,

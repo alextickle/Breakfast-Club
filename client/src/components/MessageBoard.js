@@ -1,9 +1,11 @@
 import React from 'react';
 import Moment from 'react-moment';
-import { helpers } from '../helpers/moment.js';
+import moment from 'moment';
 import messagesQuery from '../queries/messagesQuery';
 
 const MessageBoard = props => {
+	const syncToServerTime = input_date => moment(input_date).format();
+
 	let mapped;
 	if (props.loading) {
 		return <p>Loading ...</p>;
@@ -17,7 +19,7 @@ const MessageBoard = props => {
 					</div>
 					<div className="time-stamp">
 						<Moment fromNow>
-							{helpers.syncToServerTime(timeStamp)}
+							{syncToServerTime(timeStamp)}
 						</Moment>
 					</div>
 					<div className="message-content">

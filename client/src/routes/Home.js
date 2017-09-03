@@ -1,13 +1,12 @@
 import React from 'react';
 import SideBarContainer from '../containers/SideBarContainer';
+import CalendarContainer from '../containers/CalendarContainer';
 import SideBarMiniContainer from '../containers/SideBarMiniContainer';
 import Reminder from '../components/Reminder';
 import Header from '../components/Header';
-import { Redirect } from 'react-router-dom';
 // import Calendar from '../components/Calendar';
 
 const Home = props => {
-	console.log('home props', props);
 	if (props.userQuery.loading || props.currentEventQuery.loading) {
 		return <h1>Loading</h1>;
 	}
@@ -30,7 +29,7 @@ const Home = props => {
 							/>
 						</div>
 					</div>
-					{/*<Calendar event={props.currentEventQuery.currentEvent} />*/}
+					<CalendarContainer event={props.currentEventQuery.currentEvent} />
 				</div>
 			</div>
 			<img

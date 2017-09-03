@@ -1,5 +1,5 @@
 import { Route, Switch, Redirect } from 'react-router-dom';
-import React, { Component } from 'react';
+import React from 'react';
 import '../style/App.css';
 
 // logged in routes
