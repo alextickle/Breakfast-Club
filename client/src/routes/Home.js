@@ -1,16 +1,12 @@
 import React from 'react';
 // import SideBar from '../components/SideBar';
 // import SideBarMini from '../components/SideBarMini';
-// import Reminder from '../components/Reminder';
+import ReminderContainer from '../containers/ReminderContainer';
 import Header from '../components/Header';
 import { Redirect } from 'react-router-dom';
 // import Calendar from '../components/Calendar';
 
 const Home = props => {
-	console.log(props);
-	if (props.data.loading) {
-		return <h1>Loading</h1>;
-	}
 	return (
 		<div className="wrapper">
 			{/* //this is the flex container */}
@@ -24,7 +20,7 @@ const Home = props => {
 					<Header />
 					<div className="welcome-message">
 						<div className="reminder">
-							{/* <Reminder user={props.data.user} event={props.data.event} /> */}
+							<ReminderContainer />
 						</div>
 					</div>
 					{/*<Calendar event={props.data.event} />*/}

@@ -15,7 +15,7 @@ import '../style/App.css';
 // import TestEvent from '../routes/TestEvent';
 import SplashPage from '../routes/SplashPage';
 import UserLoginContainer from '../containers/UserLoginContainer';
-import HomeContainer from '../containers/HomeContainer';
+import Home from '../routes/Home';
 // import Photos from '../routes/Photos';
 import PageNotFound from '../routes/PageNotFound';
 
@@ -30,10 +30,7 @@ const TestMain = props =>
 				<Route
 					exact
 					path="/home"
-					render={() =>
-						props.userEmail
-							? <HomeContainer userEmail={props.userEmail} />
-							: <Redirect to="/" />}
+					render={() => (props.userEmail ? <Home /> : <Redirect to="/" />)}
 				/>
 				<Route
 					exact
