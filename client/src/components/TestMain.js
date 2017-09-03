@@ -7,16 +7,14 @@ import '../style/App.css';
 // import CurrentEventContainer from '../containers/CurrentEventContainer';
 // import HomeContainer from '../containers/HomeContainer';
 // import PastEventContainer from '../containers/PastEventContainer';
-// import PlacesContainer from '../containers/PlacesContainer';
+import PlacesContainer from '../containers/PlacesContainer';
 // import UserProfileContainer from '../containers/UserProfileContainer';
 
-// unprotected routes
 // import UserSignUp from '../routes/UserSignUp';
-// import TestEvent from '../routes/TestEvent';
 import SplashPage from '../routes/SplashPage';
 import UserLoginContainer from '../containers/UserLoginContainer';
-import Home from '../routes/Home';
-// import Photos from '../routes/Photos';
+import HomeContainer from '../containers/HomeContainer';
+import Photos from '../routes/Photos';
 import PageNotFound from '../routes/PageNotFound';
 
 import MessageBoardToggleContainer from '../containers/MessageBoardToggleContainer';
@@ -30,7 +28,19 @@ const TestMain = props =>
 				<Route
 					exact
 					path="/home"
-					render={() => (props.userEmail ? <Home /> : <Redirect to="/" />)}
+					render={() =>
+						props.userEmail ? <HomeContainer /> : <Redirect to="/" />}
+				/>
+				<Route
+					exact
+					path="/photos"
+					render={() => (props.userEmail ? <Photos /> : <Redirect to="/" />)}
+				/>
+				<Route
+					exact
+					path="/places"
+					render={() =>
+						props.userEmail ? <PlacesContainer /> : <Redirect to="/" />}
 				/>
 				<Route
 					exact

@@ -1,29 +1,36 @@
 import React from 'react';
-// import SideBar from '../components/SideBar';
-// import SideBarMini from '../components/SideBarMini';
-import ReminderContainer from '../containers/ReminderContainer';
+import SideBarContainer from '../containers/SideBarContainer';
+import SideBarMiniContainer from '../containers/SideBarMiniContainer';
+import Reminder from '../components/Reminder';
 import Header from '../components/Header';
 import { Redirect } from 'react-router-dom';
 // import Calendar from '../components/Calendar';
 
 const Home = props => {
+	console.log('home props', props);
+	if (props.userQuery.loading || props.currentEventQuery.loading) {
+		return <h1>Loading</h1>;
+	}
 	return (
 		<div className="wrapper">
 			{/* //this is the flex container */}
-			{/* <SideBar /> */}
+			{<SideBarContainer />}
 			{/* //this is a flex item  with a nested flex container */}
 			<div className="home-page">
 				{/* //this is a flex item */}
 				<div className="nested">
 					{/* //this is a nested flex container */}
-					{/* <SideBarMini /> */}
+					{<SideBarMiniContainer />}/
 					<Header />
 					<div className="welcome-message">
 						<div className="reminder">
-							<ReminderContainer />
+							<Reminder
+								user={props.userQuery.user}
+								event={props.currentEventQuery.currentEvent}
+							/>
 						</div>
 					</div>
-					{/*<Calendar event={props.data.event} />*/}
+					{/*<Calendar event={props.currentEventQuery.currentEvent} />*/}
 				</div>
 			</div>
 			<img

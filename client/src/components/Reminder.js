@@ -1,21 +1,15 @@
-//Reminder fetches data from EventStore and UserStore
-
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Moment from 'react-moment';
 
 const Reminder = props => {
-	console.log(props);
-	if (props.userQuery.loading || props.currentEventQuery.loading) {
-		return <h1>Loading</h1>;
-	}
 	let greeting;
 	let message1;
 	let message2;
 	let link;
-	let currentEvent = props.currentEventQuery.currentEvent;
+	let currentEvent = props.event;
 	let date = currentEvent.date;
-	let user = props.userQuery.user;
+	let user = props.user;
 
 	let dayBefore = function() {
 		return (

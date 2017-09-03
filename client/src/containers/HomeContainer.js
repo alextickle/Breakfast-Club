@@ -1,14 +1,17 @@
-import Reminder from '../components/Reminder';
+import Home from '../routes/Home';
 import { connect } from 'react-redux';
 import { graphql, compose } from 'react-apollo';
 import userQuery from '../queries/userQuery';
 import currentEventQuery from '../queries/currentEventQuery';
+import userEmailOperations from '../state/ducks/userEmail/operations';
 
 const mapStateToProps = state => ({
 	userEmail: state.userEmail
 });
 
-const mapDispatchToProps = {};
+const mapDispatchToProps = {
+	logout: userEmailOperations.clearUserEmail
+};
 
 export default compose(
 	connect(mapStateToProps, mapDispatchToProps),
@@ -21,4 +24,4 @@ export default compose(
 	graphql(currentEventQuery, {
 		name: 'currentEventQuery'
 	})
-)(Reminder);
+)(Home);
