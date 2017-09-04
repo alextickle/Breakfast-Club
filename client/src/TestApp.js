@@ -11,7 +11,7 @@ import PathConfig from './config/PathConfig';
 let store = initStore();
 
 const networkInterface = createNetworkInterface({
-	uri: `${PathConfig.serverDomain()}/graphql`
+	uri: `${PathConfig.serverDomain()}graphql`
 });
 
 const client = new ApolloClient({
