@@ -4,7 +4,7 @@ import ToggleDisplay from 'react-toggle-display';
 
 const MessageBoardToggle = props => {
 	if (props.userQuery.loading || props.messagesQuery.loading) {
-		return <h1 />;
+		return <div />;
 	}
 	return (
 		<div>
