@@ -10,7 +10,7 @@
 	},
 
 	"production": {
-		"clientDomain": "http://localhost:5432/",
-		"serverDomain": "http://localhost:5432/"
+		"clientDomain": "https://localhost:5432/",
+		"serverDomain": "https://localhost:5432/"
 	}
 }
