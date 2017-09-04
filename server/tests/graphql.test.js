@@ -14,7 +14,7 @@ describe('Test graphql schema', () => {
 });
 
 describe('Test several graphql queries', () => {
-	it('Should properly execute Graphql queries', done => {
+	it('Should properly execute usersQuery', done => {
 		let server = app.listen(3002);
 		console.log('server listening on port 3002');
 		fetch(usersQuery)

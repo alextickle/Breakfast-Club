@@ -24,7 +24,11 @@ const TestMain = props =>
 		{props.userEmail && <MessageBoardToggleContainer />}
 		<main>
 			<Switch>
-				<Route exact path="/" component={SplashPage} />
+				<Route
+					exact
+					path="/"
+					render={() => (props.userEmail ? <HomeContainer /> : <SplashPage />)}
+				/>
 				<Route
 					exact
 					path="/home"

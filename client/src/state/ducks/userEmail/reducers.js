@@ -1,6 +1,6 @@
 import types from './types';
 
-const initialState = null;
+const initialState = 'gabe@testing.com';
 
 const userEmail = (state = initialState, action) => {
 	switch (action.type) {

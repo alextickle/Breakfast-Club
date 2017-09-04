@@ -5,16 +5,12 @@ const graphqlExpress = require('graphql-server-express').graphqlExpress;
 const graphiqlExpress = require('graphql-server-express').graphiqlExpress;
 const path = require('path');
 const PORT = process.env.PORT || 4000;
-const User = require('./models').User;
 const cors = require('cors');
 
 const app = express();
 
-// Enable CORS for everything, per https://www.npmjs.com/package/cors
 app.use(cors());
 
-// Also required for CORS, per https://stackoverflow.com/a/11182153/694080 ,
-// https://enable-cors.org/server_expressjs.html
 app.use(function(req, res, next) {
 	res.header('Access-Control-Allow-Origin', '*');
 	res.header(

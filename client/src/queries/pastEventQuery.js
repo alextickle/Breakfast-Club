@@ -8,9 +8,15 @@ const pastEventQuery = gql`
 			vote_status
 			place_1 {
 				name
+				image_url
+				yelp_rating
+				address_street
 			}
 			place_2 {
 				name
+				image_url
+				yelp_rating
+				address_street
 			}
 			guestLists {
 				user {
