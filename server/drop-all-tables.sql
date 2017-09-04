@@ -1,1 +1,1 @@
-DROP TABLE "Messages", "Users", "Bevents", "Places", "GuestLists", "Messages", "SequelizeMeta";
+DROP TABLE "Messages", "Users", "Bevents", "Places", "GuestLists", "Messages", "SequelizeMeta" CASCADE;
