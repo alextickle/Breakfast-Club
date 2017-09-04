@@ -6,29 +6,24 @@ import messagesQuery from '../queries/messagesQuery';
 const MessageBoard = props => {
 	const syncToServerTime = input_date => moment(input_date).format();
 
-	let mapped;
-	if (props.loading) {
-		return <p>Loading ...</p>;
-	} else {
-		mapped = props.messages.map(function(message, i) {
-			let timeStamp = message.createdAt;
-			return (
-				<div className="individual-message" key={i}>
-					<div className="sender">
-						{message.author}
-					</div>
-					<div className="time-stamp">
-						<Moment fromNow>
-							{syncToServerTime(timeStamp)}
-						</Moment>
-					</div>
-					<div className="message-content">
-						{message.content}
-					</div>
+	let mapped = props.messages.map(function(message, i) {
+		let timeStamp = message.createdAt;
+		return (
+			<div className="individual-message" key={i}>
+				<div className="sender">
+					{message.author}
 				</div>
-			);
-		});
-	}
+				<div className="time-stamp">
+					<Moment fromNow>
+						{syncToServerTime(timeStamp)}
+					</Moment>
+				</div>
+				<div className="message-content">
+					{message.content}
+				</div>
+			</div>
+		);
+	});
 
 	const handleSubmit = e => {
 		e.preventDefault();

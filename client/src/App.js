@@ -4,10 +4,9 @@ import {
 	ApolloProvider,
 	createNetworkInterface
 } from 'react-apollo';
-import PathConfig from './config/PathConfig';
-import { BrowserRouter } from 'react-router-dom';
+import MainContainer from './containers/MainContainer';
 import initStore from './state/store';
-import MainContainer from './containers/Main';
+import PathConfig from './config/PathConfig';
 
 let store = initStore();
 
@@ -19,15 +18,9 @@ const client = new ApolloClient({
 	networkInterface: networkInterface
 });
 
-const App = () => {
-	console.log(`graphql endpoint: ${PathConfig.serverDomain()}graphql`);
-	return (
-		<BrowserRouter>
-			<ApolloProvider store={store} client={client}>
-				<MainContainer />
-			</ApolloProvider>
-		</BrowserRouter>
-	);
-};
+const App = () =>
+	<ApolloProvider store={store} client={client}>
+		<MainContainer />
+	</ApolloProvider>;
 
 export default App;

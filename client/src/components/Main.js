@@ -1,101 +1,67 @@
-import { Route, Redirect, Switch } from 'react-router-dom';
-import React, { Component } from 'react';
-import { createStore } from 'redux';
-import './style/App.css';
+import { Route, Switch, Redirect } from 'react-router-dom';
+import React from 'react';
+import '../style/App.css';
 
 // logged in routes
-import AdminPageContainer from '../routes/AdminPage';
-import CurrentEventContainer from '../containers/CurrentEventContainer';
-import HomeContainer from '../containers/HomeContainer';
-import PastEventContainer from '../containers/PastEventContainer';
+// import AdminPageContainer from '../routes/AdminPage';
+// import CurrentEventContainer from '../containers/CurrentEventContainer';
+// import HomeContainer from '../containers/HomeContainer';
+// import PastEventContainer from '../containers/PastEventContainer';
 import PlacesContainer from '../containers/PlacesContainer';
-import UserProfileContainer from '../containers/UserProfileContainer';
+// import UserProfileContainer from '../containers/UserProfileContainer';
 
-// unprotected routes
-import UserSignUp from './routes/UserSignUp';
-import TestEvent from './routes/TestEvent';
-import SplashPage from './routes/SplashPage';
-import UserLoginContainer from './containers/UserLoginContainer';
-import Photos from './routes/Photos';
-import PageNotFound from './routes/PageNotFound';
+import UserSignUpContainer from '../containers/UserSignUpContainer';
+import SplashPage from '../routes/SplashPage';
+import UserLoginContainer from '../containers/UserLoginContainer';
+import HomeContainer from '../containers/HomeContainer';
+import Photos from '../routes/Photos';
+import PageNotFound from '../routes/PageNotFound';
 
 import MessageBoardToggleContainer from '../containers/MessageBoardToggleContainer';
 
 const Main = props =>
 	<div>
-		{props.user && <MessageBoardToggleContainer />}
-		<Switch>
-			<Route
-				exact
-				path="/"
-				render={() => (props.user ? <Redirect to="/home" /> : <SplashPage />)}
-			/>
-			<Route
-				exact
-				path="/signup"
-				render={() => (props.user ? <Redirect to="/home" /> : <UserSignUp />)}
-			/>
-			<Route
-				exact
-				path="/login"
-				render={props => {
-					console.log(props);
-					props.user ? <Redirect to="/home" /> : <UserLoginContainer />;
-				}}
-			/>
-			<Route
-				exact
-				path="/login2"
-				render={() =>
-					props.user ? <Redirect to="/home" /> : <LoginContainer />}
-			/>
-			<Route
-				exact
-				path="/places"
-				render={() => (props.user ? <PlacesContainer /> : <Redirect to="/" />)}
-			/>
-			<Route
-				exact
-				path="/home"
-				render={() =>
-					props.user
-						? <HomeContainer user={props.user} />
-						: <Redirect to="/" />}
-			/>
-			<Route
-				exact
-				path="/profile"
-				render={() =>
-					props.user
-						? <UserProfileContainer user={props.user} />
-						: <Redirect to="/" />}
-			/>
-			<Route path="/past-event/:eventId" component={PastEventContainer} />
-			<Route
-				exact
-				path="/current-event"
-				render={() =>
-					props.user
-						? <CurrentEventContainer user={props.user} />
-						: <Redirect to="/" />}
-			/>
-			<Route
-				exact
-				path="/photos"
-				render={() => (props.user ? <Photos /> : <Redirect to="/" />)}
-			/>
-			<Route
-				exact
-				path="/admin"
-				render={() =>
-					isAdmin && props.user
-						? <AdminPageContainer />
-						: <Redirect to="/404" />}
-			/>
-			<Route exact path="/test-event" component={TestEvent} />
-			<Route exact path="/404" component={PageNotFound} />
-			<Redirect to="/404" />
-		</Switch>
+		{props.userEmail && <MessageBoardToggleContainer />}
+		<main>
+			<Switch>
+				<Route
+					exact
+					path="/"
+					render={() => (props.userEmail ? <HomeContainer /> : <SplashPage />)}
+				/>
+				<Route
+					exact
+					path="/home"
+					render={() =>
+						props.userEmail ? <HomeContainer /> : <Redirect to="/" />}
+				/>
+				<Route
+					exact
+					path="/photos"
+					render={() => (props.userEmail ? <Photos /> : <Redirect to="/" />)}
+				/>
+				<Route
+					exact
+					path="/places"
+					render={() =>
+						props.userEmail ? <PlacesContainer /> : <Redirect to="/" />}
+				/>
+				<Route
+					exact
+					path="/login"
+					render={() =>
+						props.userEmail ? <Redirect to="/home" /> : <UserLoginContainer />}
+				/>
+				<Route
+					exact
+					path="/signup"
+					render={() =>
+						props.userEmail ? <Redirect to="/home" /> : <UserSignUpContainer />}
+				/>
+				<Route exact path="/404" component={PageNotFound} />
+				<Route exact path="/test" render={() => <h1>Test</h1>} />
+			</Switch>
+		</main>
 	</div>;
 
 export default Main;

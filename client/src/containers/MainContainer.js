@@ -1,12 +1,11 @@
 import Main from '../components/Main';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 
-const mapStateToProps = state => {
-	return {
-		user: state.user
-	};
-};
+const mapStateToProps = state => ({
+	userEmail: state.userEmail
+});
 
-const MainContainer = connect(mapStateToProps)(Main);
+const mapDispatchToProps = {};
 
-export default MainContainer;
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Main));

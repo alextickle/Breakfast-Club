@@ -3,6 +3,9 @@ import MessageBoard from './MessageBoard';
 import ToggleDisplay from 'react-toggle-display';
 
 const MessageBoardToggle = props => {
+	if (props.userQuery.loading || props.messagesQuery.loading) {
+		return <h1 />;
+	}
 	return (
 		<div>
 			<div className="sticky" onClick={() => props.toggleMessageBoard()}>
@@ -10,10 +13,9 @@ const MessageBoardToggle = props => {
 			</div>
 			<ToggleDisplay show={props.showMessageBoard}>
 				<MessageBoard
-					messages={props.data.messages}
-					loading={props.data.loading}
+					messages={props.messagesQuery.messages}
 					mutate={props.mutate}
-					user={props.user}
+					user={props.userQuery.user}
 				/>
 			</ToggleDisplay>
 		</div>
