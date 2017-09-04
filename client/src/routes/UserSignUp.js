@@ -8,64 +8,49 @@ import Header from '../components/Header';
 import { updateRegistration, submitRegistration } from '../actions/UserActions';
 
 const UserSignUp = props => {
+  const handleSubmit = () => {
+    props.clearErrors();
+    validate();
+    if (Object.keys(props.errors).length === 0){
+      props.fetchSignUp(props.fields)
+    }
+  }
   const validate = () => {
-    let errors = {}
     validatePresence('firstName')
-    this.validatePresence('lastName')
-    this.validatePresence('neighborhood')
-    this.validatePasswordLength('password')
-    this.validatePresence('password')
-    this.validatePresence('verifyPassword')
-    this.validatePassword('verifyPassword')
-    this.validateEmail('email')
-    this.validatePresence('email')
+    validatePresence('lastName')
+    validatePresence('neighborhood')
+    validatePasswordLength('password')
+    validatePresence('password')
+    validatePresence('verifyPassword')
+    validatePassword('verifyPassword')
+    validateEmail('email')
+    validatePresence('email')
   }
 
-  validatePassword(fieldName, errors){
+  const validatePassword = fieldName => {
     if(props.fields[fieldName] !== props.fields.password){
-      addError(fieldName, 'try again', errors)
+      props.addError(fieldName, 'try again')
     }
   }
 
-  validatePresence(fieldName, errors){
+  const validatePresence = fieldName => {
     if(this.fields[fieldName] === ''){
-      this.addError(fieldName, 'required field')
+      props.addError(fieldName, 'required field')
     }
   }
 
-  validatePasswordLength(fieldName){
+  const validatePasswordLength = fieldName => {
     const minimum = /^(?=.{6,})/
     if(!minimum.test(this.fields[fieldName])){
-      this.addError(fieldName, 'min 6 characters')
+      props.addError(fieldName, 'min 6 characters')
     }
   }
 
-  validateEmail(fieldName){
+  const validateEmail = fieldName => {
     const filter = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
     if(!filter.test(this.fields[fieldName])){
-      this.addError(fieldName, 'invalid email address')
+      props.addError(fieldName, 'invalid email address')
     }
-  }
-
-  addError(fieldName, message, errors){
-    errors[fieldName] = message
-  }
-
-  updateField(attribute, value){
-    this.fields[attribute] = value
-    this.emit('change')
-  }
-
-  clearFields(){
-    this.fields = {
-      firstName:'',
-      lastName:'',
-      email:'',
-      neighborhood: '',
-      password:'',
-      verifyPassword: ''
-    }
-    this.emit('change')
   }
 
 	return (
@@ -75,8 +60,7 @@ const UserSignUp = props => {
 					<Header />
 				</div>
 				<div className="entry-header">Sign Up</div>
-				{this.state.message}
-				<form className="form" onSubmit={props.fetchSignUp(props.fields)}>
+				<form className="form" onSubmit={handleSubmit}>
 					<Input
 						name="firstName"
 						placeholder="first name"
@@ -117,9 +101,9 @@ const UserSignUp = props => {
 						placeholder="reenter password"
 						type="password"
 						name="verifyPassword"
-						value={props.fields.reenterPassword}
+						value={props.fields.verifyPassword}
 						onChange={props.handleChange}
-						errors={props.errors && props.errors.reenterPassword}
+						errors={props.errors && props.errors.verifyPassword}
 					/>
 					<div className="let-me-in">
 						<input

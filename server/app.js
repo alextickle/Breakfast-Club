@@ -5,13 +5,8 @@ const graphqlExpress = require('graphql-server-express').graphqlExpress;
 const graphiqlExpress = require('graphql-server-express').graphiqlExpress;
 const path = require('path');
 const PORT = process.env.PORT || 4000;
-const cors = require('cors');
-
-const Place = require('./models').Place;
-const Bevent = require('./models').Bevent;
-const GuestList = require('./models').GuestList;
 const User = require('./models').User;
-const Message = require('./models').Message;
+const cors = require('cors');
 
 const app = express();
 
@@ -63,6 +58,24 @@ app.put('/login', function(request, response) {
 			response.json({ message: 'invalid email and/or password' });
 		}
 	});
+});
+
+app.put('/signup', function(request, response) {
+	User.create({
+		firstName: request.body.firstName,
+		lastName: request.body.lastName,
+		email: request.body.email,
+		neighborhood: request.body.neighborhood,
+		password: request.body.password
+	})
+		.then(user => {
+			response.status(200);
+			response.json({ message: 'success', user: user });
+		})
+		.catch(error => {
+			response.status(400);
+			response.json({ message: 'Unable to create user', errors: error.errors });
+		});
 });
 
 app.get('*', function(request, response) {
