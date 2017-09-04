@@ -3,7 +3,7 @@ import { graphql, compose } from 'react-apollo';
 import messageBoardOperations from '../state/ducks/messageBoard/operations';
 import MessageBoardToggle from '../components/MessageBoardToggle';
 import messagesQuery from '../queries/messagesQuery';
-import addMessageMutation from '../queries/addMessageMutation';
+import addMessageMutation from '../mutations/addMessageMutation';
 
 const mapStateToProps = state => ({
 	showMessageBoard: state.messageBoard,

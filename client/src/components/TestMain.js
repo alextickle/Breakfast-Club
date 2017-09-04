@@ -10,7 +10,7 @@ import '../style/App.css';
 import PlacesContainer from '../containers/PlacesContainer';
 // import UserProfileContainer from '../containers/UserProfileContainer';
 
-import UserSignUpContainer from '../routes/UserSignUpContainer';
+import UserSignUpContainer from '../containers/UserSignUpContainer';
 import SplashPage from '../routes/SplashPage';
 import UserLoginContainer from '../containers/UserLoginContainer';
 import HomeContainer from '../containers/HomeContainer';
@@ -52,7 +52,7 @@ const TestMain = props =>
 					exact
 					path="/signup"
 					render={() =>
-						props.userEmail ? <Redirect to="/home" /> : <UserSignUp />}
+						props.userEmail ? <Redirect to="/home" /> : <UserSignUpContainer />}
 				/>
 				<Route exact path="/404" component={PageNotFound} />
 				<Route exact path="/test" render={() => <h1>Test</h1>} />

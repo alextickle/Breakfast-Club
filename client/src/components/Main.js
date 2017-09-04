@@ -38,8 +38,16 @@ const Main = props =>
 			<Route
 				exact
 				path="/login"
+				render={props => {
+					console.log(props);
+					props.user ? <Redirect to="/home" /> : <UserLoginContainer />;
+				}}
+			/>
+			<Route
+				exact
+				path="/login2"
 				render={() =>
-					props.user ? <Redirect to="/home" /> : <UserLoginContainer />}
+					props.user ? <Redirect to="/home" /> : <LoginContainer />}
 			/>
 			<Route
 				exact

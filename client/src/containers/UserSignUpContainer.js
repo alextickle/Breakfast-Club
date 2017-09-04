@@ -1,25 +1,39 @@
 import { connect } from 'react-redux';
+import { graphql, compose } from 'react-apollo';
 import UserSignUp from '../routes/UserSignUp';
+import signUpMutation from '../mutations/signUpMutation';
 import signUpOperations from '../state/ducks/signUp/operations';
+import userEmailOperations from '../state/ducks/userEmail/operations';
 
 const mapStateToProps = state => ({
-	isFetching: state.signUp.isFetching,
 	errors: state.signUp.errors,
-	fields: {
-		firstName: state.signUp.firstName,
-		lastName: state.signUp.lastName,
-		neighborhood: state.signUp.neighborhood,
-		email: state.signUp.email,
-		password: state.signUp.password,
-		verifyPassword: state.signUp.verifyPassword
-	}
+	firstName: state.signUp.firstName,
+	lastName: state.signUp.lastName,
+	neighborhood: state.signUp.neighborhood,
+	email: state.signUp.email,
+	password: state.signUp.password,
+	verifyPassword: state.signUp.verifyPassword
 });
 
 const mapDispatchToProps = {
-	fetchSignUp: signUpOperations.fetchSignUp,
-	handleChange: signUpOperations.handleSignUpChange,
+	handleChange: signUpOperations.handleChange,
 	addError: signUpOperations.addError,
-	clearErrors: signUpOperations.clearErrors
+	clearErrors: signUpOperations.clearErrors,
+	setUserEmail: userEmailOperations.setUserEmail
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(UserSignUp);
+export default compose(
+	connect(mapStateToProps, mapDispatchToProps),
+	graphql(signUpMutation, {
+		props: ({ ownProps, mutate }) => ({
+			signUp: () =>
+				mutate({
+					firstName: ownProps.firstName,
+					lastName: ownProps.lastName,
+					neighborhood: ownProps.neighborhood,
+					email: ownProps.email,
+					password: ownProps.password
+				})
+		})
+	})
+)(UserSignUp);

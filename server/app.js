@@ -42,42 +42,6 @@ app.use(
 	})
 );
 
-app.put('/login', function(request, response) {
-	console.log('body', request.body);
-	User.findOne({
-		where: { email: request.body.email }
-	}).then(user => {
-		if (user && user.verifyPassword(request.body.password)) {
-			response.status(200);
-			response.json({
-				message: 'Success!',
-				user: user
-			});
-		} else {
-			response.status(400);
-			response.json({ message: 'invalid email and/or password' });
-		}
-	});
-});
-
-app.put('/signup', function(request, response) {
-	User.create({
-		firstName: request.body.firstName,
-		lastName: request.body.lastName,
-		email: request.body.email,
-		neighborhood: request.body.neighborhood,
-		password: request.body.password
-	})
-		.then(user => {
-			response.status(200);
-			response.json({ message: 'success', user: user });
-		})
-		.catch(error => {
-			response.status(400);
-			response.json({ message: 'Unable to create user', errors: error.errors });
-		});
-});
-
 app.get('*', function(request, response) {
 	response.sendFile(path.resolve(__dirname, '../client/build', 'index.html'));
 });

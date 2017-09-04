@@ -1,16 +1,27 @@
 import { connect } from 'react-redux';
+import { graphql, compose } from 'react-apollo';
 import UserLogin from '../routes/UserLogin';
+import loginMutation from '../mutations/loginMutation';
 import loginOperations from '../state/ducks/login/operations';
+import userEmailOperations from '../state/ducks/userEmail/operations';
 
-const mapStateToProps = state => ({
-	isFetching: state.login.isFetching,
+const mapStateToProps = (state, ownProps) => ({
 	email: state.login.email,
-	password: state.login.password
+	password: state.login.password,
+	history: ownProps.history
 });
 
 const mapDispatchToProps = {
-	fetchLogin: loginOperations.fetchLogin,
-	handleLoginChange: loginOperations.handleLoginChange
+	handleChange: loginOperations.handleChange,
+	setUserEmail: userEmailOperations.setUserEmail
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(UserLogin);
+export default compose(
+	connect(mapStateToProps, mapDispatchToProps),
+	graphql(loginMutation, {
+		props: ({ ownProps, mutate }) => ({
+			login: () =>
+				mutate({ email: ownProps.email, password: ownProps.password })
+		})
+	})
+)(UserLogin);

@@ -4,9 +4,6 @@ import Header from '../components/Header';
 import Input from '../components/Input';
 
 const UserLogin = props => {
-	if (props.isFetching) {
-		return <h1>Loading</h1>;
-	}
 	return (
 		<div className="login-page">
 			<div className="wrapper">
@@ -18,24 +15,21 @@ const UserLogin = props => {
 					className="form"
 					onSubmit={e => {
 						e.preventDefault();
-						props.fetchLogin({
-							email: props.email,
-							password: props.password
-						});
+						props.login().then(resp => props.setUserEmail(resp.data.login));
 					}}
 				>
 					<Input
 						placeholder="email address"
 						name="email"
 						value={props.email}
-						onChange={props.handleLoginChange}
+						onChange={props.handleChange}
 					/>
 					<Input
 						placeholder="password"
 						type="password"
 						name="password"
 						value={props.password}
-						onChange={props.handleLoginChange}
+						onChange={props.handleChange}
 					/>
 					<div className="let-me-in">
 						<input

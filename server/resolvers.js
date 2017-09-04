@@ -66,6 +66,24 @@ const resolvers = {
 				author: args.author,
 				user_id: args.user_id
 			});
+		},
+		login(root, args) {
+			return User.findOne({
+				where: { email: args.email }
+			})
+				.then(user => {
+					if (user && user.verifyPassword(args.password)) {
+						return Promise.resolve(user.email);
+					} else {
+						return Promise.reject('login failed');
+					}
+				})
+				.catch(error => Promise.reject('login failed'));
+		},
+		signUp(root, args) {
+			return User.create(args)
+				.then(user => Promise.resolve(user.email))
+				.catch(error => Promise.reject('signUp failed'));
 		}
 	}
 };

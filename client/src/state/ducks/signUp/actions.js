@@ -1,60 +1,9 @@
 import types from './types';
-import { setUserEmail } from '../userEmail/actions';
 
-let apiUrl;
-if (process.env.NODE_ENV === 'production') {
-	apiUrl = '/';
-} else {
-	apiUrl = 'http://localhost:4000/';
-}
-
-export const requestSignUp = () => {
-	return {
-		type: types.REQUEST_SIGN_UP
-	};
-};
-
-export const signUpSuccess = () => {
-	return {
-		type: types.SIGN_UP_SUCCESS
-	};
-};
-
-export const signUpFailure = error => {
-	return {
-		type: types.SIGN_UP_FAILURE,
-		error: error
-	};
-};
-
-export const fetchSignUp = data => {
-	return dispatch => {
-		dispatch(requestSignUp());
-		const params = {
-			method: 'PUT',
-			headers: { 'Content-Type': 'application/json' },
-			body: JSON.stringify(data)
-		};
-		return fetch(`${apiUrl}signup`, params)
-			.then(
-				response => response.json(),
-				error => console.log('An error occured.', error)
-			)
-			.then(res => {
-				if (res.message === 'Success!') {
-					dispatch(setUserEmail(res.user.email));
-					dispatch(signUpSuccess());
-				} else {
-					dispatch(signUpFailure(res.error));
-				}
-			});
-	};
-};
-
-export const handleSignUpChange = e => {
+export const handleChange = e => {
 	e.preventDefault();
 	return {
-		type: types.HANDLE_SIGN_UP_CHANGE,
+		type: types.HANDLE_CHANGE,
 		field: e.target.name,
 		value: e.target.value
 	};
@@ -75,11 +24,7 @@ export const clearErrors = () => {
 };
 
 export default {
-	requestSignUp,
-	fetchSignUp,
-	signUpSuccess,
-	signUpFailure,
-	handleSignUpChange,
+	handleChange,
 	addError,
 	clearErrors
 };

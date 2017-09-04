@@ -69,6 +69,8 @@ const typeDefs = `
 
   type Mutation {
     addMessage(content: String, author: String, user_id: Int): Message
+    login(email: String!, password: String!): String
+    signUp(firstName: String!, lastName: String!, neighborhood: String!, email: String!, password: String!): String
   }
 `;
 
