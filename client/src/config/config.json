@@ -1,16 +1,16 @@
 {
 	"development": {
-		"clientDomain": "http://localhost:3000",
-		"serverDomain": "http://localhost:4000"
+		"clientDomain": "http://localhost:3000/",
+		"serverDomain": "http://localhost:4000/"
 	},
 
 	"test": {
-		"clientDomain": "http://localhost:3000",
-		"serverDomain": "http://localhost:4000"
+		"clientDomain": "http://localhost:3000/",
+		"serverDomain": "http://localhost:4000/"
 	},
 
 	"production": {
-		"clientDomain": "https://breakfast-club-graphql-redux.herokuapp.com",
-		"serverDomain": "https://breakfast-club-graphql-redux.herokuapp.com"
+		"clientDomain": "http://localhost:5432/",
+		"serverDomain": "http://localhost:5432/"
 	}
 }
