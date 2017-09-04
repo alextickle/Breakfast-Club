@@ -14,12 +14,15 @@ const networkInterface = createNetworkInterface({
 	uri: `${PathConfig.serverDomain()}graphql`
 });
 
-const client =
-	process.env.NODE_ENV === 'development'
-		? new ApolloClient({
-				networkInterface: networkInterface
-			})
-		: new ApolloClient();
+const options = {
+	networkInterface: networkInterface
+};
+
+if (process.env.NODE_ENV === 'production') {
+	options['ssrMode'] = true;
+}
+
+const client = new ApolloClient(options);
 
 const App = () =>
 	<ApolloProvider store={store} client={client}>
