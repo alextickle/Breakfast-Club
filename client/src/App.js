@@ -20,6 +20,7 @@ const client = new ApolloClient({
 });
 
 const App = () => {
+	console.log(`graphql endpoint: ${PathConfig.serverDomain()}graphql`);
 	return (
 		<BrowserRouter>
 			<ApolloProvider store={store} client={client}>
