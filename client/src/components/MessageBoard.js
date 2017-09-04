@@ -4,7 +4,6 @@ import moment from 'moment';
 import messagesQuery from '../queries/messagesQuery';
 
 const MessageBoard = props => {
-	console.log('message board props', props);
 	const syncToServerTime = input_date => moment(input_date).format();
 
 	let mapped = props.messages.map(function(message, i) {
