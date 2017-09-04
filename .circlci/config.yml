@@ -10,56 +10,30 @@ jobs:
       - image: circleci/node:8.1.4
       - image: circleci/postgres:9.6.3
         environment:
-          - PG_HOST=localhost
-          - POSTGRES_USER=postgres
-          - POSTGRES_DB=bc_development
+        - POSTGRES_USER=postgres
+        - POSTGRES_DB=bc_development
 
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
       # documented at https://circleci.com/docs/2.0/circleci-images/
+      # - image: circleci/mongo:3.4.4
 
     working_directory: ~/repo
 
     steps:
-      - run: echo starting
-
       - run:
           name: "Checking Versions"
           command: |
             node --version
             npm --version
 
-
       - checkout
-
-      # Download and cache dependencies
-      - restore_cache:
-          keys:
-          - v1-dependencies-{{ checksum "package.json" }}
-          # fallback to using the latest cache if no exact match is found
-          - v1-dependencies-
-
-      - restore_cache:
-          keys:
-          - v1-client-dependencies-{{ checksum "./client/package.json" }}
-          # fallback to using the latest cache if no exact match is found
-          - v1-client-dependencies-
 
       - run:
           name: NPM bootstrap
-          command: NODE_ENV=test npm run bootstrap
-
-      - save_cache:
-          paths:
-            - node_modules
-          key: v1-dependencies-{{ checksum "package.json" }}
-
-      - save_cache:
-          paths:
-            - client/node_modules
-          key: v1-client-dependencies-{{ checksum "./client/package.json" }}
+          command: npm run bootstrap-cci
 
       # run tests!
       - run:
           name: NPM Test
-          command: NODE_ENV=test npm test
+          command: npm test

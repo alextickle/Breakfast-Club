@@ -5,6 +5,7 @@
 	"main": "index.js",
 	"scripts": {
 		"bootstrap": "node scripts/bootstrap.js",
+		"bootstrap-cci": "node scripts/bootstrap-cci.js",
 		"test": "jest",
 		"test:watch": "jest --watch",
 		"test-components": "jest client/src/tests/components.test.js",
