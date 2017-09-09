@@ -2,14 +2,10 @@ import { Route, Switch, Redirect } from 'react-router-dom';
 import React from 'react';
 import '../style/App.css';
 
-// logged in routes
 // import AdminPageContainer from '../routes/AdminPage';
 // import CurrentEventContainer from '../containers/CurrentEventContainer';
-// import HomeContainer from '../containers/HomeContainer';
-// import PastEventContainer from '../containers/PastEventContainer';
 import PlacesContainer from '../containers/PlacesContainer';
 // import UserProfileContainer from '../containers/UserProfileContainer';
-
 import UserSignUpContainer from '../containers/UserSignUpContainer';
 import SplashPage from '../routes/SplashPage';
 import UserLoginContainer from '../containers/UserLoginContainer';
