@@ -99,8 +99,7 @@ const resolvers = {
 			);
 			then(() =>
 				Bevent.findOne({
-					limit: 1,
-					order: [['date', 'DESC']],
+					where: { id: args.eventId },
 					include: [
 						{
 							model: GuestList,
@@ -138,8 +137,7 @@ const resolvers = {
 				);
 			then(() =>
 				Bevent.findOne({
-					limit: 1,
-					order: [['date', 'DESC']],
+					where: { id: args.eventId },
 					include: [
 						{
 							model: GuestList,

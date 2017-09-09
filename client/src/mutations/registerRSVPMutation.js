@@ -7,7 +7,21 @@ const registerRSVPMutation = gql`
 		$rsvpStatus: Boolean!
 	) {
 		registerRSVP(userId: $userId, eventId: $eventId, rsvpStatus: $rsvpStatus) {
-			event
+			id
+			date
+			vote_status
+			place_1 {
+				name
+			}
+			place_2 {
+				name
+			}
+			guestLists {
+				user {
+					firstName
+					lastName
+				}
+			}
 		}
 	}
 `;
