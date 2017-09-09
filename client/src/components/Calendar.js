@@ -55,7 +55,6 @@ const Calendar = props => {
 
 	return (
 		<div>
-			{/* //this is the flex container */}
 			<div className="polaroid">
 				{props.selectedEventId &&
 					props.selectedEventId === props.event.id &&

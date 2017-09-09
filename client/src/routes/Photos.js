@@ -18,13 +18,9 @@ class Photos extends Component {
 	render() {
 		return (
 			<div className="wrapper">
-				{/* //this is the flex container */}
 				<SideBarContainer />
-				{/* //this is a flex item  with a nested flex container */}
 				<div className="slideshow-page">
-					{/* //this is a flex item */}
 					<div className="nested">
-						{/* //this is a nested flex container */}
 						<Header />
 						<SideBarMiniContainer />
 						<div className="page-title">Photos</div>

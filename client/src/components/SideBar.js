@@ -3,9 +3,7 @@ import { Link } from 'react-router-dom';
 
 const SideBar = props =>
 	<div className="sidebar">
-		{/* sidebar is a flex item of the parent */}
 		<div className="nested">
-			{/* nesting is the nested flex box */}
 			{props.userEmail === 'breakfastclub.sd@gmail.com' &&
 				<Link to="/admin" className="item wobble">
 					{' '}<img src="../Images/admin.png" alt="admin" />
