@@ -1,4 +1,3 @@
-'use strict';
 const pushid = require('pushid');
 
 module.exports = function(sequelize, DataTypes) {
@@ -10,7 +9,7 @@ module.exports = function(sequelize, DataTypes) {
 			primaryKey: true,
 			type: DataTypes.STRING
 		},
-		vote: DataTypes.STRING
+		vote: DataTypes.INTEGER
 	});
 
 	GuestList.associate = models => {

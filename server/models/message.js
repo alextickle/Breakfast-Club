@@ -1,4 +1,5 @@
-'use strict';
+const pushid = require('pushid');
+
 module.exports = function(sequelize, DataTypes) {
 	const Message = sequelize.define('Message', {
 		id: {

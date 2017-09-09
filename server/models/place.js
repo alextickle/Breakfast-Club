@@ -1,4 +1,5 @@
-'use strict';
+const pushid = require('pushid');
+
 module.exports = function(sequelize, DataTypes) {
 	const Place = sequelize.define('Place', {
 		// would have to run a migration to add this bottom
