@@ -15,12 +15,14 @@ const typeDefs = `
   }
 
   type Message {
+    id: String
     content: String
     author: String
     user: User
   }
 
   type Place {
+    id: String
     name: String
     address_street: String
     address_city: String
@@ -39,13 +41,14 @@ const typeDefs = `
   }
 
   type GuestList {
+    id: String
     event: Bevent
     user: User
-    vote: String
+    vote: Int
   }
 
   type Bevent {
-    id: Int
+    id: String
     date: String
     vote_status: Boolean
     place_1: Place
