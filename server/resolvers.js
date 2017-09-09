@@ -77,13 +77,76 @@ const resolvers = {
 					} else {
 						return Promise.reject('login failed');
 					}
-				})
 				.catch(error => Promise.reject('login failed'));
+			})
 		},
 		signUp(root, args) {
 			return User.create(args)
 				.then(user => Promise.resolve(user.email))
 				.catch(error => Promise.reject('signUp failed'));
+		},
+		registerVote(root, args) {
+			return GuestList.create({
+				vote: args.choice,
+				event_id: args.eventId
+			}).then(() =>
+				User.update(
+					{ voted: true },
+					{
+						where: { email: args.email }
+					}
+				)
+			);
+			then(() =>
+				Bevent.findOne({
+					limit: 1,
+					order: [['date', 'DESC']],
+					include: [
+						{
+							model: GuestList,
+							as: 'guestLists',
+							include: [{ model: User, as: 'user' }]
+						},
+						{ model: Place, as: 'place_1' },
+						{ model: Place, as: 'place_2' }
+					]
+				})
+			);
+		},
+		registerRSVP(root, args) {
+			return GuestList.findOne({
+				where: {
+					event_id: args.eventId,
+					user_id: null
+				}
+			})
+			.then(list => GuestList.update({
+					user_id: args.userId
+				}, {where: {id: list.id}})
+			)
+			.then(() =>
+				User.update(
+					{ voted: true },
+					{
+						where: { id: args.userId }
+					}
+				)
+			);
+			then(() =>
+				Bevent.findOne({
+					limit: 1,
+					order: [['date', 'DESC']],
+					include: [
+						{
+							model: GuestList,
+							as: 'guestLists',
+							include: [{ model: User, as: 'user' }]
+						},
+						{ model: Place, as: 'place_1' },
+						{ model: Place, as: 'place_2' }
+					]
+				})
+			);
 		}
 	}
 };

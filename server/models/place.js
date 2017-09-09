@@ -8,6 +8,13 @@ module.exports = function(sequelize, DataTypes) {
 		// id: DataTypes.INTEGER,
 		// yelp_id: DataTypes.INTEGER,
 		// ----------------------------------------
+		id: {
+			allowNull: false,
+			autoIncrement: false,
+			defaultValue: () => pushid(),
+			primaryKey: true,
+			type: DataTypes.STRING
+		},
 		name: {
 			type: DataTypes.STRING,
 			unique: true

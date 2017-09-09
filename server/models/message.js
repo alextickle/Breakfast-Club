@@ -1,15 +1,22 @@
-"use strict";
+'use strict';
 module.exports = function(sequelize, DataTypes) {
-  const Message = sequelize.define("Message", {
-    content: DataTypes.STRING,
-    author: DataTypes.STRING
-  });
+	const Message = sequelize.define('Message', {
+		id: {
+			allowNull: false,
+			autoIncrement: false,
+			defaultValue: () => pushid(),
+			primaryKey: true,
+			type: DataTypes.STRING
+		},
+		content: DataTypes.STRING,
+		author: DataTypes.STRING
+	});
 
-  Message.associate = models => {
-    Message.belongsTo(models.User, {
-      foreignKey: "user_id",
-      as: "user"
-    });
-  };
-  return Message;
+	Message.associate = models => {
+		Message.belongsTo(models.User, {
+			foreignKey: 'user_id',
+			as: 'user'
+		});
+	};
+	return Message;
 };

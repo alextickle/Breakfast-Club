@@ -1,18 +1,27 @@
-"use strict";
-module.exports = function(sequelize, DataTypes) {
-  const GuestList = sequelize.define("GuestList", {
-    vote: DataTypes.STRING
-  });
+'use strict';
+const pushid = require('pushid');
 
-  GuestList.associate = models => {
-    GuestList.belongsTo(models.Bevent, {
-      foreignKey: "event_id",
-      as: "event"
-    });
-    GuestList.belongsTo(models.User, {
-      foreignKey: "user_id",
-      as: "user"
-    });
-  };
-  return GuestList;
+module.exports = function(sequelize, DataTypes) {
+	const GuestList = sequelize.define('GuestList', {
+		id: {
+			allowNull: false,
+			autoIncrement: false,
+			defaultValue: () => pushid(),
+			primaryKey: true,
+			type: DataTypes.STRING
+		},
+		vote: DataTypes.STRING
+	});
+
+	GuestList.associate = models => {
+		GuestList.belongsTo(models.Bevent, {
+			foreignKey: 'event_id',
+			as: 'event'
+		});
+		GuestList.belongsTo(models.User, {
+			foreignKey: 'user_id',
+			as: 'user'
+		});
+	};
+	return GuestList;
 };

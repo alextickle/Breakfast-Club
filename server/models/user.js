@@ -1,11 +1,19 @@
 const uuid = require('uuid/v1');
-var crypto = require('crypto');
+const crypto = require('crypto');
+const pushid = require('pushid');
 ('use strict');
 
 module.exports = function(sequelize, DataTypes) {
 	const User = sequelize.define(
 		'User',
 		{
+			id: {
+				allowNull: false,
+				autoIncrement: false,
+				defaultValue: () => pushid(),
+				primaryKey: true,
+				type: DataTypes.STRING
+			},
 			firstName: {
 				type: DataTypes.STRING,
 				allowNull: false

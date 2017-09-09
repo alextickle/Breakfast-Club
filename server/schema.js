@@ -71,6 +71,8 @@ const typeDefs = `
     addMessage(content: String, author: String, user_id: Int): Message
     login(email: String!, password: String!): String
     signUp(firstName: String!, lastName: String!, neighborhood: String!, email: String!, password: String!): String
+    registerRSVP(email: String!, eventId: Int!, choice: String!): Bevent
+    registerVote(email: String!, eventId: Int!, rsvpStatus: Boolean!): Bevent
   }
 `;
 
