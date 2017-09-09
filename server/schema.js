@@ -17,7 +17,6 @@ const typeDefs = `
   type Message {
     id: String
     content: String
-    author: String
     user: User
   }
 
@@ -60,18 +59,18 @@ const typeDefs = `
   }
 
   type Query {
-    user(email: String): User
+    user(email: String!): User
     users: [User]
     messages: [Message]
     places: [Place]
     events: [Bevent]
     currentEvent: Bevent
-    event(id: Int): Bevent
+    event(id: String!): Bevent
     admin: [User]
   }
 
   type Mutation {
-    addMessage(content: String, author: String, user_id: Int): Message
+    addMessage(content: String!, user_id: String!): Message
     login(email: String!, password: String!): String
     signUp(firstName: String!, lastName: String!, neighborhood: String!, email: String!, password: String!): String
     registerRSVP(email: String!, eventId: Int!, choice: String!): Bevent

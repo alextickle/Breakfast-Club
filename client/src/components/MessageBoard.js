@@ -11,7 +11,7 @@ const MessageBoard = props => {
 		return (
 			<div className="individual-message" key={i}>
 				<div className="sender">
-					{message.author}
+					{props.user.firstName}
 				</div>
 				<div className="time-stamp">
 					<Moment fromNow>
@@ -30,7 +30,6 @@ const MessageBoard = props => {
 		props.mutate({
 			variables: {
 				content: this.input.value,
-				author: props.user.firstName,
 				user_id: props.user.id
 			},
 			update: (store, { data: { addMessage } }) => {

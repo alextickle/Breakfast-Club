@@ -2,6 +2,8 @@ import { graphql, compose } from 'react-apollo';
 import { connect } from 'react-redux';
 import currentEventQuery from '../queries/currentEventQuery';
 import userQuery from '../queries/userQuery';
+import registerVoteMutation from '../mutations/registerVoteMutation';
+import registerRSVPMutation from '../mutations/registerRSVPMutation';
 import CurrentEvent from '../routes/CurrentEvent';
 
 const mapStateToProps = state => ({
@@ -24,13 +26,12 @@ export default compose(
 	graphql(registerVoteMutation, {
 		props: ({ ownProps, mutate }) => ({
 			registerVote: (eventId, choice) =>
-				mutate({ email: ownProps.email, eventId: eventId, choice: choice })
+				mutate({ email: ownProps.email, eventId, choice })
 		})
 	}),
 	graphql(registerRSVPMutation, {
 		props: ({ ownProps, mutate }) => ({
-			registerRSVP: (userId, eventId, rsvpStatus) =>
-				mutate({ userId: userId, eventId: eventId, rsvpStatus: rsvpStatus })
+			registerRSVP: vars => mutate({ vars })
 		})
 	})
 )(CurrentEvent);

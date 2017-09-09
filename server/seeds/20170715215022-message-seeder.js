@@ -5,7 +5,6 @@ module.exports = {
 		return queryInterface.bulkInsert('Messages', [
 			{
 				id: '5484ddd0574c',
-				author: 'Rachel R.',
 				content: 'Welcome to Breakfast Club!',
 				user_id: 'ad9f3e526715',
 				createdAt: '2017-07-24 07:52:29-07',

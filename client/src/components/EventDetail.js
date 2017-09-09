@@ -3,6 +3,7 @@ import RSVPButton from './RSVPButton';
 import EventChoice from './EventChoice';
 
 const EventDetail = props => {
+	console.log('event detail', props);
 	let winner;
 	if (props.event.winner) {
 		if (props.event.winner === 1) {

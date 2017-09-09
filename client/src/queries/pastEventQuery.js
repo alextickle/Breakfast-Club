@@ -1,7 +1,7 @@
 import { gql } from 'react-apollo';
 
 const pastEventQuery = gql`
-	query pastEventQuery($id: Int!) {
+	query pastEventQuery($id: String!) {
 		event(id: $id) {
 			id
 			date

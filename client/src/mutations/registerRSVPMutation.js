@@ -1,7 +1,11 @@
 import { gql } from 'react-apollo';
 
 const registerRSVPMutation = gql`
-	mutation registerRSVP($userId: Int!, $eventId: Int!, $rsvpStatus: Boolean!) {
+	mutation registerRSVP(
+		$userId: String!
+		$eventId: String!
+		$rsvpStatus: Boolean!
+	) {
 		registerRSVP(userId: $userId, eventId: $eventId, rsvpStatus: $rsvpStatus) {
 			event
 		}

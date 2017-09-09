@@ -9,8 +9,7 @@ module.exports = function(sequelize, DataTypes) {
 			primaryKey: true,
 			type: DataTypes.STRING
 		},
-		content: DataTypes.STRING,
-		author: DataTypes.STRING
+		content: DataTypes.STRING
 	});
 
 	Message.associate = models => {

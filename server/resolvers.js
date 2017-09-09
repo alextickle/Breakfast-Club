@@ -77,8 +77,8 @@ const resolvers = {
 					} else {
 						return Promise.reject('login failed');
 					}
+				})
 				.catch(error => Promise.reject('login failed'));
-			})
 		},
 		signUp(root, args) {
 			return User.create(args)
@@ -120,18 +120,22 @@ const resolvers = {
 					user_id: null
 				}
 			})
-			.then(list => GuestList.update({
-					user_id: args.userId
-				}, {where: {id: list.id}})
-			)
-			.then(() =>
-				User.update(
-					{ voted: true },
-					{
-						where: { id: args.userId }
-					}
+				.then(list =>
+					GuestList.update(
+						{
+							user_id: args.userId
+						},
+						{ where: { id: list.id } }
+					)
 				)
-			);
+				.then(() =>
+					User.update(
+						{ voted: true },
+						{
+							where: { id: args.userId }
+						}
+					)
+				);
 			then(() =>
 				Bevent.findOne({
 					limit: 1,

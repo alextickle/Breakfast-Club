@@ -26,6 +26,8 @@ const CurrentEvent = props => {
 					<EventDetail
 						event={props.currentEventQuery.currentEvent}
 						user={props.userQuery.user}
+						registerVote={props.registerVote}
+						registerRSVP={props.registerRSVP}
 					/>
 				</div>
 			</div>
