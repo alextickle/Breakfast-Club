@@ -10,7 +10,6 @@ const CurrentEvent = props => {
 	if (props.userQuery.loading || props.currentEventQuery.loading) {
 		return <h1>Loading</h1>;
 	}
-	console.log(props);
 	return (
 		<div className="wrapper">
 			<SideBar />

@@ -25,26 +25,32 @@ export default compose(
 	}),
 	graphql(registerVoteMutation, {
 		props: ({ ownProps, mutate }) => ({
-			registerVote: (eventId, choice) =>
-				mutate({
-					variables: {
-						email: ownProps.email,
-						eventId,
-						choice
-					}
-				})
-		})
-	}),
-	graphql(registerRSVPMutation, {
-		props: ({ ownProps, mutate }) => ({
-			registerRSVP: (userId, eventId, rsvpStatus) =>
+			registerVote: (userId, eventId, choice) => {
+				console.log('userId: ', userId);
+				console.log('eventId: ', eventId);
+				console.log('choice: ', choice);
 				mutate({
 					variables: {
 						userId,
 						eventId,
-						rsvpStatus
+						choice
 					}
-				})
+				});
+			}
+		})
+	}),
+	graphql(registerRSVPMutation, {
+		props: ({ ownProps, mutate }) => ({
+			registerRSVP: (userId, rsvpStatus) => {
+				console.log('userId: ', userId);
+				console.log('rsvpStatus: ', rsvpStatus);
+				mutate({
+					variables: {
+						userId: userId,
+						rsvpStatus: rsvpStatus
+					}
+				});
+			}
 		})
 	})
 )(CurrentEvent);

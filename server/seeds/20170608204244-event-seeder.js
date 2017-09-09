@@ -62,6 +62,18 @@ module.exports = {
 				updatedAt: '2017-06-02 08:00:00-07',
 				active: false,
 				speaker: 'Matt Clark'
+			},
+			{
+				id: '2474ddb0572f',
+				place_1_id: '2a434166c127',
+				place_2_id: '2a434166c129',
+				date: '2017-09-15 08:00:00-07',
+				vote_status: true,
+				winner: null,
+				createdAt: '2017-09-09 08:00:00-07',
+				updatedAt: '2017-09-09 08:00:00-07',
+				active: true,
+				speaker: null
 			}
 		]);
 	},

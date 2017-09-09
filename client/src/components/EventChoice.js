@@ -9,7 +9,8 @@ const EventChoice = props =>
 		</div>
 		<div
 			className="place"
-			onClick={e => props.registerVote(props.event.id, props.choice)}
+			onClick={e =>
+				props.registerVote(props.user.id, props.event.id, props.choice)}
 		>
 			<img className="place-img" src={props.place.image_url} alt="restaurant" />
 			<div className="after">

@@ -88,17 +88,18 @@ const resolvers = {
 		registerVote(root, args) {
 			return GuestList.create({
 				vote: args.choice,
-				event_id: args.eventId
+				event_id: args.eventId,
+				user_id: args.userId
 			}).then(() =>
 				User.update(
 					{ voted: true },
 					{
-						where: { email: args.email }
+						where: { id: args.userId }
 					}
 				)
 			);
 			then(() =>
-				Bevent.findOne({
+				Bevent.find({
 					where: { id: args.eventId },
 					include: [
 						{
@@ -113,40 +114,15 @@ const resolvers = {
 			);
 		},
 		registerRSVP(root, args) {
-			return GuestList.findOne({
-				where: {
-					event_id: args.eventId,
-					user_id: null
+			console.log(args);
+			return User.update(
+				{ rsvp: args.rsvpStatus },
+				{
+					where: { id: args.userId }
 				}
-			})
-				.then(list =>
-					GuestList.update(
-						{
-							user_id: args.userId
-						},
-						{ where: { id: list.id } }
-					)
-				)
-				.then(() =>
-					User.update(
-						{ voted: true },
-						{
-							where: { id: args.userId }
-						}
-					)
-				);
-			then(() =>
-				Bevent.findOne({
-					where: { id: args.eventId },
-					include: [
-						{
-							model: GuestList,
-							as: 'guestLists',
-							include: [{ model: User, as: 'user' }]
-						},
-						{ model: Place, as: 'place_1' },
-						{ model: Place, as: 'place_2' }
-					]
+			).then(() =>
+				User.find({
+					where: { id: args.userId }
 				})
 			);
 		}

@@ -19,6 +19,9 @@ module.exports = {
 			vote: {
 				type: Sequelize.INTEGER
 			},
+			attended: {
+				type: Sequelize.BOOLEAN
+			},
 			createdAt: {
 				allowNull: false,
 				type: Sequelize.DATE

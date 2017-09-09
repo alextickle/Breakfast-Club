@@ -41,7 +41,7 @@ const EventDetail = props => {
 								event={props.event}
 								place={props.event.place_1}
 								registerVote={props.registerVote}
-								choice="1"
+								choice={1}
 							/>}
 					</div>
 					<div className="vs">VS</div>
@@ -53,7 +53,7 @@ const EventDetail = props => {
 								event={props.event}
 								place={props.event.place_2}
 								registerVote={props.registerVote}
-								choice="2"
+								choice={2}
 							/>}
 					</div>
 				</div>}

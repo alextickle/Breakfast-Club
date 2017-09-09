@@ -9,7 +9,12 @@ module.exports = function(sequelize, DataTypes) {
 			primaryKey: true,
 			type: DataTypes.STRING
 		},
-		vote: DataTypes.INTEGER
+		vote: DataTypes.INTEGER,
+		attended: {
+			allowNull: false,
+			defaultValue: false,
+			type: DataTypes.BOOLEAN
+		}
 	});
 
 	GuestList.associate = models => {

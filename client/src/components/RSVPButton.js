@@ -11,7 +11,7 @@ const RSVPButton = props => {
 					name="rsvp"
 					value={true}
 					onClick={e =>
-						props.registerRSVP(props.user.id, props.eventId, e.target.value)}
+						props.registerRSVP(props.user.id, e.target.value === 'true')}
 				>
 					Yes
 				</button>
@@ -21,7 +21,7 @@ const RSVPButton = props => {
 					name="rsvp"
 					value={false}
 					onClick={e =>
-						props.registerRSVP(props.user.id, props.eventId, e.target.value)}
+						props.registerRSVP(props.user.id, e.target.value === 'true')}
 				>
 					No
 				</button>

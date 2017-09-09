@@ -44,6 +44,7 @@ const typeDefs = `
     event: Bevent
     user: User
     vote: Int
+    attended: Boolean
   }
 
   type Bevent {
@@ -73,8 +74,8 @@ const typeDefs = `
     addMessage(content: String!, user_id: String!): Message
     login(email: String!, password: String!): String
     signUp(firstName: String!, lastName: String!, neighborhood: String!, email: String!, password: String!): String
-    registerRSVP(userId: String!, eventId: String!, rsvpStatus: Boolean!): Bevent
-    registerVote(email: String!, eventId: String!, choice: Int!): Bevent
+    registerRSVP(userId: String!, rsvpStatus: Boolean!): User
+    registerVote(userId: String!, eventId: String!, choice: Int!): Bevent
   }
 `;
 
