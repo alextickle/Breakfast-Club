@@ -6,15 +6,17 @@ const eventsQuery = gql`
 			id
 			date
 			vote_status
-			place_1 {
-				name
-			}
-			place_2 {
-				name
-			}
 			winner
 			active
 			speaker
+			place_1 {
+				id
+				name
+			}
+			place_2 {
+				id
+				name
+			}
 		}
 	}
 `;

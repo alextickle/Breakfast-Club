@@ -12,7 +12,8 @@ const mapStateToProps = (state, ownProps) => ({
 const mapDispatchToProps = {
 	openModal: calendarOperations.openModal,
 	closeModal: calendarOperations.closeModal,
-	setSelectedEvent: calendarOperations.setSelectedEvent
+	setSelectedEvent: calendarOperations.setSelectedEvent,
+	clearSelectedEvent: calendarOperations.setSelectedEvent
 };
 
 export default compose(

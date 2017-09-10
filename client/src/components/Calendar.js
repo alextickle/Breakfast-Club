@@ -58,12 +58,16 @@ const Calendar = props => {
 			<div className="polaroid">
 				{props.selectedEventId &&
 					props.selectedEventId === props.event.id &&
+					props.clearSelectedEvent() &&
 					<Redirect to="/current-event" />}
 				{props.selectedEventId &&
 					props.selectedEventId !== props.event.id &&
 					<Modal
 						isOpen={props.showModal}
-						onRequestClose={props.closeModal}
+						onRequestClose={() => {
+							props.clearSelectedEvent();
+							props.closeModal();
+						}}
 						style={customStyle}
 						contentLabel="Modal"
 					>
@@ -73,7 +77,10 @@ const Calendar = props => {
 			<div className="calendar-div">
 				<BigCalendar
 					events={mapEvents(props.data.events)}
-					onSelectEvent={props.openModal}
+					onSelectEvent={bevent => {
+						props.setSelectedEvent(bevent.id);
+						props.openModal();
+					}}
 				/>
 			</div>
 		</div>

@@ -7,19 +7,23 @@ const pastEventQuery = gql`
 			date
 			vote_status
 			place_1 {
+				id
 				name
 				image_url
 				yelp_rating
 				address_street
 			}
 			place_2 {
+				id
 				name
 				image_url
 				yelp_rating
 				address_street
 			}
 			guestLists {
+				id
 				user {
+					id
 					firstName
 					lastName
 				}
