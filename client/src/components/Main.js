@@ -2,7 +2,7 @@ import { Route, Switch, Redirect } from 'react-router-dom';
 import React from 'react';
 import '../style/App.css';
 
-// import AdminPageContainer from '../routes/AdminPage';
+import AdminPageContainer from '../routes/AdminPage';
 import CurrentEventContainer from '../containers/CurrentEventContainer';
 import PlacesContainer from '../containers/PlacesContainer';
 import UserProfileContainer from '../containers/UserProfileContainer';
@@ -66,8 +66,15 @@ const Main = props =>
 					render={() =>
 						props.userEmail ? <CurrentEventContainer /> : <Redirect to="/" />}
 				/>
+				<Route
+					exact
+					path="/admin"
+					render={() =>
+						props.admin && props.userEmail
+							? <AdminPageContainer />
+							: <Redirect to="/404" />}
+				/>
 				<Route exact path="/404" component={PageNotFound} />
-				<Route exact path="/test" render={() => <h1>Test</h1>} />
 			</Switch>
 		</main>
 	</div>;
