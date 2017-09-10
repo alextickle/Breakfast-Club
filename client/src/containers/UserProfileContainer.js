@@ -1,6 +1,8 @@
 import { graphql, compose } from 'react-apollo';
 import { connect } from 'react-redux';
 import userQuery from '../queries/userQuery';
+import updateUserMutation from '../mutations/updateUserMutation';
+import deactivateUserMutation from '../mutations/deactivateUserMutation';
 import UserProfile from '../routes/UserProfile';
 import userProfileOperations from '../state/ducks/userProfile/operations';
 import userEmailOperations from '../state/ducks/userEmail/operations';
