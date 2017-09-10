@@ -1,22 +1,16 @@
 import React from 'react';
-import PlaceTableRow from './PlaceTableRow';
+import EventTableRow from './EventTableRow';
 
-const PlaceSearchBar = props => {
-	let filtered = props.places.filter(place => {
+const EventSearchBar = props => {
+	let filtered = props.events.filter(event => {
 		return (
-			place.name.toLowerCase().indexOf(props.searchTerm.toLowerCase()) !== -1 ||
-			place.yelp_rating.toString().indexOf(props.searchTerm.toLowerCase()) !==
-				-1 ||
-			place.price.indexOf(props.searchTerm) !== -1 ||
-			place.address_street
+			event.place.name
 				.toLowerCase()
-				.indexOf(props.searchTerm.toLowerCase()) !== -1 ||
-			place.phone.toString().indexOf(props.searchTerm.toLowerCase()) !== -1 ||
-			place.active.toString().indexOf(props.searchTerm.toLowerCase()) !== -1
+				.indexOf(this.state.searchTerm.toLowerCase()) !== -1
 		);
 	});
-	let mappedFilter = filtered.map(place =>
-		<PlaceTableRow place={place} key={place.id} />
+	let mappedFilter = filtered.map(event =>
+		<EventTableRow event={event} key={event.id} />
 	);
 
 	return (

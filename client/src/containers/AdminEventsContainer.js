@@ -1,16 +1,12 @@
 import { graphql, compose } from 'react-apollo';
 import { connect } from 'react-redux';
-import usersQuery from '../queries/usersQuery';
-import AdminUsers from '../components/Admin/AdminUsers';
+import eventsQuery from '../queries/eventsQuery';
+import AdminEvents from '../components/Admin/AdminEvents';
 import adminOperations from '../state/ducks/admin/operations';
 
 const mapStateToProps = state => ({
-	firstName: state.adminOperations.firstName,
-	lastName: state.adminOperations.lastName,
-	email: state.adminOperations.email,
-	neighborhood: state.adminOperations.neighborhood,
-	password: state.adminOperations.password,
-	verifyPassword: state.adminOperations.verifyPassword
+	date: state.adminOperations.date,
+	speaker: state.adminOperations.speaker
 });
 
 const mapDispatchToProps = {
@@ -22,5 +18,5 @@ const mapDispatchToProps = {
 
 export default compose(
 	connect(mapStateToProps, mapDispatchToProps),
-	graphql(usersQuery)
-)(AdminUsers);
+	graphql(eventsQuery)
+)(AdminEvents);

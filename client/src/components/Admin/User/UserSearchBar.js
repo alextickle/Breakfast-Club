@@ -6,21 +6,21 @@ const UserSearchBar = props => {
 				return (
 					user.firstName
 						.toLowerCase()
-						.indexOf(this.state.searchTerm.toLowerCase()) !== -1 ||
+						.indexOf(props.searchTerm.toLowerCase()) !== -1 ||
 					user.lastName
 						.toLowerCase()
-						.indexOf(this.state.searchTerm.toLowerCase()) !== -1 ||
+						.indexOf(props.searchTerm.toLowerCase()) !== -1 ||
 					user.email
 						.toLowerCase()
-						.indexOf(this.state.searchTerm.toLowerCase()) !== -1 ||
+						.indexOf(props.searchTerm.toLowerCase()) !== -1 ||
 					user.neighborhood
 						.toLowerCase()
-						.indexOf(this.state.searchTerm.toLowerCase()) !== -1 ||
-					user.admin.toString().indexOf(this.state.searchTerm.toLowerCase()) !==
+						.indexOf(props.searchTerm.toLowerCase()) !== -1 ||
+					user.admin.toString().indexOf(props.searchTerm.toLowerCase()) !==
 						-1 ||
 					user.active
 						.toString()
-						.indexOf(this.state.searchTerm.toLowerCase()) !== -1
+						.indexOf(props.searchTerm.toLowerCase()) !== -1
 				);
 			});
 			let mappedFilter = filtered.map(user => {
@@ -35,8 +35,8 @@ const UserSearchBar = props => {
 					size="72"
 					type="search"
 					placeholder="Search"
-					value={this.state.searchTerm}
-					onChange={this.updateSearch.bind(this)}
+					value={props.searchTerm}
+					onChange={e => props.updateSearchTerm(e.target.value)}
 				/>
 				<br />
 				<br />

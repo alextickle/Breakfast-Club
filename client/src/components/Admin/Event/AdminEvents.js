@@ -1,22 +1,22 @@
 import React, from 'react';
-import PlaceSearchBar from './PlaceSearchBar';
-import PlaceModal from './PlaceModal';
-import PlaceTableRow from './PlaceTableRow';
+import EventSearchBar from './EventSearchBar';
+import EventModal from './EventModal';
+import EventTableRow from './EventTableRow';
 
-const AdminPlaces = props => {
+const AdminEvents = props => {
 	if (props.places.loading) {
 		return <h1>Loading...</h1>;
 	}
 	return (
 		<div className="admin-page">
-			<p>Places</p>
+			<p>Events</p>
 			<div className="search_bar_wrapper">
 				<button className="add_button" type="button" onClick={props.openModal}>
-					+ place
+					+ event
 				</button>
-				<PlaceSearchBar
+				<EventSearchBar
 					updateSearchTerm={props.updateSearchTerm}
-					places={props.placesQuery.places}
+					places={props.eventsQuery.events}
 				/>
 			</div>
 			<br />
@@ -25,7 +25,7 @@ const AdminPlaces = props => {
 				<span id="x" onClick={props.closeModal}>
 					&times;
 				</span>
-				<PlaceModal
+				<EventModal
 					name={props.name}
 					yelp_rating={props.yelp_rating}
 					categories={props.categories}
@@ -39,4 +39,4 @@ const AdminPlaces = props => {
 		</div>
 	);
 };
-export default AdminPlaces;
+export default AdminEvents;

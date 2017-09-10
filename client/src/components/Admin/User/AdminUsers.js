@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import SearchBar from './AdminSearchBar';
-import AdminUserModal from './AdminUserModal';
-import AdminTable from './AdminTable';
+import UserSearchBar from './UserSearchBar';
+import UserModal from './UserModal';
+import UserTableRow from './UserTableRow';
 
 const AdminUsers = props => {
 	if (props.usersQuery.loading) {
@@ -14,7 +14,7 @@ const AdminUsers = props => {
 				<button className="add_button" type="button" onClick={props.openModal}>
 					+ user
 				</button>
-				<SearchBar
+				<UserSearchBar
 					updateSearchTerm={props.updateSearchTerm}
 					users={props.usersQuery.users}
 				/>
@@ -33,6 +33,7 @@ const AdminUsers = props => {
 					password={props.password}
 					verifyPassword={props.verifyPassword}
 					closeModal={props.closeModal}
+					addUser={props.addUser}
 				/>
 			</div>
 		</div>

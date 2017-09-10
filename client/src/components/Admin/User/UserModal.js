@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-const AdminUserModal = props =>
+const UserModal = props =>
 	<div>
 		<form
 			className="form"
@@ -78,4 +78,4 @@ const AdminUserModal = props =>
 		</form>
 	</div>;
 
-export default AdminUserModal;
+export default UserModal;

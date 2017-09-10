@@ -11,7 +11,15 @@ const initialState = {
 	email: '',
 	neighborhood: '',
 	password: '',
-	verifyPassword: ''
+	verifyPassword: '',
+	name: '',
+	yelp_rating: '',
+	categories: '',
+	price: '',
+	address_street: '',
+	phone: '',
+	date: '',
+	speaker: ''
 };
 
 const admin = (state = initialState, action) => {

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import moment from 'moment';
 
-const UserTableRow = props => {
+class UserTableRow extends Component {
 	constructor(props){
     super(props)
     this.state = {
@@ -107,11 +106,6 @@ const UserTableRow = props => {
 				onClick={this.handleClick.bind(this)}
 			/>
 		);
-	}
-
-	dateParser(date) {
-		let newDate = moment(date).format('MMMM D, YYYY - h:mm a');
-		return newDate;
 	}
 
 	render() {

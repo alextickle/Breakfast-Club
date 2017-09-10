@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import moment from 'moment';
 
-const UserTableRow = props => {
+class EventTableRow extends Component {
 	constructor(props){
     super(props)
     this.state = {
-      user: this.props.user,
+      event: this.props.event,
       deleteIcon: '../Images/delete.png',
       editIcon: '../Images/edit.png',
       readOnly: true,
@@ -62,23 +62,23 @@ const UserTableRow = props => {
 				title: 'edit',
 				className: 'read-only table-row'
 			});
-			props.updateUser(props.user);
+			props.updatePlace(props.place);
 		} else if (this.state.deleteIcon === '../Images/hover-delete.png') {
 			if (
 				window.confirm(
-					"Hold up! Deleting will also delete any linked places, events or users. Consider deactivating instead. Click 'OK' to delete, 'Cancel' to cancel"
+					"Hold up! Are you sure? Click 'OK' to delete, 'Cancel' to cancel"
 				)
 			) {
-				props.delete(this.state.user.id);
+				props.delete(this.state.event.id);
 			}
 		}
 	}
 
 	handleEdit(e) {
 		let target = e.nativeEvent.target;
-		let user = this.state.user;
-			user[target.name] = target.value;
-			this.setState({ user: user });
+		let event = this.state.event;
+			event[target.name] = target.value;
+			this.setState({ event: event });
 	}
 
 	deleteIcon() {
@@ -109,78 +109,36 @@ const UserTableRow = props => {
 		);
 	}
 
-	dateParser(date) {
-		let newDate = moment(date).format('MMMM D, YYYY - h:mm a');
-		return newDate;
-	}
-
 	render() {
 			return (
 				<div className={this.state.className}>
-					<div className="table-row-item firstName">
-						<input
-							name="firstName"
-							value={this.state.user.firstName}
-							onChange={this.handleEdit.bind(this)}
-							disabled={this.state.readOnly}
-							size="9"
-						/>
-					</div>
-					<div className="table-row-item lastName">
-						<input
-							name="lastName"
-							value={this.state.user.lastName}
-							onChange={this.handleEdit.bind(this)}
-							disabled={this.state.readOnly}
-							size="11"
-						/>
-					</div>
-					<div className="table-row-item email">
-						<input
-							name="email"
-							value={this.state.user.email}
-							onChange={this.handleEdit.bind(this)}
-							disabled={this.state.readOnly}
-							size="30"
-						/>
-					</div>
-					<div className="table-row-item neighborhood">
-						<input
-							name="neighborhood"
-							value={this.state.user.neighborhood}
-							onChange={this.handleEdit.bind(this)}
-							disabled={this.state.readOnly}
-							size="17"
-						/>
-					</div>
-					<div className="table-row-item admin">
-						<input
-							name="admin"
-							value={this.state.user.admin}
-							onChange={this.handleEdit.bind(this)}
-							disabled={this.state.readOnly}
-							size="7"
-						/>
-					</div>
-					<div className="table-row-item active">
-						<input
-							name="active"
-							value={this.state.user.active}
-							onChange={this.handleEdit.bind(this)}
-							disabled={this.state.readOnly}
-							size="7"
-						/>
-					</div>
-					<div className="table-row-item icon">
-						{this.deleteIcon()}
-					</div>
-					<div className="table-row-item icon">
-						{this.editIcon()}
-					</div>
-				</div>
+        <div className='table-row-item date'>
+          <input
+            size='40'
+            name='date'
+            value={this.dateParser(this.state.event.date)}
+            onChange={this.handleEdit.bind(this)}
+            disabled={this.state.readOnly} /></div>
+        <div className='table-row-item speaker'>
+          <input  name='speaker'
+                  value={this.state.event.speaker}
+                  onChange={this.handleEdit.bind(this)}
+                  disabled={this.state.readOnly}
+                  size='20'/>
+        </div>
+        <div className='table-row-item upcoming'>
+          <input  name='active'
+                  value={this.state.event.active}
+                  onChange={this.handleEdit.bind(this)}
+                  disabled={this.state.readOnly}
+                  size='7'/>
+        </div>
+        <div className="icon table-row-item">{this.deleteIcon()}</div>
+        <div className="icon table-row-item">{this.editIcon()}</div>
+      </div>
 			);
 		}
 	}
 }
 
-export default UserTableRow;
+export default EventTableRow;

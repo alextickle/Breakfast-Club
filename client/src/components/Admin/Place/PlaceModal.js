@@ -27,7 +27,7 @@ const PlaceModal = props =>
 						type="text"
 						name="yelp_rating"
 						id="yelp_rating"
-						value={this.state.place.yelp_rating}
+						value={props.yelp_rating}
 						onChange={props.updateFieldValue}
 					/>
 				</div>
@@ -37,7 +37,7 @@ const PlaceModal = props =>
 						type="text"
 						name="categories"
 						id="categories"
-						value={this.state.place.categories}
+						value={props.categories}
 						onChange={props.updateFieldValue}
 					/>
 				</div>
@@ -47,7 +47,7 @@ const PlaceModal = props =>
 						type="text"
 						name="price"
 						id="price"
-						value={this.state.place.price}
+						value={props.price}
 						onChange={props.updateFieldValue}
 					/>
 				</div>
@@ -57,7 +57,7 @@ const PlaceModal = props =>
 						type="text"
 						name="address_street"
 						id="address_street"
-						value={this.state.place.address_street}
+						value={props.address_street}
 						onChange={props.updateFieldValue}
 					/>
 				</div>
@@ -67,7 +67,7 @@ const PlaceModal = props =>
 						type="text"
 						name="phone"
 						id="phone"
-						value={this.state.place.phone}
+						value={props.phone}
 						onChange={props.updateFieldValue}
 					/>
 				</div>
