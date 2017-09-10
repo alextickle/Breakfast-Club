@@ -3,6 +3,7 @@ const Bevent = require('./models').Bevent;
 const Message = require('./models').Message;
 const GuestList = require('./models').GuestList;
 const Place = require('./models').Place;
+const moment = require('moment');
 
 const resolvers = {
 	Query: {
@@ -120,6 +121,76 @@ const resolvers = {
 					where: { id: args.userId }
 				})
 			);
+		},
+		addEvent() {
+			let attendeeIds = [];
+			let promises = [];
+			let eventId;
+			let temp;
+			return User.findAll({ where: { rsvp: true } })
+				.then(attendees => {
+					attendees.forEach(attendee => {
+						attendeeIds.push(attendee.id);
+						temp = User.update(
+							{ rsvp: false },
+							{
+								where: { id: attendee.id }
+							}
+						);
+						promises.push(temp);
+					});
+					return Promise.all(promises);
+				})
+				.then(() =>
+					Bevent.findOne({
+						limit: 1,
+						order: [['date', 'DESC']]
+					})
+				)
+				.then(bevent => {
+					eventId = bevent.id;
+					return Bevent.update(
+						{ vote_status: false },
+						{ where: { id: bevent.id } }
+					);
+				})
+				.then(() => GuestList.findAll({ where: { event_id: eventId } }))
+				.then(guestLists => {
+					promises = [];
+					attendeeIds.forEach(id => {
+						temp = GuestList.update(
+							{ attended: true },
+							{ where: { event_id: eventId } }
+						);
+						promises.push(temp);
+					});
+					return Promise.all(promises);
+				})
+				.then(() => Place.findAll())
+				.then(places => {
+					_places = places;
+					let num = _places.length;
+					let index1 = Math.floor(Math.random() * num);
+					let index2 = index1;
+					while (index2 == index1) {
+						index2 = Math.floor(Math.random() * num);
+					}
+					_place_id_1 = _places[index1].id;
+					_place_id_2 = _places[index2].id;
+				})
+				.then(() => {
+					let date = moment().hour(8).day(12).minute(0).second(0);
+					return Bevent.create({
+						place_1_id: _place_id_1,
+						place_2_id: _place_id_2,
+						date: date,
+						winner: null,
+						createdAt: Date.now(),
+						updatedAt: Date.now()
+					});
+				})
+				.then(bevent => Promise.resolve(bevent.id))
+				.catch(error => Promise.reject('addEvent failed'));
 		}
 	}
 };

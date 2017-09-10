@@ -6,8 +6,22 @@ import Reminder from '../components/Reminder';
 import Header from '../components/Header';
 
 const Home = props => {
+	const checkIfNewEventNeeded = {
+		let eventDate = new Date(props.event.date).getTime();
+		let todaysDate = Date.now();
+		if (todaysDate + 7200000 >= eventDate) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+	
 	if (props.userQuery.loading || props.currentEventQuery.loading) {
 		return <h1>Loading</h1>;
+	}
+	if (checkIfNewEventNeeded()){
+		props.addEvent();
 	}
 	return (
 		<div className="wrapper">

@@ -5,7 +5,7 @@ import '../style/App.css';
 // import AdminPageContainer from '../routes/AdminPage';
 import CurrentEventContainer from '../containers/CurrentEventContainer';
 import PlacesContainer from '../containers/PlacesContainer';
-// import UserProfileContainer from '../containers/UserProfileContainer';
+import UserProfileContainer from '../containers/UserProfileContainer';
 import UserSignUpContainer from '../containers/UserSignUpContainer';
 import SplashPage from '../routes/SplashPage';
 import UserLoginContainer from '../containers/UserLoginContainer';
@@ -41,6 +41,12 @@ const Main = props =>
 					path="/places"
 					render={() =>
 						props.userEmail ? <PlacesContainer /> : <Redirect to="/" />}
+				/>
+				<Route
+					exact
+					path="/profile"
+					render={() =>
+						props.userEmail ? <UserProfileContainer /> : <Redirect to="/" />}
 				/>
 				<Route
 					exact

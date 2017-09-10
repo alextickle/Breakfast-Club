@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import SideBar from '../components/SideBar';
 import SideBarMini from '../components/SideBarMini';
-import { editUser, logout } from '../actions/UserActions';
 // import MyUploader from '../components/PhotoUpload'
 import Header from '../components/Header';
 import Input from '../components/Input';
@@ -23,9 +22,9 @@ class UserProfile extends Component {
 		return (
 			<img
 				id="edit_icon"
-				src={this.state.editIcon}
+				src="./Images/edit.png"
 				alt="edit"
-				title={this.state.title}
+				title="edit"
 				onMouseEnter={this.handleMouseEnter.bind(this)}
 				onMouseLeave={this.handleMouseLeave.bind(this)}
 				onClick={this.handleClick.bind(this)}

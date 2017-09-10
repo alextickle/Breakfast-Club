@@ -26,5 +26,20 @@ export default compose(
 			variables: { email: props.userEmail }
 		})
 	}),
-	graphql(addMessageMutation)
+	graphql(addMessageMutation, {
+		props: ({ ownProps, mutate }) => ({
+			addMessage: (content, userId) =>
+				mutate({
+					variables: {
+						content: content,
+						user_id: userId
+					},
+					update: (store, { data: { addMessage } }) => {
+						const data = store.readQuery({ query: messagesQuery });
+						data.messages.push(addMessage);
+						store.writeQuery({ query: messagesQuery, data });
+					}
+				})
+		})
+	})
 )(MessageBoardToggle);

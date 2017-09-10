@@ -14,7 +14,7 @@ const MessageBoardToggle = props => {
 			<ToggleDisplay show={props.showMessageBoard}>
 				<MessageBoard
 					messages={props.messagesQuery.messages}
-					mutate={props.mutate}
+					addMessage={props.addMessage}
 					user={props.userQuery.user}
 				/>
 			</ToggleDisplay>

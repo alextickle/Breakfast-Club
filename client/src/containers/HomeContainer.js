@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { graphql, compose } from 'react-apollo';
 import userQuery from '../queries/userQuery';
 import currentEventQuery from '../queries/currentEventQuery';
+import addEventMutation from '../mutations/addEventMutation';
 import userEmailOperations from '../state/ducks/userEmail/operations';
 
 const mapStateToProps = state => ({
@@ -23,5 +24,17 @@ export default compose(
 	}),
 	graphql(currentEventQuery, {
 		name: 'currentEventQuery'
+	}),
+	graphql(addEventMutation, {
+		props: ({ ownProps, mutate }) => ({
+			addEvent: () =>
+				mutate({
+					refetchQueries: [
+						{
+							query: currentEventQuery
+						}
+					]
+				})
+		})
 	})
 )(Home);

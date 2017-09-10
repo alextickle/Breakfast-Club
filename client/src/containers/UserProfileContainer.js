@@ -1,11 +1,19 @@
-import { graphql } from "react-apollo";
-import userQuery from "../queries/userQuery";
-import UserProfile from "../routes/UserProfile";
+import { graphql, compose } from 'react-apollo';
+import { connect } from 'react-redux';
+import userQuery from '../queries/userQuery';
+import UserProfile from '../routes/UserProfile';
 
-const UserProfileContainer = graphql(userQuery, {
-  options: props => ({
-    variables: { id: props.user.id }
-  })
-})(UserProfile);
+const mapStateToProps = state => ({
+	userEmail: state.userEmail
+});
 
-export default UserProfileContainer;
+const mapDispatchToProps = {};
+
+export default compose(
+	connect(mapStateToProps, mapDispatchToProps),
+	graphql(userQuery, {
+		options: props => ({
+			variables: { email: props.userEmail }
+		})
+	})
+)(UserProfile);

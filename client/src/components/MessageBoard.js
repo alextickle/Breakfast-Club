@@ -27,20 +27,7 @@ const MessageBoard = props => {
 
 	const handleSubmit = e => {
 		e.preventDefault();
-		props.mutate({
-			variables: {
-				content: this.input.value,
-				user_id: props.user.id
-			},
-			update: (store, { data: { addMessage } }) => {
-				// Read data from cache for this query.
-				const data = store.readQuery({ query: messagesQuery });
-				// Add message mutation data to end.
-				data.messages.push(addMessage);
-				// Write data back to cache.
-				store.writeQuery({ query: messagesQuery, data });
-			}
-		});
+		props.addMessage(e.target.value, props.user.id);
 		this.input.value = '';
 	};
 

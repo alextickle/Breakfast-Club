@@ -1,0 +1,5 @@
+const TOGGLE_MESSAGE_BOARD = 'messageBoard/TOGGLE_MESSAGE_BOARD';
+
+export default {
+	TOGGLE_MESSAGE_BOARD
+};
