@@ -26,9 +26,18 @@ export const updateSearchTerm = term => {
 	};
 };
 
+export const updateFieldValue = e => {
+	return {
+		type: types.UPDATE_FIELD_VALUE,
+		field: e.target.name,
+		value: e.target.value
+	};
+};
+
 export default {
 	setActiveButton,
 	openModal,
 	closeModal,
-	updateSearchTerm
+	updateSearchTerm,
+	updateFieldValue
 };
