@@ -25,32 +25,49 @@ export default compose(
 	}),
 	graphql(registerVoteMutation, {
 		props: ({ ownProps, mutate }) => ({
-			registerVote: (userId, eventId, choice) => {
-				console.log('userId: ', userId);
-				console.log('eventId: ', eventId);
-				console.log('choice: ', choice);
+			registerVote: (userId, eventId, choice) =>
 				mutate({
 					variables: {
 						userId,
 						eventId,
 						choice
+					},
+					update: (store, { data: { registerVote } }) => {
+						let data = store.readQuery({
+							query: currentEventQuery
+						});
+						data.currentEvent.guestLists.push(registerVote);
+						store.writeQuery({
+							query: currentEventQuery,
+							data
+						});
+						data = store.readQuery({
+							query: userQuery,
+							variables: {
+								email: ownProps.userEmail
+							}
+						});
+						data.user.voted = true;
+						store.writeQuery({
+							query: userQuery,
+							variables: {
+								email: ownProps.userEmail
+							},
+							data
+						});
 					}
-				});
-			}
+				})
 		})
 	}),
 	graphql(registerRSVPMutation, {
 		props: ({ ownProps, mutate }) => ({
-			registerRSVP: (userId, rsvpStatus) => {
-				console.log('userId: ', userId);
-				console.log('rsvpStatus: ', rsvpStatus);
+			registerRSVP: (userId, rsvpStatus) =>
 				mutate({
 					variables: {
-						userId: userId,
-						rsvpStatus: rsvpStatus
+						userId,
+						rsvpStatus
 					}
-				});
-			}
+				})
 		})
 	})
 )(CurrentEvent);

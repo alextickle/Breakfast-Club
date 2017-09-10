@@ -75,7 +75,7 @@ const typeDefs = `
     login(email: String!, password: String!): String
     signUp(firstName: String!, lastName: String!, neighborhood: String!, email: String!, password: String!): String
     registerRSVP(userId: String!, rsvpStatus: Boolean!): User
-    registerVote(userId: String!, eventId: String!, choice: Int!): Bevent
+    registerVote(userId: String!, eventId: String!, choice: Int!): GuestList
   }
 `;
 

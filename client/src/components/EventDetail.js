@@ -3,7 +3,6 @@ import RSVPButton from './RSVPButton';
 import EventChoice from './EventChoice';
 
 const EventDetail = props => {
-	console.log('event detail', props);
 	let winner;
 	if (props.event.winner) {
 		if (props.event.winner === 1) {
@@ -18,7 +17,7 @@ const EventDetail = props => {
 		guestList = <div className="flex-item">No RSVPs yet</div>;
 	} else {
 		//if one or more users have RSVPd, return the user's first name and first initial of the last name
-		guestList = props.event.guestLists.map(function(guestList, i) {
+		guestList = props.event.guestLists.map((guestList, i) => {
 			return (
 				<span className="flex-item" key={i}>
 					{guestList.user.firstName}&nbsp;{guestList.user.lastName.slice(0, 1)}.,

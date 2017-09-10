@@ -86,35 +86,30 @@ const resolvers = {
 				.catch(error => Promise.reject('signUp failed'));
 		},
 		registerVote(root, args) {
-			return GuestList.create({
-				vote: args.choice,
-				event_id: args.eventId,
-				user_id: args.userId
-			}).then(() =>
-				User.update(
-					{ voted: true },
-					{
-						where: { id: args.userId }
-					}
+			return User.update(
+				{ voted: true },
+				{
+					where: { id: args.userId }
+				}
+			)
+				.then(() =>
+					GuestList.create({
+						vote: args.choice,
+						event_id: args.eventId,
+						user_id: args.userId
+					})
 				)
-			);
-			then(() =>
-				Bevent.find({
-					where: { id: args.eventId },
-					include: [
-						{
-							model: GuestList,
-							as: 'guestLists',
-							include: [{ model: User, as: 'user' }]
+				.then(() =>
+					GuestList.find({
+						where: {
+							event_id: args.eventId,
+							user_id: args.userId
 						},
-						{ model: Place, as: 'place_1' },
-						{ model: Place, as: 'place_2' }
-					]
-				})
-			);
+						include: [{ model: User, as: 'user' }]
+					})
+				);
 		},
 		registerRSVP(root, args) {
-			console.log(args);
 			return User.update(
 				{ rsvp: args.rsvpStatus },
 				{

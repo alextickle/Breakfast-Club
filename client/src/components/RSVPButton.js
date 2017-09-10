@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 
 const RSVPButton = props => {
-	console.log('rsvp button', props);
 	return (
 		<div className="rsvp-button">
 			<form className={props.user.rsvp ? 'rsvp yes' : 'rsvp no'}>
