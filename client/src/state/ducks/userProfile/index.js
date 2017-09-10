@@ -1,5 +1,5 @@
 import reducer from './reducers';
 
-export { default as messageBoardOperations } from './operations';
+export { default as userProfileOperations } from './operations';
 
 export default reducer;

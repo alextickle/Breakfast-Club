@@ -122,6 +122,23 @@ const resolvers = {
 				})
 			);
 		},
+		deactivateUser(root, args) {
+			return User.update(
+				{ active: false },
+				{
+					where: { email: args.email }
+				}
+			).then(() => Promise.resolve(args.email));
+		},
+		updateUser(root, args) {
+			return User.update(args.data, {
+				where: { email: args.email }
+			}).then(() =>
+				User.find({
+					where: { email: args.email }
+				})
+			);
+		},
 		addEvent() {
 			let attendeeIds = [];
 			let promises = [];

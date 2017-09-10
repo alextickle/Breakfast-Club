@@ -1,5 +1,3 @@
-//AdminPage fetches the data and passes props to AdminUsers, AdminPlaces, AdminEvents
-
 import React, { Component } from 'react';
 import AdminUsers from '../components/Admin/AdminUsers';
 import AdminPlaces from '../components/Admin/AdminPlaces';

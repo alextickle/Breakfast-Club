@@ -1,206 +1,163 @@
-import React, { Component } from 'react';
+import React from 'react';
 import SideBar from '../components/SideBar';
 import SideBarMini from '../components/SideBarMini';
-// import MyUploader from '../components/PhotoUpload'
 import Header from '../components/Header';
 import Input from '../components/Input';
 import AdminKey from '../components/Admin/AdminKey';
 
-class UserProfile extends Component {
-	constructor(props) {
-		super(props);
-		this.state = {
-			user: this.props.user,
-			editIcon: '../Images/edit.png',
-			readOnly: true,
-			title: 'edit',
-			header: 'Edit Profile'
-		};
+const UserProfile = props => {
+	if (props.userQuery.loading) {
+		return <h1>Loading...</h1>;
 	}
+	props.setInitialUserData(props.userQuery.data.user);
 
-	editIcon() {
-		return (
-			<img
-				id="edit_icon"
-				src="./Images/edit.png"
-				alt="edit"
-				title="edit"
-				onMouseEnter={this.handleMouseEnter.bind(this)}
-				onMouseLeave={this.handleMouseLeave.bind(this)}
-				onClick={this.handleClick.bind(this)}
-			/>
-		);
-	}
-
-	handleMouseEnter(e) {
-		if (
-			e.target.id === 'edit_icon' &&
-			this.state.editIcon === '../Images/edit.png'
-		) {
-			this.setState({ editIcon: '../Images/hover-edit.png' });
-		} else {
-			return '';
-		}
-	}
-
-	handleMouseLeave(e) {
-		if (
-			e.target.id === 'edit_icon' &&
-			this.state.editIcon === '../Images/hover-edit.png'
-		) {
-			this.setState({ editIcon: '../Images/edit.png' });
-		} else {
-			return '';
-		}
-	}
-
-	handleClick() {
-		if (this.state.editIcon === '../Images/hover-edit.png') {
-			this.setState({
+	const handleClick = () => {
+		if (props.editIcon === '../Images/hover-edit.png') {
+			props.setSaveState({
 				editIcon: '../Images/save.png',
 				readOnly: false,
 				title: 'save',
 				className: 'editable',
 				header: 'Save Profile'
 			});
-			this.handleEdit.bind(this);
-		} else if (this.state.editIcon === '../Images/save.png') {
-			this.setState({
+		} else if (props.editIcon === '../Images/save.png') {
+			props.setSaveState({
 				editIcon: '../Images/edit.png',
 				readOnly: true,
 				title: 'edit',
 				className: 'read-only',
 				header: 'Edit Profile'
 			});
-			this.handleSave();
+			props.updateUser({
+				firstName: props.firstName,
+				lastName: props.lastName,
+				email: props.email,
+				neighborhood: props.neighborhood
+			});
 		} else {
 			return '';
 		}
-	}
+	};
 
-	handleEdit(e) {
-		let target = e.target;
-		let user = this.state.user;
-		user[target.name] = target.value;
-		this.setState({
-			user: user
-		});
-	}
-
-	handleSave() {
-		editUser(this.state.user);
-	}
-
-	handleDeactivate(e) {
-		let target = e.target;
-		let user = this.state.user;
-		user[target.id] = false;
-		this.setState({
-			user: user
-		});
+	const handleDeactivate = e => {
 		if (window.confirm('You really wanna leave us?')) {
-			editUser(this.state.user);
-			logout();
+			props.deactivateUser(props.userEmail);
+			props.logout();
 		}
-	}
+	};
 
-	render() {
-		let isAdmin =
-			this.state.user.admin &&
-			this.state.user.email !== 'breakfastclub.sd@gmail.com';
-
-		return (
-			<div className="wrapper">
-				<SideBar />
-				<div className="profile-page">
-					<div className="nested">
-						<Header />
-						<SideBarMini />
-						<div className="welcome-user">
-							Welcome, {this.state.user.firstName}
-						</div>
-						<div className="edit-wrapper">
-							<div className="edit">
-								<Input size="10" disabled="true" value={this.state.header} />
-							</div>
-							<div className="edit-icon">
-								{this.editIcon()}
-							</div>
-						</div>
-						<table className="profile-table">
-							<tbody>
-								<tr>
-									<td className="field">First Name:</td>
-									<td>
-										<input
-											className={this.state.className}
-											name="firstName"
-											type="text"
-											disabled={this.state.readOnly}
-											value={this.state.user.firstName}
-											onChange={this.handleEdit.bind(this)}
-										/>
-									</td>
-								</tr>
-								<tr>
-									<td className="field">Last Name:</td>
-									<td>
-										<input
-											className={this.state.className}
-											name="lastName"
-											type="text"
-											disabled={this.state.readOnly}
-											value={this.state.user.lastName}
-											onChange={this.handleEdit.bind(this)}
-										/>
-									</td>
-								</tr>
-								<tr>
-									<td className="field">Email Address:</td>
-									<td>
-										<input
-											className={this.state.className}
-											size="30"
-											type="email"
-											name="email"
-											disabled={this.state.readOnly}
-											value={this.state.user.email}
-											onChange={this.handleEdit.bind(this)}
-										/>
-									</td>
-								</tr>
-								<tr>
-									<td className="field">Neighborhood:</td>
-									<td>
-										<input
-											type="text"
-											className={this.state.className}
-											name="neighborhood"
-											disabled={this.state.readOnly}
-											value={this.state.user.neighborhood}
-											onChange={this.handleEdit.bind(this)}
-										/>
-									</td>
-								</tr>
-							</tbody>
-						</table>
-						<p
-							className="delete"
-							onClick={this.handleDeactivate.bind(this)}
-							id="active"
-						>
-							deactivate my account
-						</p>
+	return (
+		<div className="wrapper">
+			<SideBar />
+			<div className="profile-page">
+				<div className="nested">
+					<Header />
+					<SideBarMini />
+					<div className="welcome-user">
+						Welcome, {props.firstName}
 					</div>
+					<div className="edit-wrapper">
+						<div className="edit">
+							<Input size="10" disabled="true" value={this.state.header} />
+						</div>
+						<div className="edit-icon">
+							{
+								<img
+									id="edit_icon"
+									src={props.editIcon}
+									alt="edit"
+									title={props.title}
+									onMouseEnter={e =>
+										e.target.id === 'edit_icon' &&
+										props.editIcon === '../Images/edit.png'
+											? props.setEditIconLink('../Images/hover-edit.png')
+											: ''}
+									onMouseLeave={e =>
+										e.target.id === 'edit_icon' &&
+										props.editIcon === '../Images/hover-edit.png'
+											? props.setEditIconLink('../Images/edit.png')
+											: ''}
+									onClick={this.handleClick.bind(this)}
+								/>
+							}
+						</div>
+					</div>
+					<table className="profile-table">
+						<tbody>
+							<tr>
+								<td className="field">First Name:</td>
+								<td>
+									<input
+										className={props.className}
+										name="firstName"
+										type="text"
+										disabled={props.readOnly}
+										value={props.firstName}
+										onChange={props.updateUserData}
+									/>
+								</td>
+							</tr>
+							<tr>
+								<td className="field">Last Name:</td>
+								<td>
+									<input
+										className={props.className}
+										name="lastName"
+										type="text"
+										disabled={props.readOnly}
+										value={props.lastName}
+										onChange={props.updateUserData}
+									/>
+								</td>
+							</tr>
+							<tr>
+								<td className="field">Email Address:</td>
+								<td>
+									<input
+										className={props.className}
+										size="30"
+										type="email"
+										name="email"
+										disabled={props.readOnly}
+										value={props.email}
+										onChange={props.updateUserData}
+									/>
+								</td>
+							</tr>
+							<tr>
+								<td className="field">Neighborhood:</td>
+								<td>
+									<input
+										type="text"
+										className={props.className}
+										name="neighborhood"
+										disabled={props.readOnly}
+										value={props.neighborhood}
+										onChange={props.updateUserData}
+									/>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					<p
+						className="delete"
+						onClick={this.handleDeactivate.bind(this)}
+						id="active"
+					>
+						deactivate my account
+					</p>
 				</div>
-				<img
-					className="fruit-border"
-					src="../Images/fruit-border.jpg"
-					alt="fruit"
-				/>
-				{isAdmin && <AdminKey />}
 			</div>
-		);
-	}
-}
+			<img
+				className="fruit-border"
+				src="../Images/fruit-border.jpg"
+				alt="fruit"
+			/>
+			{props.userQuery.data.user.admin &&
+				props.userQuery.data.user.email !== 'breakfastclub.sd@gmail.com' &&
+				<AdminKey />}
+		</div>
+	);
+};
+
 export default UserProfile;
