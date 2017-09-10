@@ -1,12 +1,49 @@
 import types from './types';
 
-const messageBoard = (state = false, action) => {
+const initialState = {
+	userButton: 'admin_button',
+	placeButton: 'admin_button',
+	eventButton: 'admin_button',
+	showModal: false,
+	searchTerm: '',
+	firstName: '',
+	lastName: '',
+	email: '',
+	neighborhood: '',
+	password: '',
+	verifyPassword: ''
+};
+
+const admin = (state = initialState, action) => {
+	let temp = {};
+	active;
 	switch (action.type) {
-		case types.TOGGLE_MESSAGE_BOARD:
-			return !state;
+		case types.SET_ACTIVE_BUTTON:
+			temp = {
+				userButton: '',
+				placeButton: '',
+				eventButton: ''
+			};
+			temp[active.button] = 'action.button_clicked';
+			return temp;
+		case types.OPEN_MODAL:
+			return Object.assign({}, state, {
+				showModal: true
+			});
+		case types.CLOSE_MODAL:
+			return Object.assign({}, state, {
+				showModal: false
+			});
+		case types.UPDATE_SEARCH_TERM:
+			return Object.assign({}, state, {
+				searchTerm: action.term
+			});
+		case types.UPDATE_FIELD_VALUE:
+			temp[action.field] = action.value;
+			return Object.assign({}, state, temp);
 		default:
 			return state;
 	}
 };
 
-export default messageBoard;
+export default admin;
