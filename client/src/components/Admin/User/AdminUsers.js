@@ -1,7 +1,6 @@
-import React, { Component } from 'react';
+import React from 'react';
 import UserSearchBar from './UserSearchBar';
 import UserModal from './UserModal';
-import UserTableRow from './UserTableRow';
 
 const AdminUsers = props => {
 	if (props.usersQuery.loading) {

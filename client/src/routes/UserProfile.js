@@ -6,10 +6,10 @@ import Input from '../components/Input';
 import AdminKey from '../components/Admin/AdminKey';
 
 const UserProfile = props => {
-	if (props.userQuery.loading) {
+	if (props.data.loading) {
 		return <h1>Loading...</h1>;
 	}
-	props.setInitialUserData(props.userQuery.data.user);
+	props.setInitialUserData(props.data.user);
 
 	const handleClick = () => {
 		if (props.editIcon === '../Images/hover-edit.png') {
@@ -58,27 +58,26 @@ const UserProfile = props => {
 					</div>
 					<div className="edit-wrapper">
 						<div className="edit">
-							<Input size="10" disabled="true" value={this.state.header} />
+							<Input size="10" disabled="true" value={props.header} />
 						</div>
 						<div className="edit-icon">
-							{
-								<img
-									id="edit_icon"
-									src={props.editIcon}
-									alt="edit"
-									title={props.title}
-									onMouseEnter={e =>
-										e.target.id === 'edit_icon' &&
-										props.editIcon === '../Images/edit.png'
-											? props.setEditIconLink('../Images/hover-edit.png')
-											: ''}
-									onMouseLeave={e =>
-										e.target.id === 'edit_icon' &&
-										props.editIcon === '../Images/hover-edit.png'
-											? props.setEditIconLink('../Images/edit.png')
-											: ''}
-									onClick={this.handleClick.bind(this)}
-								/>
+							<img
+								id="edit_icon"
+								src={props.editIcon}
+								alt="edit"
+								title={props.title}
+								onMouseEnter={e =>
+									e.target.id === 'edit_icon' &&
+									props.editIcon === '../Images/edit.png'
+										? props.setEditIconLink('../Images/hover-edit.png')
+										: ''}
+								onMouseLeave={e =>
+									e.target.id === 'edit_icon' &&
+									props.editIcon === '../Images/hover-edit.png'
+										? props.setEditIconLink('../Images/edit.png')
+										: ''}
+								onClick={handleClick}
+							/>
 							}
 						</div>
 					</div>
@@ -139,11 +138,7 @@ const UserProfile = props => {
 							</tr>
 						</tbody>
 					</table>
-					<p
-						className="delete"
-						onClick={this.handleDeactivate.bind(this)}
-						id="active"
-					>
+					<p className="delete" onClick={handleDeactivate} id="active">
 						deactivate my account
 					</p>
 				</div>
@@ -153,8 +148,8 @@ const UserProfile = props => {
 				src="../Images/fruit-border.jpg"
 				alt="fruit"
 			/>
-			{props.userQuery.data.user.admin &&
-				props.userQuery.data.user.email !== 'breakfastclub.sd@gmail.com' &&
+			{props.data.user.admin &&
+				props.data.user.email !== 'breakfastclub.sd@gmail.com' &&
 				<AdminKey />}
 		</div>
 	);

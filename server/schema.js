@@ -2,6 +2,8 @@ const makeExecutableSchema = require('graphql-tools').makeExecutableSchema;
 const resolvers = require('./resolvers').resolvers;
 
 const typeDefs = `
+  scalar JSON
+
   type User {
     id: String
     firstName: String

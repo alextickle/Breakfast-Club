@@ -1,7 +1,6 @@
-import React, from 'react';
+import React from 'react';
 import EventSearchBar from './EventSearchBar';
 import EventModal from './EventModal';
-import EventTableRow from './EventTableRow';
 
 const AdminEvents = props => {
 	if (props.places.loading) {

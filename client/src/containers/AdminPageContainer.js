@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import AdminPage from '../routes/AdminPage';
+import adminOperations from '../state/ducks/admin/operations';
 
 const mapStateToProps = state => ({
 	userButton: state.admin.userButton,

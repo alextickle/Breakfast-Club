@@ -1,7 +1,7 @@
 import { graphql, compose } from 'react-apollo';
 import { connect } from 'react-redux';
 import usersQuery from '../queries/usersQuery';
-import AdminUsers from '../components/Admin/AdminUsers';
+import AdminUsers from '../components/Admin/User/AdminUsers';
 import adminOperations from '../state/ducks/admin/operations';
 
 const mapStateToProps = state => ({

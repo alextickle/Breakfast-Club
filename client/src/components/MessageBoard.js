@@ -1,7 +1,6 @@
 import React from 'react';
 import Moment from 'react-moment';
 import moment from 'moment';
-import messagesQuery from '../queries/messagesQuery';
 
 const MessageBoard = props => {
 	const syncToServerTime = input_date => moment(input_date).format();

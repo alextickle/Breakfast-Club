@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import Input from '../components/Input';
 import Header from '../components/Header';
@@ -44,7 +44,7 @@ const UserSignUp = props => {
 	};
 
 	const validateEmail = fieldName => {
-		const filter = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+		const filter = /^w+([.-]?w+)*@w+([.-]?w+)*(.w{2,3})+$/;
 		if (!filter.test(props[fieldName])) {
 			props.addError(fieldName, 'invalid email address');
 		}

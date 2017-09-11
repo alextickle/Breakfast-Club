@@ -4,7 +4,7 @@ export const setActiveButton = actions.setActiveButton;
 
 export const openModal = actions.openModal;
 
-export const setActiveButton = actions.setActiveButton;
+export const closeModal = actions.closeModal;
 
 export const updateSearchTerm = actions.updateSearchTerm;
 

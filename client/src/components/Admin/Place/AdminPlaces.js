@@ -1,7 +1,6 @@
-import React, from 'react';
+import React from 'react';
 import PlaceSearchBar from './PlaceSearchBar';
 import PlaceModal from './PlaceModal';
-import PlaceTableRow from './PlaceTableRow';
 
 const AdminPlaces = props => {
 	if (props.places.loading) {

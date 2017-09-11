@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import RSVPButton from './RSVPButton';
 import EventChoice from './EventChoice';
 

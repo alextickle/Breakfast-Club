@@ -2,7 +2,7 @@ import { Route, Switch, Redirect } from 'react-router-dom';
 import React from 'react';
 import '../style/App.css';
 
-import AdminPageContainer from '../routes/AdminPage';
+import AdminPageContainer from '../containers/AdminPageContainer';
 import CurrentEventContainer from '../containers/CurrentEventContainer';
 import PlacesContainer from '../containers/PlacesContainer';
 import UserProfileContainer from '../containers/UserProfileContainer';

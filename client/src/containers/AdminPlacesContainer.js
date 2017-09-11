@@ -1,7 +1,7 @@
 import { graphql, compose } from 'react-apollo';
 import { connect } from 'react-redux';
 import placesQuery from '../queries/placesQuery';
-import AdminPlaces from '../components/Admin/AdminPlaces';
+import AdminPlaces from '../components/Admin/Place/AdminPlaces';
 import adminOperations from '../state/ducks/admin/operations';
 
 const mapStateToProps = state => ({

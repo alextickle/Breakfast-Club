@@ -4,7 +4,7 @@ const PlaceListing = props =>
 	<div className="outside">
 		<ul className="list-background">
 			<li className="image">
-				<img src={props.place.image_url} />
+				<img src={props.place.image_url} alt={`${props.place.id}`} />
 			</li>
 
 			<br />

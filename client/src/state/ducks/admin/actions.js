@@ -22,7 +22,7 @@ export const closeModal = () => {
 export const updateSearchTerm = term => {
 	return {
 		type: types.UPDATE_SEARCH_TERM,
-		searchTerm: searchTerm
+		searchTerm: term
 	};
 };
 

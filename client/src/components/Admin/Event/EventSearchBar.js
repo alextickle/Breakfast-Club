@@ -42,4 +42,4 @@ const EventSearchBar = props => {
 	);
 };
 
-export default PlaceSearchBar;
+export default EventSearchBar;
