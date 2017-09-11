@@ -73,7 +73,7 @@ const resolvers = {
 				where: { email: args.email }
 			})
 				.then(user => {
-					if (user && user.verifyPassword(args.password)) {
+					if (user && user.verifyPassword(args.password) && user.active) {
 						return Promise.resolve({
 							email: user.email,
 							isAdmin: user.admin
