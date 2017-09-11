@@ -5,10 +5,10 @@ import updateUserMutation from '../mutations/updateUserMutation';
 import deactivateUserMutation from '../mutations/deactivateUserMutation';
 import UserProfile from '../routes/UserProfile';
 import userProfileOperations from '../state/ducks/userProfile/operations';
-import userEmailOperations from '../state/ducks/userEmail/operations';
+import userOperations from '../state/ducks/user/operations';
 
 const mapStateToProps = state => ({
-	userEmail: state.userEmail,
+	userEmail: state.user.email,
 	firstName: state.userProfile.firstName,
 	lastName: state.userProfile.lastName,
 	email: state.userProfile.email,

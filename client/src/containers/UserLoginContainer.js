@@ -3,7 +3,7 @@ import { graphql, compose } from 'react-apollo';
 import UserLogin from '../routes/UserLogin';
 import loginMutation from '../mutations/loginMutation';
 import loginOperations from '../state/ducks/login/operations';
-import userEmailOperations from '../state/ducks/userEmail/operations';
+import userOperations from '../state/ducks/user/operations';
 
 const mapStateToProps = (state, ownProps) => ({
 	email: state.login.email,
@@ -13,7 +13,7 @@ const mapStateToProps = (state, ownProps) => ({
 
 const mapDispatchToProps = {
 	handleChange: loginOperations.handleChange,
-	setUserEmail: userEmailOperations.setUserEmail
+	setUser: userOperations.setUser
 };
 
 export default compose(

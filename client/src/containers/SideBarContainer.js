@@ -1,13 +1,13 @@
 import SideBar from '../components/SideBar';
 import { connect } from 'react-redux';
-import userEmailOperations from '../state/ducks/userEmail/operations';
+import userOperations from '../state/ducks/user/operations';
 
 const mapStateToProps = state => ({
-	userEmail: state.userEmail
+	userEmail: state.user.email
 });
 
 const mapDispatchToProps = {
-	logout: userEmailOperations.clearUserEmail
+	logout: userOperations.logout
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(SideBar);

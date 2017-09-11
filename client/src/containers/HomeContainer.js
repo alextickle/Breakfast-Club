@@ -4,14 +4,14 @@ import { graphql, compose } from 'react-apollo';
 import userQuery from '../queries/userQuery';
 import currentEventQuery from '../queries/currentEventQuery';
 import addEventMutation from '../mutations/addEventMutation';
-import userEmailOperations from '../state/ducks/userEmail/operations';
+import userOperations from '../state/ducks/user/operations';
 
 const mapStateToProps = state => ({
-	userEmail: state.userEmail
+	userEmail: state.user.email
 });
 
 const mapDispatchToProps = {
-	logout: userEmailOperations.clearUserEmail
+	logout: userOperations.logout
 };
 
 export default compose(

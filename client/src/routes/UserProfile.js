@@ -91,7 +91,10 @@ const UserProfile = props => {
 										type="text"
 										disabled={props.readOnly}
 										value={props.firstName || props.data.user.firstName}
-										onChange={props.updateUserData}
+										onChange={e => {
+											console.log('called');
+											props.updateUserData;
+										}}
 									/>
 								</td>
 							</tr>

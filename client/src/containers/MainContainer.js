@@ -3,7 +3,8 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
 const mapStateToProps = state => ({
-	userEmail: state.userEmail
+	userEmail: state.user.email,
+	isAdmin: state.user.isAdmin
 });
 
 const mapDispatchToProps = {};

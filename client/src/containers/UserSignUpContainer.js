@@ -3,7 +3,7 @@ import { graphql, compose } from 'react-apollo';
 import UserSignUp from '../routes/UserSignUp';
 import signUpMutation from '../mutations/signUpMutation';
 import signUpOperations from '../state/ducks/signUp/operations';
-import userEmailOperations from '../state/ducks/userEmail/operations';
+import userOperations from '../state/ducks/user/operations';
 
 const mapStateToProps = state => ({
 	errors: state.signUp.errors,
@@ -19,7 +19,7 @@ const mapDispatchToProps = {
 	handleChange: signUpOperations.handleChange,
 	addError: signUpOperations.addError,
 	clearErrors: signUpOperations.clearErrors,
-	setUserEmail: userEmailOperations.setUserEmail
+	setUser: userOperations.setUser
 };
 
 export default compose(

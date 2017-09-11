@@ -9,7 +9,11 @@ const UserSignUp = props => {
 		props.clearErrors();
 		validate();
 		if (Object.keys(props.errors).length === 0) {
-			props.signUp().then(resp => props.setUserEmail(resp.data.signUp));
+			props
+				.signUp()
+				.then(resp =>
+					props.setUserEmail(resp.data.signUp.email, resp.data.signUp.isAdmin)
+				);
 		}
 	};
 	const validate = () => {

@@ -7,7 +7,7 @@ import registerRSVPMutation from '../mutations/registerRSVPMutation';
 import CurrentEvent from '../routes/CurrentEvent';
 
 const mapStateToProps = state => ({
-	userEmail: state.userEmail
+	userEmail: state.user.email
 });
 
 const mapDispatchToProps = {};

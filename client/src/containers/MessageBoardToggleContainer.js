@@ -8,7 +8,7 @@ import addMessageMutation from '../mutations/addMessageMutation';
 
 const mapStateToProps = state => ({
 	showMessageBoard: state.messageBoard,
-	userEmail: state.userEmail
+	userEmail: state.user.email
 });
 
 const mapDispatchToProps = {

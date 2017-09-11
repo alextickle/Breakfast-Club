@@ -14,7 +14,11 @@ const UserLogin = props =>
 				className="form"
 				onSubmit={e => {
 					e.preventDefault();
-					props.login().then(resp => props.setUserEmail(resp.data.login));
+					props
+						.login()
+						.then(resp =>
+							props.setUserEmail(resp.data.login.email, resp.data.login.isAdmin)
+						);
 				}}
 			>
 				<Input
