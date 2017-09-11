@@ -79,7 +79,7 @@ const typeDefs = `
     registerRSVP(userId: String!, rsvpStatus: Boolean!): User
     registerVote(userId: String!, eventId: String!, choice: Int!): GuestList
     addEvent: String
-    updateUser(email: String!, data: JSON!): User
+    updateUser(email: String!, firstName: String!, lastName: String!, neighborhood: String!): User
     deactivateUser(email: String!): String
   }
 `;

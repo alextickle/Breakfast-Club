@@ -1,8 +1,18 @@
 import { gql } from 'react-apollo';
 
 const updateUserMutation = gql`
-	mutation updateUser($email: String!, $data: JSON!) {
-		updateUser(email: $email, data: $data) {
+	mutation updateUser(
+		$email: String!
+		$firstName: String!
+		$lastName: String!
+		$neighborhood: String!
+	) {
+		updateUser(
+			email: $email
+			firstName: $firstName
+			lastName: $lastName
+			neighborhood: $neighborhood
+		) {
 			id
 			firstName
 			lastName

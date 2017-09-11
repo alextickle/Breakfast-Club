@@ -139,9 +139,16 @@ const resolvers = {
 			).then(() => Promise.resolve(args.email));
 		},
 		updateUser(root, args) {
-			return User.update(args.data, {
-				where: { email: args.email }
-			}).then(() =>
+			return User.update(
+				{
+					firstName: args.firstName,
+					lastName: args.lastName,
+					neighborhood: args.neighborhood
+				},
+				{
+					where: { email: args.email }
+				}
+			).then(() =>
 				User.find({
 					where: { email: args.email }
 				})

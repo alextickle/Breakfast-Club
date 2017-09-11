@@ -27,12 +27,11 @@ const UserProfile = props => {
 				className: 'read-only',
 				header: 'Edit Profile'
 			});
-			props.updateUser({
-				firstName: props.firstName,
-				lastName: props.lastName,
-				email: props.email,
-				neighborhood: props.neighborhood
-			});
+			props.updateUser(
+				props.firstName || props.data.user.firstName,
+				props.lastName || props.data.user.lastName,
+				props.neighborhood || props.data.user.neighborhood
+			);
 		} else {
 			return '';
 		}
@@ -91,10 +90,7 @@ const UserProfile = props => {
 										type="text"
 										disabled={props.readOnly}
 										value={props.firstName || props.data.user.firstName}
-										onChange={e => {
-											console.log('called');
-											props.updateUserData;
-										}}
+										onChange={props.updateUserData}
 									/>
 								</td>
 							</tr>
@@ -107,20 +103,6 @@ const UserProfile = props => {
 										type="text"
 										disabled={props.readOnly}
 										value={props.lastName || props.data.user.lastName}
-										onChange={props.updateUserData}
-									/>
-								</td>
-							</tr>
-							<tr>
-								<td className="field">Email Address:</td>
-								<td>
-									<input
-										className={props.className}
-										size="30"
-										type="email"
-										name="email"
-										disabled={props.readOnly}
-										value={props.email || props.data.user.email}
 										onChange={props.updateUserData}
 									/>
 								</td>

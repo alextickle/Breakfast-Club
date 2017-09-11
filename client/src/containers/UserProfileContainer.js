@@ -11,7 +11,6 @@ const mapStateToProps = state => ({
 	userEmail: state.user.email,
 	firstName: state.userProfile.firstName,
 	lastName: state.userProfile.lastName,
-	email: state.userProfile.email,
 	neighborhood: state.userProfile.neighborhood,
 	editIcon: state.userProfile.editIcon,
 	readOnly: state.userProfile.readOnly,
@@ -23,6 +22,7 @@ const mapDispatchToProps = {
 	setInitialUserData: userProfileOperations.setInitialUserData,
 	setSaveState: userProfileOperations.setSaveState,
 	setEditIconLink: userProfileOperations.setEditIconLink,
+	updateUserData: userProfileOperations.updateUserData,
 	logout: userOperations.logout
 };
 
@@ -35,11 +35,13 @@ export default compose(
 	}),
 	graphql(updateUserMutation, {
 		props: ({ ownProps, mutate }) => ({
-			updateUser: data =>
+			updateUser: (firstName, lastName, neighborhood) =>
 				mutate({
 					variables: {
 						email: ownProps.userEmail,
-						data
+						firstName: firstName,
+						lastName: lastName,
+						neighborhood: neighborhood
 					}
 				})
 		})

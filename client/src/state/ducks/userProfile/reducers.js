@@ -7,7 +7,6 @@ const initialState = {
 	header: 'Edit Profile',
 	firstName: '',
 	lastName: '',
-	email: '',
 	neighborhood: ''
 };
 
@@ -21,7 +20,6 @@ const userProfile = (state = initialState, action) => {
 			return Object.assign({}, state, {
 				firstName: user.firstName,
 				lastName: user.lastName,
-				email: user.email,
 				neighborhood: user.neighborhood
 			});
 		case types.SET_SAVE_STATE:
