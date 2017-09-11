@@ -3,7 +3,7 @@ import Moment from 'react-moment';
 import moment from 'moment';
 
 const MessageBoard = props => {
-	const syncToServerTime = input_date => moment(input_date).format();
+	const syncToServerTime = input_date => moment(new Date(input_date)).format();
 
 	let mapped = props.messages.map(function(message, i) {
 		let timeStamp = message.createdAt;
@@ -26,7 +26,7 @@ const MessageBoard = props => {
 
 	const handleSubmit = e => {
 		e.preventDefault();
-		props.addMessage(e.target.value, props.user.id);
+		props.addMessage(this.input.value, props.user.id);
 		this.input.value = '';
 	};
 

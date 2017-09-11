@@ -5,6 +5,7 @@ const addMessageMutation = gql`
 		addMessage(content: $content, user_id: $user_id) {
 			id
 			content
+			createdAt
 			user {
 				id
 				firstName

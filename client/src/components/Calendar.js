@@ -39,8 +39,8 @@ const Calendar = props => {
 	}
 	const mapEvents = events => {
 		return events.map(bevent => {
-			let start = moment(bevent.date).toDate();
-			let end = moment(bevent.date).add(1, 'hours').toDate();
+			let start = new Date(bevent.date);
+			let end = moment(new Date(bevent.date)).add(1, 'hours').toDate();
 			let placeName =
 				bevent.winner === '1' ? bevent.place_1.name : bevent.place_2.name;
 			let id = bevent.id;

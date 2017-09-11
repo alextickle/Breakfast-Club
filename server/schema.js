@@ -20,6 +20,7 @@ const typeDefs = `
     id: String
     content: String
     user: User
+    createdAt: String
   }
 
   type Place {

@@ -5,6 +5,7 @@ const messagesQuery = gql`
 		messages {
 			id
 			content
+			createdAt
 			user {
 				id
 				firstName
