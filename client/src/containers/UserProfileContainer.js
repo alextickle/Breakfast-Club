@@ -23,7 +23,7 @@ const mapDispatchToProps = {
 	setInitialUserData: userProfileOperations.setInitialUserData,
 	setSaveState: userProfileOperations.setSaveState,
 	setEditIconLink: userProfileOperations.setEditIconLink,
-	logout: userEmailOperations.clearUserEmail
+	logout: userOperations.logout
 };
 
 export default compose(

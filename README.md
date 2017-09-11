@@ -29,7 +29,7 @@ and edit the username and password to match your local postgres account
 Once signed into postgres with the postgres cli (psql -U username), enter the following command:
 
 ```
-CREATE DATABASE "bc_development";
+CREATE DATABASE "bc_dev";
 ```
 
 Then navigate to the root of the server directory and run the following sequelize commands:
@@ -61,10 +61,10 @@ yarn start
 ### Reformat and Reseed Database
 ---
 
- If you already have a local bc_development database then login to postgres using the cli and run the following commands:
+ If you already have a local bc_dev database then login to postgres using the cli and run the following commands:
 
 ```
-\c bc_development
+\c bc_dev
 DROP TABLE "Messages", "Users", "Bevents", "Places", "GuestLists", "Messages", "SequelizeMeta" CASCADE;
 ```
 

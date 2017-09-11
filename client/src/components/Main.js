@@ -70,7 +70,7 @@ const Main = props =>
 					exact
 					path="/admin"
 					render={() =>
-						props.admin && props.userEmail
+						props.isAdmin && props.userEmail
 							? <AdminPageContainer />
 							: <Redirect to="/404" />}
 				/>

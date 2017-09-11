@@ -11,7 +11,7 @@ jobs:
       - image: circleci/postgres:9.6.3
         environment:
         - POSTGRES_USER=postgres
-        - POSTGRES_DB=bc_development
+        - POSTGRES_DB=bc_dev
 
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
