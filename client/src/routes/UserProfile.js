@@ -9,7 +9,6 @@ const UserProfile = props => {
 	if (props.data.loading) {
 		return <h1>Loading...</h1>;
 	}
-	props.setInitialUserData(props.data.user);
 
 	const handleClick = () => {
 		if (props.editIcon === '../Images/hover-edit.png') {
@@ -54,7 +53,7 @@ const UserProfile = props => {
 					<Header />
 					<SideBarMini />
 					<div className="welcome-user">
-						Welcome, {props.firstName}
+						Welcome, {props.firstName || props.data.user.firstName}
 					</div>
 					<div className="edit-wrapper">
 						<div className="edit">
@@ -91,7 +90,7 @@ const UserProfile = props => {
 										name="firstName"
 										type="text"
 										disabled={props.readOnly}
-										value={props.firstName}
+										value={props.firstName || props.data.user.firstName}
 										onChange={props.updateUserData}
 									/>
 								</td>
@@ -104,7 +103,7 @@ const UserProfile = props => {
 										name="lastName"
 										type="text"
 										disabled={props.readOnly}
-										value={props.lastName}
+										value={props.lastName || props.data.user.lastName}
 										onChange={props.updateUserData}
 									/>
 								</td>
@@ -118,7 +117,7 @@ const UserProfile = props => {
 										type="email"
 										name="email"
 										disabled={props.readOnly}
-										value={props.email}
+										value={props.email || props.data.user.email}
 										onChange={props.updateUserData}
 									/>
 								</td>
@@ -131,7 +130,7 @@ const UserProfile = props => {
 										className={props.className}
 										name="neighborhood"
 										disabled={props.readOnly}
-										value={props.neighborhood}
+										value={props.neighborhood || props.data.user.neighborhood}
 										onChange={props.updateUserData}
 									/>
 								</td>

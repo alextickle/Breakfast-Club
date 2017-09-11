@@ -8,9 +8,11 @@ const initialState = {
 
 const login = (state = initialState, action) => {
 	let temp = {};
+	let fieldName;
 	switch (action.type) {
 		case types.HANDLE_CHANGE:
-			temp[action.field] = action.value;
+			fieldName = action.field;
+			temp[fieldName] = action.value;
 			return Object.assign({}, state, temp);
 		default:
 			return state;

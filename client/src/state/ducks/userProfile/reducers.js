@@ -13,6 +13,7 @@ const initialState = {
 
 const userProfile = (state = initialState, action) => {
 	let temp = {};
+	let fieldName;
 	let user;
 	switch (action.type) {
 		case types.SET_INITIAL_USER_DATA:
@@ -29,7 +30,8 @@ const userProfile = (state = initialState, action) => {
 		case types.SET_EDIT_ICON_LINK:
 			return Object.assign({}, state, { editIcon: action.link });
 		case types.UPDATE_USER_DATA:
-			temp[action.field] = action.value;
+			fieldName = action.field;
+			temp[fieldName] = action.value;
 			return Object.assign({}, state, temp);
 		default:
 			return state;

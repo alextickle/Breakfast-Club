@@ -23,7 +23,7 @@ export const setInitialUserData = user => {
 
 export const updateUserData = e => {
 	return {
-		type: types.SET_INITIAL_USER_DATA,
+		type: types.UPDATE_USER_DATA,
 		field: e.target.name,
 		value: e.target.value
 	};

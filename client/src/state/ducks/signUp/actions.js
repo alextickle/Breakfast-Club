@@ -11,7 +11,7 @@ export const handleChange = e => {
 export const addError = (fieldName, message) => {
 	return {
 		type: types.ADD_ERROR,
-		fieldName: fieldName,
+		field: fieldName,
 		message: message
 	};
 };

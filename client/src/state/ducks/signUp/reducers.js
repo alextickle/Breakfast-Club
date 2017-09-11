@@ -13,14 +13,17 @@ const initialState = {
 const signUp = (state = initialState, action) => {
 	let temp = {};
 	let tempErrors = {};
+	let fieldName;
 	switch (action.type) {
 		case types.HANDLE_CHANGE:
-			temp[action.field] = action.value;
+			fieldName = action.field;
+			temp[fieldName] = action.value;
 			return Object.assign({}, state, temp);
 		case types.ADD_ERROR:
 			temp = {};
+			fieldName = action.field;
 			tempErrors = Object.assign({}, state.errors);
-			tempErrors[action.fieldName] = action.message;
+			tempErrors[fieldName] = action.message;
 			temp['errors'] = tempErrors;
 			return Object.assign({}, state, temp);
 		case types.CLEAR_ERRORS:

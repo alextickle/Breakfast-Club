@@ -25,6 +25,7 @@ const initialState = {
 const admin = (state = initialState, action) => {
 	let temp = {};
 	active;
+	fieldName;
 	switch (action.type) {
 		case types.SET_ACTIVE_BUTTON:
 			temp = {
@@ -47,7 +48,8 @@ const admin = (state = initialState, action) => {
 				searchTerm: action.term
 			});
 		case types.UPDATE_FIELD_VALUE:
-			temp[action.field] = action.value;
+			fieldName = action.field;
+			temp[fieldName] = action.value;
 			return Object.assign({}, state, temp);
 		default:
 			return state;
