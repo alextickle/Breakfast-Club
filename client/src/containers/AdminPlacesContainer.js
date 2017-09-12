@@ -5,12 +5,12 @@ import AdminPlaces from '../components/Admin/Place/AdminPlaces';
 import adminOperations from '../state/ducks/admin/operations';
 
 const mapStateToProps = state => ({
-	name: state.adminOperations.name,
-	yelp_rating: state.adminOperations.yelp_rating,
-	categories: state.adminOperations.categories,
-	price: state.adminOperations.price,
-	address_street: state.adminOperations.address_street,
-	phone: state.adminOperations.phone
+	name: state.admin.name,
+	yelp_rating: state.admin.yelp_rating,
+	categories: state.admin.categories,
+	price: state.admin.price,
+	address_street: state.admin.address_street,
+	phone: state.admin.phone
 });
 
 const mapDispatchToProps = {

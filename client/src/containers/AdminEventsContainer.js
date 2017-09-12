@@ -5,8 +5,8 @@ import AdminEvents from '../components/Admin/Event/AdminEvents';
 import adminOperations from '../state/ducks/admin/operations';
 
 const mapStateToProps = state => ({
-	date: state.adminOperations.date,
-	speaker: state.adminOperations.speaker
+	date: state.admin.date,
+	speaker: state.admin.speaker
 });
 
 const mapDispatchToProps = {

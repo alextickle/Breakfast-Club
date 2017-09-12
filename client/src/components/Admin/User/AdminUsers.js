@@ -3,9 +3,10 @@ import UserSearchBar from './UserSearchBar';
 import UserModal from './UserModal';
 
 const AdminUsers = props => {
-	if (props.usersQuery.loading) {
+	if (props.data.loading) {
 		return <h1>Loading...</h1>;
 	}
+	console.log('props', props);
 	return (
 		<div className="admin-page">
 			<p>Users</p>
@@ -15,7 +16,7 @@ const AdminUsers = props => {
 				</button>
 				<UserSearchBar
 					updateSearchTerm={props.updateSearchTerm}
-					users={props.usersQuery.users}
+					users={props.data.users}
 				/>
 			</div>
 			<br />

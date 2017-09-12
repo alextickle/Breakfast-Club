@@ -3,7 +3,7 @@ import EventSearchBar from './EventSearchBar';
 import EventModal from './EventModal';
 
 const AdminEvents = props => {
-	if (props.places.loading) {
+	if (props.data.loading) {
 		return <h1>Loading...</h1>;
 	}
 	return (
@@ -15,7 +15,7 @@ const AdminEvents = props => {
 				</button>
 				<EventSearchBar
 					updateSearchTerm={props.updateSearchTerm}
-					places={props.eventsQuery.events}
+					places={props.data.events}
 				/>
 			</div>
 			<br />

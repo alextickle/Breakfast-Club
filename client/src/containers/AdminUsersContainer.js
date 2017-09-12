@@ -5,12 +5,12 @@ import AdminUsers from '../components/Admin/User/AdminUsers';
 import adminOperations from '../state/ducks/admin/operations';
 
 const mapStateToProps = state => ({
-	firstName: state.adminOperations.firstName,
-	lastName: state.adminOperations.lastName,
-	email: state.adminOperations.email,
-	neighborhood: state.adminOperations.neighborhood,
-	password: state.adminOperations.password,
-	verifyPassword: state.adminOperations.verifyPassword
+	firstName: state.admin.firstName,
+	lastName: state.admin.lastName,
+	email: state.admin.email,
+	neighborhood: state.admin.neighborhood,
+	password: state.admin.password,
+	verifyPassword: state.admin.verifyPassword
 });
 
 const mapDispatchToProps = {

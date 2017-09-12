@@ -3,7 +3,7 @@ import PlaceSearchBar from './PlaceSearchBar';
 import PlaceModal from './PlaceModal';
 
 const AdminPlaces = props => {
-	if (props.places.loading) {
+	if (props.data.loading) {
 		return <h1>Loading...</h1>;
 	}
 	return (
@@ -15,7 +15,7 @@ const AdminPlaces = props => {
 				</button>
 				<PlaceSearchBar
 					updateSearchTerm={props.updateSearchTerm}
-					places={props.placesQuery.places}
+					places={props.data.places}
 				/>
 			</div>
 			<br />
