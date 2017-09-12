@@ -24,8 +24,7 @@ const initialState = {
 
 const admin = (state = initialState, action) => {
 	let temp = {};
-	active;
-	fieldName;
+	let fieldName;
 	switch (action.type) {
 		case types.SET_ACTIVE_BUTTON:
 			temp = {
@@ -33,7 +32,8 @@ const admin = (state = initialState, action) => {
 				placeButton: '',
 				eventButton: ''
 			};
-			temp[active.button] = 'action.button_clicked';
+			fieldName = action.button;
+			temp[fieldName] = 'admin_button_clicked';
 			return temp;
 		case types.OPEN_MODAL:
 			return Object.assign({}, state, {

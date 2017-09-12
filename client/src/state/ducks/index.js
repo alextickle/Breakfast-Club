@@ -1,4 +1,4 @@
-// export { default as admin } from './admin';
+export { default as admin } from './admin';
 export { default as calendar } from './calendar';
 export { default as login } from './login';
 export { default as messageBoard } from './messageBoard';

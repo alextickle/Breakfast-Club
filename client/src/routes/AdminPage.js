@@ -31,7 +31,7 @@ const AdminPage = props => {
 						<button
 							className={props.placeButton}
 							type="button"
-							onMouseOver={props.setActiveButton('placeButton')}
+							onMouseOver={() => props.setActiveButton('placeButton')}
 						>
 							manage places
 						</button>
