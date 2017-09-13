@@ -45,7 +45,7 @@ const admin = (state = initialState, action) => {
       });
     case types.UPDATE_SEARCH_TERM:
       return Object.assign({}, state, {
-        searchTerm: action.term
+        searchTerm: action.searchTerm
       });
     case types.UPDATE_FIELD_VALUE:
       fieldName = action.field;

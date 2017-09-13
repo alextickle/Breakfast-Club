@@ -1,5 +1,5 @@
-const makeExecutableSchema = require('graphql-tools').makeExecutableSchema;
-const resolvers = require('./resolvers').resolvers;
+const makeExecutableSchema = require("graphql-tools").makeExecutableSchema;
+const resolvers = require("./resolvers").resolvers;
 
 const typeDefs = `
   scalar JSON
@@ -81,7 +81,10 @@ const typeDefs = `
     registerVote(userId: String!, eventId: String!, choice: Int!): GuestList
     addEvent: String
     updateUser(email: String!, firstName: String!, lastName: String!, neighborhood: String!): User
+    updatePlace(id: String!, name: String!, yelp_rating: String!, price: String!, address_street: String!, phone: String!, active: Boolean!): Place
+    updateSpeaker(id: String!, speaker: String!): Bevent
     deactivateUser(email: String!): String
+    delete(type: String!, id: String!): String
   }
 `;
 
