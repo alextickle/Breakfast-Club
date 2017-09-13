@@ -6,7 +6,6 @@ const AdminPlaces = props => {
   if (props.data.loading) {
     return <h1>Loading...</h1>;
   }
-  console.log("adminPlaces props: ", props);
   return (
     <div className="admin-page">
       <p>Places</p>
@@ -18,6 +17,7 @@ const AdminPlaces = props => {
           searchTerm={props.searchTerm}
           updateSearchTerm={props.updateSearchTerm}
           places={props.data.places}
+          updatePlace={props.updatePlace}
         />
       </div>
       <br />

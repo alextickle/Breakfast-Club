@@ -2,7 +2,6 @@ import { graphql, compose } from "react-apollo";
 import { connect } from "react-redux";
 import placesQuery from "../queries/placesQuery";
 import updatePlaceMutation from "../mutations/updatePlaceMutation";
-import deleteMutation from "../mutations/deleteMutation";
 import AdminPlaces from "../components/Admin/Place/AdminPlaces";
 import adminOperations from "../state/ducks/admin/operations";
 
@@ -38,25 +37,6 @@ export default compose(
             address_street: place.address_street,
             phone: place.phone,
             active: place.active
-          }
-        })
-    })
-  }),
-  graphql(deleteMutation, {
-    props: ({ ownProps, mutate }) => ({
-      delete: id =>
-        mutate({
-          variables: {
-            id: id,
-            type: "Place"
-          },
-          update: (store, { data: { deleteMutation } }) => {
-            const data = store.readQuery({
-              query: placesQuery
-            });
-            let newArray = data.places.filter(place => place.id != id);
-            data.places = newArray;
-            store.writeQuery({ query: placesQuery, data });
           }
         })
     })

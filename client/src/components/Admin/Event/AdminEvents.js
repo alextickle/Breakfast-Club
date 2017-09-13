@@ -16,7 +16,8 @@ const AdminEvents = props => {
         <EventSearchBar
           searchTerm={props.searchTerm}
           updateSearchTerm={props.updateSearchTerm}
-          places={props.data.events}
+          events={props.data.events}
+          updateSpeaker={props.updateSpeaker}
         />
       </div>
       <br />

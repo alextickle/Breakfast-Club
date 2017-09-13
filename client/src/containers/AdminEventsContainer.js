@@ -1,7 +1,6 @@
 import { graphql, compose } from "react-apollo";
 import { connect } from "react-redux";
 import eventsQuery from "../queries/eventsQuery";
-import usersQuery from "../queries/usersQuery";
 import updateSpeakerMutation from "../mutations/updateSpeakerMutation";
 import AdminEvents from "../components/Admin/Event/AdminEvents";
 import adminOperations from "../state/ducks/admin/operations";
@@ -22,36 +21,13 @@ const mapDispatchToProps = {
 export default compose(
   connect(mapStateToProps, mapDispatchToProps),
   graphql(eventsQuery),
-  graphql(updateUserMutation, {
+  graphql(updateSpeakerMutation, {
     props: ({ ownProps, mutate }) => ({
-      updateUser: user =>
-        mutate({
-          variables: {
-            email: user.email,
-            firstName: user.firstName,
-            lastName: user.lastName,
-            neighborhood: user.neighborhood
-          }
-        })
-    })
-  }),
-  graphql(deleteMutation, {
-    props: ({ ownProps, mutate }) => ({
-      delete: id =>
+      updateSpeaker: (id, speaker) =>
         mutate({
           variables: {
             id: id,
-            type: "User"
-          },
-          update: (store, { data: { deleteMutation } }) => {
-            if (store.data.users) {
-              const data = store.readQuery({
-                query: usersQuery
-              });
-              let newArray = data.users.filter(user => user.id != id);
-              data.users = newArray;
-              store.writeQuery({ query: usersQuery, data });
-            }
+            speaker: speaker
           }
         })
     })

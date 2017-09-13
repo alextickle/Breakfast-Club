@@ -6,7 +6,6 @@ const AdminUsers = props => {
   if (props.data.loading) {
     return <h1>Loading...</h1>;
   }
-  console.log("props", props);
   return (
     <div className="admin-page">
       <p>Users</p>
@@ -18,6 +17,8 @@ const AdminUsers = props => {
           searchTerm={props.searchTerm}
           updateSearchTerm={props.updateSearchTerm}
           users={props.data.users}
+          updateUser={props.updateUser}
+          delete={props.delete}
         />
       </div>
       <br />

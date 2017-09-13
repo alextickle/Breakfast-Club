@@ -51,7 +51,7 @@ export default compose(
             const data = store.readQuery({
               query: usersQuery
             });
-            let newArray = data.users.filter(user => user.id != id);
+            let newArray = data.users.filter(user => user.id !== id);
             data.users = newArray;
             store.writeQuery({ query: usersQuery, data });
           }

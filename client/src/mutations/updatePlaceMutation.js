@@ -11,6 +11,7 @@ const updatePlaceMutation = gql`
     $active: Boolean!
   ) {
     updatePlace(
+      id: $id
       name: $name
       yelp_rating: $yelp_rating
       price: $price

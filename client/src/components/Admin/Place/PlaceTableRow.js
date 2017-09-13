@@ -5,7 +5,6 @@ class PlaceTableRow extends Component {
     super(props);
     this.state = {
       place: this.props.place,
-      deleteIcon: "../Images/delete.png",
       editIcon: "../Images/edit.png",
       readOnly: true,
       title: "edit",
@@ -14,35 +13,11 @@ class PlaceTableRow extends Component {
   }
 
   handleMouseEnter(e) {
-    if (
-      e.target.id === "delete_icon" &&
-      this.state.deleteIcon === "../Images/delete.png"
-    ) {
-      this.setState({ deleteIcon: "../Images/hover-delete.png" });
-    } else if (
-      e.target.id === "edit_icon" &&
-      this.state.editIcon === "../Images/edit.png"
-    ) {
-      this.setState({ editIcon: "../Images/hover-edit.png" });
-    } else {
-      return "";
-    }
+    this.setState({ editIcon: "../Images/hover-edit.png" });
   }
 
   handleMouseLeave(e) {
-    if (
-      e.target.id === "delete_icon" &&
-      this.state.deleteIcon === "../Images/hover-delete.png"
-    ) {
-      this.setState({ deleteIcon: "../Images/delete.png" });
-    } else if (
-      e.target.id === "edit_icon" &&
-      this.state.editIcon === "../Images/hover-edit.png"
-    ) {
-      this.setState({ editIcon: "../Images/edit.png" });
-    } else {
-      return "";
-    }
+    this.setState({ editIcon: "../Images/edit.png" });
   }
 
   handleClick() {
@@ -61,15 +36,7 @@ class PlaceTableRow extends Component {
         title: "edit",
         className: "read-only table-row"
       });
-      this.props.updatePlace(this.props.place);
-    } else if (this.state.deleteIcon === "../Images/hover-delete.png") {
-      if (
-        window.confirm(
-          "Hold up! Deleting will also delete any linked events or users. Consider deactivating instead. Click 'OK' to delete, 'Cancel' to cancel"
-        )
-      ) {
-        this.props.delete(this.state.place.id);
-      }
+      this.props.updatePlace(this.state.place);
     }
   }
 
@@ -78,20 +45,6 @@ class PlaceTableRow extends Component {
     let temp = {};
     temp[target.name] = target.value;
     this.setState({ place: Object.assign({}, this.state.place, temp) });
-  }
-
-  deleteIcon() {
-    return (
-      <img
-        id="delete_icon"
-        src={this.state.deleteIcon}
-        alt="delete"
-        title="delete"
-        onMouseEnter={this.handleMouseEnter.bind(this)}
-        onMouseLeave={this.handleMouseLeave.bind(this)}
-        onClick={this.handleClick.bind(this)}
-      />
-    );
   }
 
   editIcon() {
@@ -164,7 +117,6 @@ class PlaceTableRow extends Component {
             size="7"
           />
         </div>
-        <div className="icon table-row-item">{this.deleteIcon()}</div>
         <div className="icon table-row-item">{this.editIcon()}</div>
       </div>
     );

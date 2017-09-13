@@ -61,14 +61,14 @@ class UserTableRow extends Component {
         title: "edit",
         className: "read-only table-row"
       });
-      this.props.updateUser(this.props.user);
+      this.props.updateUser(this.state.user);
     } else if (this.state.deleteIcon === "../Images/hover-delete.png") {
       if (
         window.confirm(
           "Hold up! Deleting will also delete any linked places, events or users. Consider deactivating instead. Click 'OK' to delete, 'Cancel' to cancel"
         )
       ) {
-        this.props.delete(this.state.user.email);
+        this.props.delete(this.state.user.id);
       }
     }
   }

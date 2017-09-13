@@ -1,11 +1,11 @@
 import React, { Component } from "react";
+import moment from "moment";
 
 class EventTableRow extends Component {
   constructor(props) {
     super(props);
     this.state = {
       event: this.props.event,
-      deleteIcon: "../Images/delete.png",
       editIcon: "../Images/edit.png",
       readOnly: true,
       title: "edit",
@@ -13,36 +13,17 @@ class EventTableRow extends Component {
     };
   }
 
+  dateParser(date) {
+    let newDate = moment(date).format("MMMM D, YYYY - h:mm a");
+    return newDate;
+  }
+
   handleMouseEnter(e) {
-    if (
-      e.target.id === "delete_icon" &&
-      this.state.deleteIcon === "../Images/delete.png"
-    ) {
-      this.setState({ deleteIcon: "../Images/hover-delete.png" });
-    } else if (
-      e.target.id === "edit_icon" &&
-      this.state.editIcon === "../Images/edit.png"
-    ) {
-      this.setState({ editIcon: "../Images/hover-edit.png" });
-    } else {
-      return "";
-    }
+    this.setState({ editIcon: "../Images/hover-edit.png" });
   }
 
   handleMouseLeave(e) {
-    if (
-      e.target.id === "delete_icon" &&
-      this.state.deleteIcon === "../Images/hover-delete.png"
-    ) {
-      this.setState({ deleteIcon: "../Images/delete.png" });
-    } else if (
-      e.target.id === "edit_icon" &&
-      this.state.editIcon === "../Images/hover-edit.png"
-    ) {
-      this.setState({ editIcon: "../Images/edit.png" });
-    } else {
-      return "";
-    }
+    this.setState({ editIcon: "../Images/edit.png" });
   }
 
   handleClick() {
@@ -61,15 +42,7 @@ class EventTableRow extends Component {
         title: "edit",
         className: "read-only table-row"
       });
-      this.props.updatePlace(this.props.place);
-    } else if (this.state.deleteIcon === "../Images/hover-delete.png") {
-      if (
-        window.confirm(
-          "Hold up! Are you sure? Click 'OK' to delete, 'Cancel' to cancel"
-        )
-      ) {
-        this.props.delete(this.state.event.id);
-      }
+      this.props.updateSpeaker(this.props.event.id, this.state.event.speaker);
     }
   }
 
@@ -78,20 +51,6 @@ class EventTableRow extends Component {
     let temp = {};
     temp[target.name] = target.value;
     this.setState({ event: Object.assign({}, this.state.event, temp) });
-  }
-
-  deleteIcon() {
-    return (
-      <img
-        id="delete_icon"
-        src={this.state.deleteIcon}
-        alt="delete"
-        title="delete"
-        onMouseEnter={this.handleMouseEnter.bind(this)}
-        onMouseLeave={this.handleMouseLeave.bind(this)}
-        onClick={this.handleClick.bind(this)}
-      />
-    );
   }
 
   editIcon() {
@@ -122,7 +81,7 @@ class EventTableRow extends Component {
         <div className="table-row-item name">
           <input
             name="place.name"
-            value={this.state.event.place.name}
+            value={this.state.event.place.name || "TBD"}
             disabled={true}
             size="30"
           />
@@ -130,7 +89,7 @@ class EventTableRow extends Component {
         <div className="table-row-item speaker">
           <input
             name="speaker"
-            value={this.state.event.speaker}
+            value={this.state.event.speaker || ""}
             onChange={this.handleEdit.bind(this)}
             disabled={this.state.readOnly}
             size="20"
@@ -144,7 +103,6 @@ class EventTableRow extends Component {
             size="7"
           />
         </div>
-        <div className="icon table-row-item">{this.deleteIcon()}</div>
         <div className="icon table-row-item">{this.editIcon()}</div>
       </div>
     );
