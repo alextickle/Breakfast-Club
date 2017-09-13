@@ -10,7 +10,8 @@ const mapStateToProps = state => ({
 	categories: state.admin.categories,
 	price: state.admin.price,
 	address_street: state.admin.address_street,
-	phone: state.admin.phone
+	phone: state.admin.phone,
+	searchTerm: state.admin.searchTerm
 });
 
 const mapDispatchToProps = {

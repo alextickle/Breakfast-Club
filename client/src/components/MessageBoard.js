@@ -3,7 +3,10 @@ import Moment from 'react-moment';
 import moment from 'moment';
 
 const MessageBoard = props => {
-	const syncToServerTime = input_date => moment(new Date(input_date)).format();
+	const syncToServerTime = input_date => {
+		let iso = new Date(input_date).toISOString().split(".")[0];
+		return moment(iso, "YYYY-MM-DDTHH:mm:ss").format();
+	}
 
 	let mapped = props.messages.map(function(message, i) {
 		let timeStamp = message.createdAt;
