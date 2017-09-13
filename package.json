@@ -1,5 +1,5 @@
 {
-	"name": "breakfast_club",
+	"name": "breakfast-club-graphql-redux",
 	"version": "1.0.0",
 	"description": "",
 	"main": "index.js",
@@ -10,14 +10,12 @@
 		"test:watch": "jest --watch",
 		"test-components": "jest client/src/tests/components.test.js",
 		"test:coverage": "jest --coverage",
-		"test-api-dev": "newman run server/postman/breakfast-club.postman_collection.json -e server/postman/Dev.postman_environment.json",
-		"test-api-prod": "newman run server/postman/breakfast-club.postman_collection.json -e server/postman/Prod.postman_environment.json",
 		"start": "node server/app.js",
 		"//": "on initial deploy use 'sequelize db:migrate && sequelize db:seed:all'",
 		"heroku-postbuild": "cd client/ && yarn install && yarn build"
 	},
 	"author": "Empty String",
-	"homepage": "https://github.com/kearobi/Breakfast-Club",
+	"homepage": "https://github.com/alextickle/breakfast-club-graphQL-redux",
 	"license": "ISC",
 	"dependencies": {
 		"babel-jest": "^20.0.3",
@@ -40,13 +38,10 @@
 		"pg": "^6.2.3",
 		"pushid": "^1.0.0",
 		"rapidapi-connect": "0.0.4",
-		"redux-thunk": "^2.2.0",
 		"sequelize": "^4.6.0",
-		"sequelize-cli": "^2.8.0",
 		"uuid": "^3.0.1"
 	},
 	"devDependencies": {
-		"newman": "^3.8.0",
 		"react": "^15.6.1",
 		"react-addons-test-utils": "^15.6.0",
 		"react-dom": "^15.6.1",
@@ -55,6 +50,6 @@
 		"supertest-as-promised": "^4.0.2"
 	},
 	"engines": {
-		"node": "8.2.1"
+		"node": "8.5.0"
 	}
 }
