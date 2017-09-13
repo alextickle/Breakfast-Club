@@ -1,55 +1,57 @@
 {
-	"name": "breakfast-club-graphql-redux",
-	"version": "1.0.0",
-	"description": "",
-	"main": "index.js",
-	"scripts": {
-		"bootstrap": "node scripts/bootstrap.js",
-		"bootstrap-cci": "node scripts/bootstrap-cci.js",
-		"test": "jest",
-		"test:watch": "jest --watch",
-		"test-components": "jest client/src/tests/components.test.js",
-		"test:coverage": "jest --coverage",
-		"start": "node server/app.js",
-		"//": "on initial deploy use 'sequelize db:migrate && sequelize db:seed:all'",
-		"heroku-postbuild": "cd client/ && yarn install && yarn build"
-	},
-	"author": "Empty String",
-	"homepage": "https://github.com/alextickle/breakfast-club-graphQL-redux",
-	"license": "ISC",
-	"dependencies": {
-		"babel-jest": "^20.0.3",
-		"babel-preset-env": "^1.6.0",
-		"body-parser": "^1.17.2",
-		"child_process": "^1.0.2",
-		"cors": "^2.8.3",
-		"crypto": "0.0.3",
-		"enzyme": "^2.9.1",
-		"enzyme-to-json": "^1.5.1",
-		"express": "^4.15.3",
-		"graphql": "^0.10.5",
-		"graphql-fetch": "^1.0.1",
-		"graphql-server-express": "^1.1.0",
-		"graphql-tools": "^1.2.1",
-		"jest": "^20.0.4",
-		"moment": "^2.18.1",
-		"nodemailer": "^4.0.1",
-		"nodemon": "^1.11.0",
-		"pg": "^6.2.3",
-		"pushid": "^1.0.0",
-		"rapidapi-connect": "0.0.4",
-		"sequelize": "^4.6.0",
-		"uuid": "^3.0.1"
-	},
-	"devDependencies": {
-		"react": "^15.6.1",
-		"react-addons-test-utils": "^15.6.0",
-		"react-dom": "^15.6.1",
-		"react-test-renderer": "^15.6.1",
-		"supertest": "^3.0.0",
-		"supertest-as-promised": "^4.0.2"
-	},
-	"engines": {
-		"node": "8.5.0"
-	}
+  "name": "breakfast-club-graphql-redux",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "bootstrap": "node scripts/bootstrap.js",
+    "bootstrap-cci": "node scripts/bootstrap-cci.js",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test-components": "jest client/src/tests/components.test.js",
+    "test:coverage": "jest --coverage",
+    "start": "node server/app.js",
+    "//":
+      "on initial deploy use 'sequelize db:migrate && sequelize db:seed:all'",
+    "heroku-postbuild":
+      "cd server && cp config/config.json.prod config/config.json && sequelize db:migrate && sequelize db:seed:all && cd ../client/ && yarn install && yarn build"
+  },
+  "author": "Empty String",
+  "homepage": "https://github.com/alextickle/breakfast-club-graphQL-redux",
+  "license": "ISC",
+  "dependencies": {
+    "babel-jest": "^20.0.3",
+    "babel-preset-env": "^1.6.0",
+    "body-parser": "^1.17.2",
+    "child_process": "^1.0.2",
+    "cors": "^2.8.3",
+    "crypto": "0.0.3",
+    "enzyme": "^2.9.1",
+    "enzyme-to-json": "^1.5.1",
+    "express": "^4.15.3",
+    "graphql": "^0.10.5",
+    "graphql-fetch": "^1.0.1",
+    "graphql-server-express": "^1.1.0",
+    "graphql-tools": "^1.2.1",
+    "jest": "^20.0.4",
+    "moment": "^2.18.1",
+    "nodemailer": "^4.0.1",
+    "nodemon": "^1.11.0",
+    "pg": "^6.2.3",
+    "pushid": "^1.0.0",
+    "rapidapi-connect": "0.0.4",
+    "sequelize": "^4.6.0",
+    "uuid": "^3.0.1"
+  },
+  "devDependencies": {
+    "react": "^15.6.1",
+    "react-addons-test-utils": "^15.6.0",
+    "react-dom": "^15.6.1",
+    "react-test-renderer": "^15.6.1",
+    "supertest": "^3.0.0",
+    "supertest-as-promised": "^4.0.2"
+  },
+  "engines": {
+    "node": "8.5.0"
+  }
 }
