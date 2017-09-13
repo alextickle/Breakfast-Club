@@ -11,10 +11,8 @@
     "test-components": "jest client/src/tests/components.test.js",
     "test:coverage": "jest --coverage",
     "start": "node server/app.js",
-    "//":
-      "on initial deploy use 'sequelize db:migrate && sequelize db:seed:all'",
-    "heroku-postbuild":
-      "cd server && cp config/config.json.prod config/config.json && sequelize db:migrate && sequelize db:seed:all && cd ../client/ && yarn install && yarn build"
+    "//": "on initial deploy use 'sequelize db:migrate && sequelize db:seed:all'",
+    "heroku-postbuild": "cd server && cp config/config.json.prod config/config.json && sequelize db:migrate && sequelize db:seed:all && cd ../client/ && yarn install && yarn build"
   },
   "author": "Empty String",
   "homepage": "https://github.com/alextickle/breakfast-club-graphQL-redux",
@@ -41,6 +39,7 @@
     "pushid": "^1.0.0",
     "rapidapi-connect": "0.0.4",
     "sequelize": "^4.6.0",
+    "sequelize-cli": "^3.0.0-2",
     "uuid": "^3.0.1"
   },
   "devDependencies": {
