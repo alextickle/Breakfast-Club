@@ -65,7 +65,7 @@ class UserTableRow extends Component {
     } else if (this.state.deleteIcon === "../Images/hover-delete.png") {
       if (
         window.confirm(
-          "Hold up! Deleting will also delete any linked places, events or users. Consider deactivating instead. Click 'OK' to delete, 'Cancel' to cancel"
+          "Hold up! Deleting a user cannot be undone. Consider deactivating instead. Click 'OK' to delete, 'Cancel' to cancel"
         )
       ) {
         this.props.delete(this.state.user.id);

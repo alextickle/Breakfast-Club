@@ -17,9 +17,7 @@ const initialState = {
   categories: "",
   price: "",
   address_street: "",
-  phone: "",
-  date: "",
-  speaker: ""
+  phone: ""
 };
 
 const admin = (state = initialState, action) => {
@@ -51,6 +49,8 @@ const admin = (state = initialState, action) => {
       fieldName = action.field;
       temp[fieldName] = action.value;
       return Object.assign({}, state, temp);
+    case types.RESET_FIELDS:
+      return initialState;
     default:
       return state;
   }

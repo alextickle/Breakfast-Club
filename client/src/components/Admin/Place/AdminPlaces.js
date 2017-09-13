@@ -34,6 +34,8 @@ const AdminPlaces = props => {
           address_street={props.address_street}
           phone={props.phone}
           closeModal={props.closeModal}
+          updateFieldValue={props.updateFieldValue}
+          resetFields={props.resetFields}
           addPlace={props.addPlace}
         />
       </div>

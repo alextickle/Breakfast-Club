@@ -35,6 +35,8 @@ const AdminUsers = props => {
           password={props.password}
           verifyPassword={props.verifyPassword}
           closeModal={props.closeModal}
+          updateFieldValue={props.updateFieldValue}
+          resetFields={props.resetFields}
           addUser={props.addUser}
         />
       </div>

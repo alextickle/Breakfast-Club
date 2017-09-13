@@ -2,7 +2,6 @@ import React from "react";
 import EventTableRow from "./EventTableRow";
 
 const EventSearchBar = props => {
-  console.log(props);
   let events = [];
   props.events.forEach(event => {
     if (event.winner === 1) {
@@ -13,7 +12,6 @@ const EventSearchBar = props => {
       events.push(Object.assign({}, event, { place: { name: "" } }));
     }
   });
-  console.log(events);
   let filtered = events.filter(event => {
     return (
       event.place.name.toLowerCase().indexOf(props.searchTerm.toLowerCase()) !==

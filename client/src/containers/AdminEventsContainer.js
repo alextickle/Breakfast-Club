@@ -12,10 +12,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = {
-  openModal: adminOperations.openModal,
-  closeModal: adminOperations.closeModal,
-  updateSearchTerm: adminOperations.updateSearchTerm,
-  updateFieldValue: adminOperations.updateFieldValue
+  updateSearchTerm: adminOperations.updateSearchTerm
 };
 
 export default compose(

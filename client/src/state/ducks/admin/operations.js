@@ -1,4 +1,4 @@
-import actions from './actions';
+import actions from "./actions";
 
 export const setActiveButton = actions.setActiveButton;
 
@@ -10,10 +10,13 @@ export const updateSearchTerm = actions.updateSearchTerm;
 
 export const updateFieldValue = actions.updateFieldValue;
 
+export const resetFields = actions.resetFields;
+
 export default {
-	setActiveButton,
-	openModal,
-	closeModal,
-	updateSearchTerm,
-	updateFieldValue
+  setActiveButton,
+  openModal,
+  closeModal,
+  updateSearchTerm,
+  updateFieldValue,
+  resetFields
 };

@@ -83,6 +83,8 @@ const typeDefs = `
     updateUser(email: String!, firstName: String!, lastName: String!, neighborhood: String!): User
     updatePlace(id: String!, name: String!, yelp_rating: String!, price: String!, address_street: String!, phone: String!, active: Boolean!): Place
     updateSpeaker(id: String!, speaker: String!): Bevent
+    addUser(email: String!, password: String!, firstName: String!, lastName: String!, neighborhood: String!): User
+    addPlace(name: String!, yelp_rating: Int!, price: String!, categories: String!, address_street: String!, phone: String!): Place
     deactivateUser(email: String!): String
     delete(type: String!, id: String!): String
   }

@@ -62,12 +62,24 @@ const resolvers = {
     }
   },
   Mutation: {
+    addUser(root, args) {
+      return User.create(args);
+    },
+    addPlace(root, args) {
+      return Place.create(args);
+    },
     addMessage(root, args) {
       return Message.create({
         content: args.content,
         author: args.author,
         user_id: args.user_id
       });
+    },
+    delete(root, args) {
+      return models[args.type]
+        .destroy({ where: { id: args.id } })
+        .then(() => Promise.resolve(args.id))
+        .catch(error => Promise.resolve(error));
     },
     login(root, args) {
       return User.findOne({
@@ -130,12 +142,6 @@ const resolvers = {
           where: { id: args.userId }
         })
       );
-    },
-    delete(root, args) {
-      return models[args.type]
-        .destroy({ where: { id: args.id } })
-        .then(() => Promise.resolve(args.id))
-        .catch(error => Promise.resolve(error));
     },
     deactivateUser(root, args) {
       return User.update(
