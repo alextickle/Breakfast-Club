@@ -87,10 +87,7 @@ const resolvers = {
       })
         .then(user => {
           if (user && user.verifyPassword(args.password) && user.active) {
-            return Promise.resolve({
-              email: user.email,
-              isAdmin: user.admin
-            });
+            return Promise.resolve(`${user.email} ${user.admin}`);
           } else {
             return Promise.reject("login failed");
           }
@@ -99,12 +96,7 @@ const resolvers = {
     },
     signUp(root, args) {
       return User.create(args)
-        .then(user =>
-          Promise.resolve({
-            email: user.email,
-            isAdmin: user.admin
-          })
-        )
+        .then(user => Promise.resolve(`${user.email} ${user.admin}`))
         .catch(error => Promise.reject("signUp failed"));
     },
     registerVote(root, args) {
