@@ -5,7 +5,7 @@ module.exports = {
     return queryInterface.bulkInsert('Bevents', [
       {
         id: '-KtxjbFS26AQXfzQYAUl',
-        place_1_id: '2a434166c129',
+        place_1_id: '-KtxkEl5KgC9-1PX-Nhv',
         place_2_id: '-Ktxj0IOI2NMTxjDg49M',
         date: '2017-06-30 08:00:00-07',
         vote_status: false,
@@ -28,7 +28,7 @@ module.exports = {
         speaker: 'Matt Clark'
       },
       {
-        id: '2474ddb0572c',
+        id: '-KtxjwztazuJfFOqAD9j',
         place_1_id: '-KtxjDAagEoj-OBVcgnL',
         place_2_id: '-KtxjR3j_ADgtY2pn5vx',
         date: '2017-07-14 08:00:00-07',
@@ -40,8 +40,8 @@ module.exports = {
         speaker: 'James Hall'
       },
       {
-        id: '2474ddb0572d',
-        place_1_id: '2a434166c129',
+        id: '-Ktxk5b1r2aEuFt46WJj',
+        place_1_id: '-KtxkEl5KgC9-1PX-Nhv',
         place_2_id: '-KtxjR3j_ADgtY2pn5vx',
         date: '2017-07-21 08:00:00-07',
         vote_status: false,
@@ -52,9 +52,9 @@ module.exports = {
         speaker: 'Eric Norcross'
       },
       {
-        id: '2474ddb0572e',
+        id: '-KtxkMgU-fX7oEsOf4-t',
         place_1_id: '-KtxjDAagEoj-OBVcgnL',
-        place_2_id: '2a434166c129',
+        place_2_id: '-KtxkEl5KgC9-1PX-Nhv',
         date: '2017-07-28 08:00:00-07',
         vote_status: false,
         winner: 2,
@@ -64,9 +64,9 @@ module.exports = {
         speaker: 'Matt Clark'
       },
       {
-        id: '2474ddb0572f',
+        id: '-KtxkVbP85Lpcn5z04_y',
         place_1_id: '-KtxjDAagEoj-OBVcgnL',
-        place_2_id: '2a434166c129',
+        place_2_id: '-KtxkEl5KgC9-1PX-Nhv',
         date: '2017-09-15 08:00:00-07',
         vote_status: true,
         winner: null,
