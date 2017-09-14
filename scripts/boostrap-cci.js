@@ -16,14 +16,11 @@ console.log('---------------------------------------');
 opts = { stdio: 'inherit', cwd: 'client', shell: true };
 proc.spawnSync('yarn', args, opts);
 
-// This is to remove all data from the database so that we don't end up trying
-// to create dummy data with duplicate primary keys (in the case where there is
-// already dummy data in the database).
-console.info('Undoing database migrations');
+console.info('Creating Sequelize config file');
 console.log('---------------------------------------');
-args = ['db:migrate:undo:all'];
+args = ['config/config.example.json config/config.json'];
 opts = { stdio: 'inherit', cwd: 'server', shell: true };
-proc.spawnSync('./node_modules/sequelize-cli/bin/sequelize', args, opts);
+proc.spawnSync('cp', args, opts);
 
 console.info('Performing database migrations');
 console.log('---------------------------------------');
