@@ -1,14 +1,17 @@
-const User = require("./models").User;
-const Bevent = require("./models").Bevent;
-const Message = require("./models").Message;
-const GuestList = require("./models").GuestList;
-const Place = require("./models").Place;
-const models = require("./models");
-const moment = require("moment");
+const User = require('./models').User;
+const Bevent = require('./models').Bevent;
+const Message = require('./models').Message;
+const GuestList = require('./models').GuestList;
+const Place = require('./models').Place;
+const models = require('./models');
+const moment = require('moment');
 
 const resolvers = {
   Query: {
     user(root, args) {
+      return User.find({ where: args });
+    },
+    message(root, args) {
       return User.find({ where: args });
     },
     users() {
@@ -23,23 +26,23 @@ const resolvers = {
     events() {
       return Bevent.findAll({
         include: [
-          { model: Place, as: "place_1" },
-          { model: Place, as: "place_2" }
+          { model: Place, as: 'place_1' },
+          { model: Place, as: 'place_2' }
         ]
       });
     },
     currentEvent() {
       return Bevent.findOne({
         limit: 1,
-        order: [["date", "DESC"]],
+        order: [['date', 'DESC']],
         include: [
           {
             model: GuestList,
-            as: "guestLists",
-            include: [{ model: User, as: "user" }]
+            as: 'guestLists',
+            include: [{ model: User, as: 'user' }]
           },
-          { model: Place, as: "place_1" },
-          { model: Place, as: "place_2" }
+          { model: Place, as: 'place_1' },
+          { model: Place, as: 'place_2' }
         ]
       });
     },
@@ -49,16 +52,13 @@ const resolvers = {
         include: [
           {
             model: GuestList,
-            as: "guestLists",
-            include: [{ model: User, as: "user" }]
+            as: 'guestLists',
+            include: [{ model: User, as: 'user' }]
           },
-          { model: Place, as: "place_1" },
-          { model: Place, as: "place_2" }
+          { model: Place, as: 'place_1' },
+          { model: Place, as: 'place_2' }
         ]
       });
-    },
-    admin(root, args) {
-      return User.findAll();
     }
   },
   Mutation: {
@@ -71,7 +71,6 @@ const resolvers = {
     addMessage(root, args) {
       return Message.create({
         content: args.content,
-        author: args.author,
         user_id: args.user_id
       });
     },
@@ -89,15 +88,15 @@ const resolvers = {
           if (user && user.verifyPassword(args.password) && user.active) {
             return Promise.resolve(`${user.email} ${user.admin}`);
           } else {
-            return Promise.reject("login failed");
+            return Promise.reject('login failed');
           }
         })
-        .catch(error => Promise.reject("login failed"));
+        .catch(error => Promise.reject('login failed'));
     },
     signUp(root, args) {
       return User.create(args)
         .then(user => Promise.resolve(`${user.email} ${user.admin}`))
-        .catch(error => Promise.reject("signUp failed"));
+        .catch(error => Promise.reject('signUp failed'));
     },
     registerVote(root, args) {
       return User.update(
@@ -119,7 +118,7 @@ const resolvers = {
               event_id: args.eventId,
               user_id: args.userId
             },
-            include: [{ model: User, as: "user" }]
+            include: [{ model: User, as: 'user' }]
           })
         );
     },
@@ -171,8 +170,8 @@ const resolvers = {
         Bevent.find({
           where: { id: args.id },
           include: [
-            { model: Place, as: "place_1" },
-            { model: Place, as: "place_2" }
+            { model: Place, as: 'place_1' },
+            { model: Place, as: 'place_2' }
           ]
         })
       );
@@ -218,7 +217,7 @@ const resolvers = {
         .then(() =>
           Bevent.findOne({
             limit: 1,
-            order: [["date", "DESC"]]
+            order: [['date', 'DESC']]
           })
         )
         .then(bevent => {
@@ -268,7 +267,7 @@ const resolvers = {
           });
         })
         .then(bevent => Promise.resolve(bevent.id))
-        .catch(error => Promise.reject("addEvent failed"));
+        .catch(error => Promise.reject('addEvent failed'));
     }
   }
 };

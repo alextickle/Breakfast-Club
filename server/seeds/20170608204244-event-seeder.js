@@ -5,7 +5,7 @@ module.exports = {
     return queryInterface.bulkInsert('Bevents', [
       {
         id: '-KtxjbFS26AQXfzQYAUl',
-        place_1_id: '-KtxkEl5KgC9-1PX-Nhv',
+        place_1_id: '-Ktxi4P2OuwhsvgPyq0N',
         place_2_id: '-Ktxj0IOI2NMTxjDg49M',
         date: '2017-06-30 08:00:00-07',
         vote_status: false,
@@ -41,7 +41,7 @@ module.exports = {
       },
       {
         id: '-Ktxk5b1r2aEuFt46WJj',
-        place_1_id: '-KtxkEl5KgC9-1PX-Nhv',
+        place_1_id: '-Ktxi4P2OuwhsvgPyq0N',
         place_2_id: '-KtxjR3j_ADgtY2pn5vx',
         date: '2017-07-21 08:00:00-07',
         vote_status: false,
@@ -54,7 +54,7 @@ module.exports = {
       {
         id: '-KtxkMgU-fX7oEsOf4-t',
         place_1_id: '-KtxjDAagEoj-OBVcgnL',
-        place_2_id: '-KtxkEl5KgC9-1PX-Nhv',
+        place_2_id: '-Ktxi4P2OuwhsvgPyq0N',
         date: '2017-07-28 08:00:00-07',
         vote_status: false,
         winner: 2,
@@ -66,7 +66,7 @@ module.exports = {
       {
         id: '-KtxkVbP85Lpcn5z04_y',
         place_1_id: '-KtxjDAagEoj-OBVcgnL',
-        place_2_id: '-KtxkEl5KgC9-1PX-Nhv',
+        place_2_id: '-Ktxi4P2OuwhsvgPyq0N',
         date: '2017-09-15 08:00:00-07',
         vote_status: true,
         winner: null,

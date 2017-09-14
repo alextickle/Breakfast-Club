@@ -1,5 +1,5 @@
-const makeExecutableSchema = require("graphql-tools").makeExecutableSchema;
-const resolvers = require("./resolvers").resolvers;
+const makeExecutableSchema = require('graphql-tools').makeExecutableSchema;
+const resolvers = require('./resolvers').resolvers;
 
 const typeDefs = `
   scalar JSON
@@ -19,8 +19,8 @@ const typeDefs = `
   type Message {
     id: String
     content: String
-    user: User
     createdAt: String
+    user: User
   }
 
   type Place {
@@ -44,47 +44,47 @@ const typeDefs = `
 
   type GuestList {
     id: String
-    event: Bevent
-    user: User
     vote: Int
     attended: Boolean
+    event: Bevent
+    user: User
   }
 
   type Bevent {
     id: String
     date: String
     vote_status: Boolean
-    place_1: Place
-    place_2: Place
-    guestLists: [GuestList]
     winner: Int
     active: Boolean
     speaker: String
+    place_1: Place
+    place_2: Place
+    guestLists: [GuestList]
   }
 
   type Query {
     user(email: String!): User
     users: [User]
+    message(id: String!): Message
     messages: [Message]
     places: [Place]
-    events: [Bevent]
     currentEvent: Bevent
     event(id: String!): Bevent
-    admin: [User]
+    events: [Bevent]
   }
 
   type Mutation {
-    addMessage(content: String!, user_id: String!): Message
     login(email: String!, password: String!): String
     signUp(firstName: String!, lastName: String!, neighborhood: String!, email: String!, password: String!): String
     registerRSVP(userId: String!, rsvpStatus: Boolean!): User
     registerVote(userId: String!, eventId: String!, choice: Int!): GuestList
     addEvent: String
+    addMessage(content: String!, user_id: String!): Message
+    addUser(email: String!, password: String!, firstName: String!, lastName: String!, neighborhood: String!): User
+    addPlace(name: String!, yelp_rating: Int!, price: String!, categories: String!, address_street: String!, phone: String!): Place
     updateUser(email: String!, firstName: String!, lastName: String!, neighborhood: String!): User
     updatePlace(id: String!, name: String!, yelp_rating: String!, price: String!, address_street: String!, phone: String!, active: Boolean!): Place
     updateSpeaker(id: String!, speaker: String!): Bevent
-    addUser(email: String!, password: String!, firstName: String!, lastName: String!, neighborhood: String!): User
-    addPlace(name: String!, yelp_rating: Int!, price: String!, categories: String!, address_street: String!, phone: String!): Place
     deactivateUser(email: String!): String
     delete(type: String!, id: String!): String
   }
