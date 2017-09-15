@@ -12,9 +12,9 @@
     "test:coverage": "jest --coverage",
     "start": "node server/app.js",
     "//":
-      "on initial deploy use 'sequelize db:migrate && sequelize db:seed:all'",
+      "on initial deploy use 'sequelize db:migrate && sequelize db:seed:all && node yelp-api.js'",
     "heroku-postbuild":
-      "cd server && cp config/config.json.prod config/config.json && cd ../client/ && yarn install && yarn build"
+      "cd server && cp config/config.json.prod config/config.json && sequelize db:migrate && sequelize db:seed:all && node yelp-api.js && cd ../client/ && yarn install && yarn build"
   },
   "author": "Empty String",
   "homepage": "https://github.com/alextickle/breakfast-club-graphQL-redux",
